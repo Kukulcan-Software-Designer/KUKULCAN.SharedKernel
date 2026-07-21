@@ -1,0 +1,1 @@
+# KUKULCAN.SharedKernel
