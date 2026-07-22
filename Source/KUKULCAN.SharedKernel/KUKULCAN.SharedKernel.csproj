@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <EnableNETAnalyzers>true</EnableNETAnalyzers>
+        <AnalysisLevel>latest</AnalysisLevel>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <Deterministic>true</Deterministic>
+        <AssemblyName>KUKULCAN.SharedKernel</AssemblyName>
+        <RootNamespace>KUKULCAN.SharedKernel</RootNamespace>
+        <PackageId>KUKULCAN.SharedKernel</PackageId>
+        <Authors>Juan Manuel Pardo García</Authors>
+        <Company>KUKULCAN Software Designer</Company>
+        <Product>KUKULCAN Platform</Product>
+        <Description>Shared kernel for the KUKULCAN platform.</Description>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Domain\Internals\" />
+      <Folder Include="Errors\" />
+      <Folder Include="Extensions\" />
+      <Folder Include="Localization\" />
+      <Folder Include="Versioning\" />
+    </ItemGroup>
+
+</Project>
