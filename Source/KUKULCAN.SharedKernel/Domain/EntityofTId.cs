@@ -1,3 +1,4 @@
+using KUKULCAN.SharedKernel.Abstractions;
 using KUKULCAN.SharedKernel.Identifiers.Interfaces;
 
 namespace KUKULCAN.SharedKernel.Domain;

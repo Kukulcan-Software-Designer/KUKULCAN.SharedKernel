@@ -1,11 +1,17 @@
 namespace KUKULCAN.SharedKernel.Abstractions.Capabilities;
 
 /// <summary>
-/// Represents a soft deletable object.
+/// Represents an object that supports logical deletion.
 /// </summary>
 public interface ISoftDelete
 {
-    bool IsDeleted { get; set; }
+    /// <summary>
+    /// Gets a value indicating whether the object has been logically deleted.
+    /// </summary>
+    bool IsDeleted { get; }
 
-    DateTimeOffset? DeletedOn { get; set; }
+    /// <summary>
+    /// Gets the date and time when the object was logically deleted.
+    /// </summary>
+    DateTimeOffset? DeletedOn { get; }
 }

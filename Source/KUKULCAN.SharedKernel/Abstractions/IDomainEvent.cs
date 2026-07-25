@@ -5,6 +5,4 @@ namespace KUKULCAN.SharedKernel.Abstractions;
 /// </summary>
 public interface IDomainEvent
 {
-    Guid EventId { get; }
-    DateTimeOffset OccurredOn { get; }
 }
