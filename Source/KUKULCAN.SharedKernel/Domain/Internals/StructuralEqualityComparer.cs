@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+
 namespace KUKULCAN.SharedKernel.Domain.Internals;
 
 /// <summary>

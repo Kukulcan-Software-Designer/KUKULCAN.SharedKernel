@@ -1,3 +1,4 @@
+using System;
 using KUKULCAN.SharedKernel.Exceptions.Internals;
 using KUKULCAN.SharedKernel.Results;
 using KUKULCAN.SharedKernel.Validations;

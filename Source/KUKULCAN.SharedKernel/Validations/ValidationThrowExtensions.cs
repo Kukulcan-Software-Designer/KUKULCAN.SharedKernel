@@ -1,3 +1,4 @@
+using System;
 using KUKULCAN.SharedKernel.Exceptions;
 
 namespace KUKULCAN.SharedKernel.Validations;

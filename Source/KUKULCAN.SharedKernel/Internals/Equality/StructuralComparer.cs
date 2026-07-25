@@ -1,3 +1,4 @@
+using System;
 using KUKULCAN.SharedKernel.Domain;
 
 namespace KUKULCAN.SharedKernel.Internals.Equality;

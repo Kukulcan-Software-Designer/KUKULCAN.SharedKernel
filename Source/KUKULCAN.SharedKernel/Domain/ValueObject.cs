@@ -1,3 +1,4 @@
+using System;
 using KUKULCAN.SharedKernel.Domain.Internals;
 
 namespace KUKULCAN.SharedKernel.Domain;

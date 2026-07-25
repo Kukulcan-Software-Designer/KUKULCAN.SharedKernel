@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using KUKULCAN.SharedKernel.Results;
 using KUKULCAN.SharedKernel.Validations.Internals;
 

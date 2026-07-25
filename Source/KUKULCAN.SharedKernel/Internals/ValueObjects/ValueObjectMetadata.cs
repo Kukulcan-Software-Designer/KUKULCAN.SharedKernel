@@ -1,3 +1,5 @@
+using System;
+
 namespace KUKULCAN.SharedKernel.Internals.ValueObjects;
 
 /// <summary>

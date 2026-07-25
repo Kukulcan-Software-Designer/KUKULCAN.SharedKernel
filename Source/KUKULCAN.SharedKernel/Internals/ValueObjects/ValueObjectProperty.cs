@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 
 namespace KUKULCAN.SharedKernel.Internals.ValueObjects;
