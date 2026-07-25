@@ -12,7 +12,7 @@ namespace KUKULCAN.SharedKernel.Exceptions;
 public sealed class ValidationException : SharedKernelException
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="validationResult"/> class.
+    /// Initializes a new instance of the <see cref="ValidationException"/> class.
     /// </summary>
     /// <param name="validationResult">
     /// Validation result.
@@ -20,7 +20,7 @@ public sealed class ValidationException : SharedKernelException
     /// <exception cref="System.ComponentModel.DataAnnotations.ValidationException">
     /// <paramref name="validationResult"/> is <see langword="null"/>.
     /// </exception>
-    /// <exception cref="ComponentModel">
+    /// <exception cref="ArgumentException">
     /// <paramref name="validationResult"/> represents a successful validation.
     /// </exception>
     public ValidationException(ValidationResult validationResult) : this(validationResult, null)
@@ -28,7 +28,7 @@ public sealed class ValidationException : SharedKernelException
     }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="validationResult"/> class.
+    /// Initializes a new instance of the <see cref="ValidationException"/> class.
     /// </summary>
     /// <param name="validationResult">
     /// Validation result.
@@ -39,7 +39,7 @@ public sealed class ValidationException : SharedKernelException
     /// <exception cref="System.ComponentModel.DataAnnotations.ValidationException">
     /// <paramref name="validationResult"/> is <see langword="null"/>.
     /// </exception>
-    /// <exception cref="ComponentModel">
+    /// <exception cref="ArgumentException">
     /// <paramref name="validationResult"/> represents a successful validation.
     /// </exception>
     public ValidationException(Validations_ValidationResult validationResult, Exception? innerException)
