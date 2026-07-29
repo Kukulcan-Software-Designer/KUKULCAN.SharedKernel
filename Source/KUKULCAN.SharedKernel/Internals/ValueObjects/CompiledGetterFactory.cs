@@ -1,5 +1,4 @@
 using System;
-using System.Linq.Expressions;
 using System.Reflection;
 
 namespace KUKULCAN.SharedKernel.Internals.ValueObjects;
@@ -21,9 +20,7 @@ internal static class CompiledGetterFactory
         UnaryExpression convert = Expression.Convert(propertyAccess, typeof(object));
 
         return Expression
-            .Lambda<Func<object, object?>>(
-                convert,
-                instance)
+            .Lambda<Func<object, object?>>(convert, instance)
             .Compile();
     }
 }

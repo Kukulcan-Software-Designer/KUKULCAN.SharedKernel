@@ -1,7 +1,8 @@
 using System;
 using KUKULCAN.SharedKernel.Abstractions;
 using KUKULCAN.SharedKernel.Abstractions.Capabilities;
-using KUKULCAN.SharedKernel.DomainEvents;
+using KUKULCAN.SharedKernel.DomainEvents.Abstractions;
+using KUKULCAN.SharedKernel.DomainEvents.Collections;
 using KUKULCAN.SharedKernel.Identifiers.Interfaces;
 
 namespace KUKULCAN.SharedKernel.Domain;

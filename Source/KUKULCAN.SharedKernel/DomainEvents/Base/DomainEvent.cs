@@ -1,6 +1,7 @@
 using System;
+using KUKULCAN.SharedKernel.DomainEvents.Abstractions;
 
-namespace KUKULCAN.SharedKernel.DomainEvents;
+namespace KUKULCAN.SharedKernel.DomainEvents.Base;
 
 /// <summary>
 /// Represents the base class for domain events.

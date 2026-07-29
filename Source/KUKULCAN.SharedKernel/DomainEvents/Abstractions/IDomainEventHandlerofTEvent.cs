@@ -1,7 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace KUKULCAN.SharedKernel.DomainEvents;
+namespace KUKULCAN.SharedKernel.DomainEvents.Abstractions;
 
 /// <summary>
 /// Handles domain events.

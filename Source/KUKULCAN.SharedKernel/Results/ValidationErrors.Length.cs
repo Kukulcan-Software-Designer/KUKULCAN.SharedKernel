@@ -26,9 +26,7 @@ public static partial class ValidationErrors
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="minimumLength"/> is less than or equal to zero.
     /// </exception>
-    public static Error MinLength(
-        string propertyName,
-        int minimumLength)
+    public static Error MinLength(string propertyName, int minimumLength)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(minimumLength);

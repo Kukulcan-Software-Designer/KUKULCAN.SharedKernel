@@ -1,6 +1,6 @@
 using System;
 
-namespace KUKULCAN.SharedKernel.DomainEvents;
+namespace KUKULCAN.SharedKernel.DomainEvents.Abstractions;
 
 /// <summary>
 /// Represents a domain event.

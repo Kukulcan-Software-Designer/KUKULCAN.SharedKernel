@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics.CodeAnalysis;
 using KUKULCAN.SharedKernel.Maybe.Internals;
 
 namespace KUKULCAN.SharedKernel.Maybe;

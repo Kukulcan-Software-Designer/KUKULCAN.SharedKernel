@@ -1,4 +1,4 @@
-using KUKULCAN.SharedKernel.DomainEvents;
+using KUKULCAN.SharedKernel.DomainEvents.Abstractions;
 
 namespace KUKULCAN.SharedKernel.Abstractions.Capabilities;
 
