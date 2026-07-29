@@ -21,8 +21,7 @@
 
     <ItemGroup>
       <Folder Include="Error\" />
-      <Folder Include="Extensions\" />
-      <Folder Include="Localization\" />
+      <Folder Include="Globalization\Formating\" />
       <Folder Include="Versioning\" />
     </ItemGroup>
 
