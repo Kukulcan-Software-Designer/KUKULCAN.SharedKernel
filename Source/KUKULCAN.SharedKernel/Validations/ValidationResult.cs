@@ -70,17 +70,27 @@ public sealed record ValidationResult
     }
 
     /// <summary>
-    /// Converts the validation result into a non-generic result.
+    /// Converts this validation result into a <see cref="Result"/>.
     /// </summary>
+    /// <remarks>
+    /// This method represents the official integration point between the
+    /// Validation module and the Results module.
+    ///
+    /// A successful validation is converted into <see cref="Result.Success()"/>.
+    /// A failed validation is converted into a failed <see cref="Result"/>
+    /// containing the corresponding validation error.
+    ///
+    /// Consumers should use this method instead of implementing their own
+    /// validation-to-result conversion logic, ensuring a single, consistent
+    /// conversion policy throughout the SharedKernel.
+    /// </remarks>
     /// <returns>
-    /// A <see cref="Result"/> representing the validation outcome.
+    /// A successful <see cref="Result"/> when validation succeeds;
+    /// otherwise a failed <see cref="Result"/>.
     /// </returns>
-    // If we want to preserve the information in the results in the future,
-    //then Result will need to support metadata or an enriched error.
     public Result ToResult()
     {
         return IsValid
             ? Result.Success()
             : Result.Failure(ValidationErrors.ValidationFailed());
-    }
-}
+    }}

@@ -3,12 +3,12 @@ using System;
 namespace KUKULCAN.SharedKernel.Validations;
 
 /// <summary>
-/// Provides conversion methods for validation types.
+/// Provides extension methods for creating validation results.
 /// </summary>
-public static class ValidationConversionExtensions
+public static class ValidationExtensions
 {
     /// <summary>
-    /// Converts a validation failure into a validation result.
+    /// Creates a failed validation result from a single validation failure.
     /// </summary>
     /// <param name="failure">
     /// Validation failure.
@@ -23,12 +23,11 @@ public static class ValidationConversionExtensions
     {
         ArgumentNullException.ThrowIfNull(failure);
 
-        return ValidationResult.Failure(
-            [failure]);
+        return ValidationResult.Failure([failure]);
     }
 
     /// <summary>
-    /// Converts a sequence of validation failures into a validation result.
+    /// Creates a failed validation result from a collection of validation failures.
     /// </summary>
     /// <param name="failures">
     /// Validation failures.
