@@ -20,7 +20,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Errors\" />
+      <Folder Include="DomainEvents\Internals\" />
+      <Folder Include="Error\" />
       <Folder Include="Extensions\" />
       <Folder Include="Localization\" />
       <Folder Include="Versioning\" />

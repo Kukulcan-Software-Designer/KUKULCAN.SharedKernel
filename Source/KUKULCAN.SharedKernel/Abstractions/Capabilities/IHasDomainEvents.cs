@@ -1,3 +1,5 @@
+using KUKULCAN.SharedKernel.DomainEvents;
+
 namespace KUKULCAN.SharedKernel.Abstractions.Capabilities;
 
 /// <summary>

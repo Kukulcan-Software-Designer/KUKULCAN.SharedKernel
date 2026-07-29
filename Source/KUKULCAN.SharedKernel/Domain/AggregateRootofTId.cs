@@ -1,23 +1,24 @@
 using System;
 using KUKULCAN.SharedKernel.Abstractions;
 using KUKULCAN.SharedKernel.Abstractions.Capabilities;
+using KUKULCAN.SharedKernel.DomainEvents;
 using KUKULCAN.SharedKernel.Identifiers.Interfaces;
 
 namespace KUKULCAN.SharedKernel.Domain;
 
 /// <summary>
-/// Represents an aggregate root.
+/// Represents the base class for aggregate roots.
 /// </summary>
 /// <typeparam name="TId">
 /// Type of the aggregate identifier.
 /// </typeparam>
 public abstract class AggregateRoot<TId> : Entity<TId>, IAggregateRoot, IHasDomainEvents where TId : IEntityId
 {
-    private readonly List<IDomainEvent> _domainEvents = [];
+    private readonly DomainEventCollection _domainEvents = new();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AggregateRoot{TId}"/> class.
-    /// This constructor is intended only for Entity Framework Core.
+    /// This constructor is intended only for serializers and ORMs such as Entity Framework Core.
     /// </summary>
     protected AggregateRoot()
     {
@@ -35,7 +36,7 @@ public abstract class AggregateRoot<TId> : Entity<TId>, IAggregateRoot, IHasDoma
 
     /// <inheritdoc/>
     public IReadOnlyCollection<IDomainEvent> DomainEvents =>
-        _domainEvents.AsReadOnly();
+        _domainEvents.Items;
 
     /// <summary>
     /// Registers a domain event.
@@ -69,11 +70,24 @@ public abstract class AggregateRoot<TId> : Entity<TId>, IAggregateRoot, IHasDoma
         _domainEvents.Remove(domainEvent);
     }
 
-    /// <summary>
-    /// Removes all registered domain events.
-    /// </summary>
+    /// <inheritdoc/>
     public void ClearDomainEvents()
     {
         _domainEvents.Clear();
+    }
+
+    /// <summary>
+    /// Returns the pending domain events and clears the internal collection.
+    /// </summary>
+    /// <remarks>
+    /// This method is intended to be used by infrastructure components
+    /// responsible for publishing domain events.
+    /// </remarks>
+    /// <returns>
+    /// A snapshot containing the pending domain events.
+    /// </returns>
+    protected IReadOnlyCollection<IDomainEvent> DequeueDomainEvents()
+    {
+        return _domainEvents.Dequeue();
     }
 }
