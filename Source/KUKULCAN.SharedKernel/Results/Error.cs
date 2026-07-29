@@ -4,7 +4,8 @@ using KUKULCAN.SharedKernel.Results.Internals;
 namespace KUKULCAN.SharedKernel.Results;
 
 /// <summary>
-/// Represents an immutable error.
+/// Represents an immutable application error identified by a unique code
+/// and a human-readable description.
 /// </summary>
 public sealed record Error
 {

@@ -20,9 +20,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Error\" />
       <Folder Include="Globalization\Formating\" />
-      <Folder Include="Versioning\" />
     </ItemGroup>
 
 </Project>
