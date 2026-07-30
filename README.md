@@ -87,10 +87,8 @@ The result is a Shared Kernel that remains:
 - [Architecture](#architecture)
 - [Results](#results)
 - [Validation](#validation)
-- [Domain Model](#domain-model)
 - [Domain Events](#domain-events)
 - [Specifications](#specifications)
-- [Collections](#collections)
 - [Time](#time)
 - [Globalization](#globalization)
 - [Versioning](#versioning)
@@ -218,15 +216,15 @@ AddDomainEvent(
 
 KUKULCAN.SharedKernel has been designed around the following architectural goals.
 
-| Goal | Description |
-|------|-------------|
-| Cohesion | Every module has a single responsibility. |
-| Low Coupling | Modules have minimal dependencies. |
-| Testability | Every component can be tested independently. |
-| Immutability | Value Objects are immutable by design. |
-| Extensibility | New modules can be added without modifying existing ones. |
-| Framework Independence | Domain model never depends on infrastructure. |
-| Maintainability | Every module can evolve independently. |
+| Goal                   | Description                                               |
+|------------------------|-----------------------------------------------------------|
+| Cohesion               | Every module has a single responsibility.                 |
+| Low Coupling           | Modules have minimal dependencies.                        |
+| Testability            | Every component can be tested independently.              |
+| Immutability           | Value Objects are immutable by design.                    |
+| Extensibility          | New modules can be added without modifying existing ones. |
+| Framework Independence | Domain model never depends on infrastructure.             |
+| Maintainability        | Every module can evolve independently.                    |
 
 ---
 
@@ -353,16 +351,16 @@ Every module has a single responsibility.
 
 Examples:
 
-| Module | Responsibility |
-|---------|----------------|
-| Results | Functional result model |
-| Validation | Validation model |
-| Domain | Domain base classes |
-| DomainEvents | Domain Event infrastructure |
-| Specifications | Specification Pattern |
-| Globalization | Culture and localization abstractions |
-| Versioning | Semantic Version model |
-| Time | Time abstractions |
+| Module         | Responsibility                        |
+|----------------|---------------------------------------|
+| Results        | Functional result model               |
+| Validation     | Validation model                      |
+| Domain         | Domain base classes                   |
+| DomainEvents   | Domain Event infrastructure           |
+| Specifications | Specification Pattern                 |
+| Globalization  | Culture and localization abstractions |
+| Versioning     | Semantic Version model                |
+| Time           | Time abstractions                     |
 
 ---
 
@@ -1816,3 +1814,535 @@ Avoid the following practices.
 The Shared Kernel is intended to evolve by extension rather than modification.
 
 Applications should build upon its abstractions while preserving the architectural principles that guarantee long-term maintainability and stability.
+
+# Best Practices
+
+KUKULCAN.SharedKernel has been designed to provide a stable architectural foundation for enterprise applications following Domain-Driven Design and Clean Architecture.
+
+The following recommendations should be considered mandatory for achieving the highest level of maintainability.
+
+---
+
+## Keep the Domain Pure
+
+The domain model should never depend on infrastructure concerns.
+
+Avoid references to:
+
+- Entity Framework
+- ASP.NET Core
+- HTTP
+- Serialization frameworks
+- Dependency Injection frameworks
+- Logging frameworks
+
+The Domain should only depend on the abstractions provided by the Shared Kernel.
+
+---
+
+## Prefer Rich Domain Models
+
+Entities should contain behavior.
+
+Avoid anemic models such as:
+
+```csharp
+public class Customer
+{
+    public string Name { get; set; }
+}
+```
+
+Prefer:
+
+```csharp
+public sealed class Customer
+    : AggregateRoot<CustomerId>
+{
+    public void Rename(string newName)
+    {
+        Guard.NotNullOrWhiteSpace(newName);
+
+        Name = newName;
+    }
+}
+```
+
+---
+
+## Avoid Primitive Obsession
+
+Do not expose primitive identifiers across the domain.
+
+Instead of
+
+```csharp
+Guid CustomerId
+```
+
+prefer
+
+```csharp
+CustomerId CustomerId
+```
+
+---
+
+## Use Value Objects
+
+Whenever a concept is identified by its value instead of its identity, implement it as a Value Object.
+
+Examples:
+
+- Email
+- Address
+- Money
+- PhoneNumber
+- TaxIdentifier
+
+---
+
+## Use Result for Business Failures
+
+Business rules should return Result.
+
+```csharp
+return Result.Failure(
+    CommonErrors.NotFound(
+        nameof(Customer),
+        customerId));
+```
+
+Programming errors should continue throwing exceptions.
+
+---
+
+## Never Return Null
+
+Prefer
+
+```csharp
+Maybe<Customer>
+```
+
+instead of
+
+```csharp
+Customer?
+```
+
+This makes the API explicit.
+
+---
+
+## Raise Domain Events
+
+Aggregate Roots should communicate state changes through Domain Events.
+
+```csharp
+AddDomainEvent(
+    new CustomerCreatedEvent(Id));
+```
+
+Avoid directly invoking external services from entities.
+
+---
+
+## Keep Aggregate Boundaries Small
+
+Aggregate Roots should enforce consistency.
+
+Do not create aggregates containing dozens of entities.
+
+---
+
+## Use Specifications
+
+Business rules that are reusable should become Specifications.
+
+Avoid duplicating LINQ expressions throughout the application.
+
+---
+
+## Depend on IClock
+
+Never use
+
+```csharp
+DateTime.UtcNow
+```
+
+inside the domain.
+
+Instead
+
+```csharp
+IClock
+```
+
+---
+
+## Prefer Immutability
+
+Value Objects should always be immutable.
+
+Aggregate state should change only through explicit behavior.
+
+---
+
+## Keep the Public API Small
+
+Every public type becomes part of the framework contract.
+
+If a class is not intended for consumers, make it internal.
+
+---
+
+## Minimize Dependencies
+
+The Shared Kernel intentionally depends only on the .NET Base Class Library.
+
+Avoid introducing external dependencies unless they provide significant architectural value.
+
+---
+
+## Preserve Module Independence
+
+Each module should have a single responsibility.
+
+Do not create cross-module shortcuts.
+
+---
+
+## Write Self-Documenting Code
+
+Prefer expressive names to comments.
+
+Good code should explain itself.
+
+---
+
+## Keep Breaking Changes Rare
+
+Once a module is frozen, breaking changes should only occur for critical architectural reasons.
+
+Stable APIs create stable applications.
+
+---
+
+# Roadmap
+
+The following roadmap describes the expected evolution of the framework.
+
+## Version 1.0.0-beta1
+
+- Initial public beta
+- Stable public API
+- Complete Shared Kernel
+- Full XML Documentation
+- GitHub Documentation
+- NuGet Packaging
+
+---
+
+## Version 1.0.0
+
+- Production-ready release
+- Performance review
+- Roslyn analyzers
+- Additional unit tests
+- SourceLink support
+
+---
+
+## Version 1.1
+
+Possible improvements under evaluation.
+
+- Additional Value Objects
+- Additional Specifications
+- Performance optimizations
+- Additional globalization features
+- More domain primitives
+
+No breaking changes are planned.
+
+---
+
+## Long-Term Vision
+
+The Shared Kernel is expected to become the architectural foundation for all KUKULCAN products.
+
+Its evolution will prioritize:
+
+- Stability
+- Simplicity
+- Predictability
+- Long-term maintainability
+
+---
+
+# Contributing
+
+Contributions are welcome.
+
+Before submitting any contribution, please read the following guidelines.
+
+---
+
+## General Principles
+
+Every contribution should preserve the architectural principles of the framework.
+
+New code should be:
+
+- Simple
+- Cohesive
+- Well documented
+- Fully tested
+
+---
+
+## Pull Requests
+
+Every Pull Request should:
+
+- Address a single concern.
+- Preserve backward compatibility whenever possible.
+- Include XML documentation.
+- Include unit tests.
+- Respect the existing coding style.
+
+---
+
+## Coding Guidelines
+
+Follow the existing conventions.
+
+- PascalCase for public members.
+- Nullable Reference Types enabled.
+- File-scoped namespaces.
+- One public type per file.
+- Prefer readonly.
+- Prefer sealed.
+- Prefer immutable models.
+
+---
+
+## Architecture
+
+Contributors should avoid introducing:
+
+- Helper classes
+- Utility classes
+- God Objects
+- Static business logic
+- Infrastructure dependencies
+
+Every new abstraction should have a clearly defined responsibility.
+
+---
+
+## Breaking Changes
+
+Breaking changes require explicit discussion before implementation.
+
+The framework prioritizes API stability.
+
+---
+
+# Version Policy
+
+KUKULCAN.SharedKernel follows Semantic Versioning 2.0.
+
+https://semver.org
+
+---
+
+## MAJOR
+
+Incremented when incompatible API changes are introduced.
+
+Example
+
+```
+2.0.0
+```
+
+---
+
+## MINOR
+
+Incremented when new functionality is added in a backward-compatible manner.
+
+Example
+
+```
+1.4.0
+```
+
+---
+
+## PATCH
+
+Incremented for backward-compatible bug fixes.
+
+Example
+
+```
+1.4.2
+```
+
+---
+
+## Pre-release Versions
+
+Examples
+
+```
+1.0.0-alpha1
+
+1.0.0-beta1
+
+1.0.0-rc1
+```
+
+---
+
+## Compatibility Policy
+
+Public APIs remain stable once a module has been frozen.
+
+Breaking changes are exceptional.
+
+---
+
+# License
+
+MIT License
+
+Copyright (c) 2026 KUKULCAN
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to:
+
+- use
+- copy
+- modify
+- merge
+- publish
+- distribute
+- sublicense
+- sell copies
+
+subject to the conditions described in the LICENSE file.
+
+---
+
+# GitHub Metadata
+
+The following files are recommended for a professional GitHub repository.
+
+```
+/
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── CHANGELOG.md
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── SECURITY.md
+├── SUPPORT.md
+└── logo.png
+```
+
+---
+
+# Recommended NuGet Metadata
+
+The project file should contain metadata similar to the following.
+
+```xml
+<PropertyGroup>
+
+  <PackageId>KUKULCAN.SharedKernel</PackageId>
+
+  <Title>KUKULCAN Shared Kernel</Title>
+
+  <Authors>KUKULCAN</Authors>
+
+  <Company>KUKULCAN</Company>
+
+  <Product>KUKULCAN.SharedKernel</Product>
+
+  <Description>
+    Lightweight Shared Kernel for Domain-Driven Design and Clean Architecture.
+  </Description>
+
+  <PackageTags>
+    ddd;clean-architecture;sharedkernel;domain-driven-design;
+    value-object;result;specification;domain-events
+  </PackageTags>
+
+  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+
+  <PackageReadmeFile>README.md</PackageReadmeFile>
+
+  <RepositoryType>git</RepositoryType>
+
+  <RepositoryUrl>https://github.com/KUKULCAN/KUKULCAN.SharedKernel</RepositoryUrl>
+
+  <PackageProjectUrl>https://github.com/KUKULCAN/KUKULCAN.SharedKernel</PackageProjectUrl>
+
+  <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+  <EmbedUntrackedSources>true</EmbedUntrackedSources>
+
+  <IncludeSymbols>true</IncludeSymbols>
+
+  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+
+  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+
+  <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+
+</PropertyGroup>
+```
+
+---
+
+# Repository Structure
+
+```
+KUKULCAN.SharedKernel
+│
+├── src/
+│   └── KUKULCAN.SharedKernel
+│
+├── tests/
+│   └── KUKULCAN.SharedKernel.Tests
+│
+├── docs/
+│
+├── README.md
+├── CHANGELOG.md
+├── LICENSE
+└── CONTRIBUTING.md
+```
+
+---
+
+# Support
+
+For questions, bug reports and feature requests, please use the GitHub Issues section.
+
+---
+
+# Final Notes
+
+KUKULCAN.SharedKernel is intended to provide a stable, expressive and long-lived foundation for enterprise software.
+
+The project favors architectural consistency over feature accumulation and prioritizes simplicity, explicitness and maintainability above all else.

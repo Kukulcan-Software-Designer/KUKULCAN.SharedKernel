@@ -17,6 +17,8 @@
         <Company>KUKULCAN Software Designer</Company>
         <Product>KUKULCAN Platform</Product>
         <Description>Shared kernel for the KUKULCAN platform.</Description>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     </PropertyGroup>
 
     <ItemGroup>
