@@ -662,11 +662,8 @@ Results --> Internals
 Validation --> Results
 Domain --> DomainEvents
 Specifications --> Domain
-
 Time
-
 Globalization
-
 Versioning
 ```
 
