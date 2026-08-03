@@ -315,9 +315,7 @@ Instead, it provides the architectural primitives upon which those technologies 
 
 ```mermaid
 flowchart TD
-
 Application --> SharedKernel
-
 SharedKernel --> Domain
 SharedKernel --> Results
 SharedKernel --> Validation
@@ -325,11 +323,9 @@ SharedKernel --> Specifications
 SharedKernel --> Time
 SharedKernel --> Globalization
 SharedKernel --> Versioning
-
 Infrastructure --> ASPNET[ASP.NET Core]
 Infrastructure --> EF[Entity Framework]
 Infrastructure --> Logging[Logging]
-
 Application --> Infrastructure
 ```
 
@@ -371,15 +367,10 @@ Everything else exists to support the domain.
 
 ```mermaid
 flowchart LR
-
 Infrastructure --> Domain
-
 Presentation --> Domain
-
 Persistence --> Domain
-
 ExternalServices --> Domain
-
 SharedKernel --> Domain
 ```
 
@@ -1251,23 +1242,14 @@ Everything else exists to support it.
 
 ```mermaid
 flowchart TD
-
 Application
-
 Application --> SharedKernel
-
 SharedKernel --> Domain
-
 SharedKernel --> Results
-
 SharedKernel --> Validation
-
 SharedKernel --> Specifications
-
 SharedKernel --> Time
-
 SharedKernel --> Globalization
-
 SharedKernel --> Versioning
 ```
 
@@ -1304,13 +1286,9 @@ The Shared Kernel naturally occupies the innermost part of a Clean Architecture.
 
 ```mermaid
 flowchart LR
-
 Presentation --> Application
-
 Application --> Domain
-
 Domain --> SharedKernel
-
 Infrastructure --> Application
 Infrastructure --> Domain
 ```
@@ -1331,19 +1309,12 @@ Dependencies always point towards more fundamental concepts.
 
 ```mermaid
 flowchart TD
-
 Validation --> Results
-
 Specifications --> Domain
-
 Domain --> DomainEvents
-
 Results --> Internals
-
 Globalization
-
 Time
-
 Versioning
 ```
 
@@ -1453,13 +1424,9 @@ Expected failures are modeled explicitly.
 
 ```mermaid
 flowchart LR
-
 BusinessOperation
-
 BusinessOperation --> Result
-
 Result --> Success
-
 Result --> Error
 ```
 
@@ -1475,11 +1442,8 @@ Validation is treated as an independent architectural concern.
 
 ```mermaid
 flowchart LR
-
 Input --> Validation
-
 Validation --> ValidationResult
-
 ValidationResult --> Result
 ```
 
@@ -1517,9 +1481,7 @@ Instead:
 
 ```mermaid
 flowchart LR
-
 Domain --> SupportedCulture
-
 SupportedCulture --> Formatters
 ```
 
@@ -1631,7 +1593,6 @@ Each module owns a single architectural responsibility while collaborating with 
 
 ```mermaid
 flowchart TD
-
 SK[KUKULCAN.SharedKernel]
 
 SK --> Abstractions
@@ -1691,29 +1652,22 @@ The framework can be divided into four conceptual categories.
 
 ```mermaid
 flowchart LR
-
 Core["Core Domain"]
-
 Support["Architectural Support"]
-
 Infrastructure["Internal Infrastructure"]
-
 Utilities["Cross-Cutting Services"]
 
 Core --> Domain
 Core --> DomainEvents
 Core --> Specifications
-
 Support --> Results
 Support --> Validation
 Support --> Maybe
 Support --> Identifiers
-
 Utilities --> Time
 Utilities --> Globalization
 Utilities --> Versioning
 Utilities --> Guards
-
 Infrastructure --> Internals
 Infrastructure --> Collections
 Infrastructure --> Exceptions
@@ -1794,35 +1748,20 @@ The dependency graph has been intentionally designed as a Directed Acyclic Graph
 
 ```mermaid
 flowchart TD
-
 Internals
-
 Results --> Internals
-
 Validation --> Results
-
 Domain --> DomainEvents
-
 Specifications --> Domain
-
 Time
-
 Versioning
-
 Globalization
-
 Maybe
-
 Identifiers
-
 Guards
-
 Collections
-
 Attributes
-
 Exceptions
-
 Abstractions
 ```
 
@@ -1862,15 +1801,10 @@ Modules communicate exclusively through well-defined public contracts.
 
 ```mermaid
 sequenceDiagram
-
 Application->>Validation: Validate()
-
 Validation->>Results: ValidationResult
-
 Application->>Domain: Execute()
-
 Domain->>DomainEvents: Raise()
-
 Application->>Results: Result<T>
 ```
 
@@ -1884,19 +1818,12 @@ A typical business operation follows the architecture below.
 
 ```mermaid
 flowchart LR
-
 Input
-
 Input --> Validation
-
 Validation --> ValidationResult
-
 ValidationResult --> Domain
-
 Domain --> DomainEvents
-
 Domain --> Result
-
 Result --> Consumer
 ```
 
@@ -1910,17 +1837,11 @@ Every module follows the same governance model.
 
 ```mermaid
 flowchart LR
-
 Design
-
 Design --> Implementation
-
 Implementation --> Audit
-
 Audit --> Refactoring
-
 Refactoring --> Freeze
-
 Freeze --> Maintenance
 ```
 
@@ -2028,33 +1949,19 @@ This chapter provides the authoritative catalogue of all architectural modules t
 
 ```mermaid
 flowchart TD
-
 Domain --> DomainEvents
-
 Specifications --> Domain
-
 Validation --> Results
-
 Results --> Internals
-
 Maybe
-
 Identifiers
-
 Globalization
-
 Versioning
-
 Time
-
 Collections
-
 Exceptions
-
 Attributes
-
 Abstractions
-
 Guards
 ```
 
@@ -2508,35 +2415,20 @@ The dependency graph intentionally forms a **Directed Acyclic Graph (DAG)**.
 
 ```mermaid
 flowchart TD
-
 Internals
-
 Results --> Internals
-
 Validation --> Results
-
 Domain --> DomainEvents
-
 Specifications --> Domain
-
 Collections
-
 Guards
-
 Maybe
-
 Identifiers
-
 Time
-
 Globalization
-
 Versioning
-
 Exceptions
-
 Attributes
-
 Abstractions
 ```
 
@@ -3111,15 +3003,10 @@ The following diagram illustrates the conceptual relationships between layers.
 
 ```mermaid
 flowchart TD
-
 PublicAPI
-
 PublicAPI --> CrossCutting
-
 CrossCutting --> Domain
-
 Domain --> Infrastructure
-
 Infrastructure
 ```
 
@@ -3467,11 +3354,8 @@ Expected failures are modeled explicitly.
 
 ```mermaid
 flowchart LR
-
 Operation --> Result
-
 Result --> Success
-
 Result --> Failure
 ```
 
@@ -3709,7 +3593,6 @@ Every architectural module follows the same lifecycle.
 
 ```mermaid
 flowchart LR
-
     Design --> Implementation
     Implementation --> Audit
     Audit --> Refactoring
@@ -3875,9 +3758,7 @@ The Core Building Blocks can be grouped into four major architectural families.
 
 ```mermaid
 flowchart TD
-
 A["Core Building Blocks"]
-
 A --> B["Domain Building Blocks"]
 A --> C["Behaviour Building Blocks"]
 A --> D["Cross-Cutting Building Blocks"]
@@ -4004,14 +3885,12 @@ The following conceptual diagram illustrates these relationships.
 
 ```mermaid
 flowchart TD
-
 Entity --> EntityId
 AggregateRoot --> Entity
 AggregateRoot --> DomainEvent
 Specification --> Entity
 Validation --> Result
 Result --> Error
-
 Maybe
 SemanticVersion
 SupportedCulture
@@ -4247,9 +4126,7 @@ The Shared Kernel can be viewed as a collection of cooperating Building Blocks.
 
 ```mermaid
 flowchart TD
-
 SK["KUKULCAN.SharedKernel"]
-
 SK --> Domain["Domain"]
 SK --> Results["Results"]
 SK --> Validation["Validation"]
@@ -4257,7 +4134,6 @@ SK --> Specifications["Specifications"]
 SK --> Globalization["Globalization"]
 SK --> Versioning["Versioning"]
 SK --> Time["Time"]
-
 Domain --> Entity["Entity"]
 Domain --> Aggregate["AggregateRoot"]
 Domain --> Value["ValueObject"]
@@ -4306,7 +4182,6 @@ The Shared Kernel organizes its Building Blocks into four major families.
 
 ```mermaid
 flowchart TD
-
 BB["Core Building Blocks"]
 BB --> D["Domain Building Blocks"]
 BB --> B["Behaviour Building Blocks"]
@@ -4408,7 +4283,6 @@ The following diagram illustrates how the different families cooperate.
 
 ```mermaid
 flowchart TD
-
 Infrastructure["Infrastructure Building Blocks"]
 Domain["Domain Building Blocks"]
 Behaviour["Behaviour Building Blocks"]
@@ -4528,31 +4402,19 @@ The Domain module provides a cohesive set of abstractions that model identity, v
 
 ```mermaid
 flowchart TD
-
 EntityId["EntityId&lt;T&gt;"]
-
 Entity["Entity&lt;TId&gt;"]
-
 Aggregate["AggregateRoot&lt;TId&gt;"]
-
 Value["ValueObject"]
-
 Enumeration["Enumeration"]
-
 DomainEvent["DomainEvent"]
-
 Events["DomainEventCollection"]
 
 EntityId --> Entity
-
 Entity --> Aggregate
-
 Aggregate --> DomainEvent
-
 Aggregate --> Events
-
 Value
-
 Enumeration
 ```
 
@@ -4618,7 +4480,6 @@ Every aggregate exposes exactly one public entry point through which modificatio
 
 ```mermaid
 flowchart LR
-
     C["Client"] --> AR["AggregateRoot<TId>"]
     AR --> E["Entity<TId>"]
     AR --> VO["ValueObject"]
@@ -4745,7 +4606,6 @@ Rather than publishing events immediately, they are collected internally.
 
 ```mermaid
 flowchart LR
-
     BO["Business Operation"] --> AR["AggregateRoot<TId>"]
     AR --> DEC["DomainEventCollection"]
     DEC --> DISP["Dispatcher"]
@@ -4761,17 +4621,11 @@ The Domain Building Blocks cooperate to express business concepts.
 
 ```mermaid
 flowchart TD
-
     ID["EntityId<T>"] --> E["Entity<TId>"]
-
     E --> AR["AggregateRoot<TId>"]
-
     AR --> DEC["DomainEventCollection"]
-
     DEC --> DE["DomainEvent"]
-
     E --> VO["ValueObject"]
-
     E --> EN["Enumeration"]
 ```
 
@@ -4913,18 +4767,16 @@ The Shared Kernel centralizes these concerns into a unified architectural model.
 
 The principal Cross-Cutting Building Blocks are illustrated below.
 
-    ```mermaid
-    flowchart TD
-
-        CC["Cross-Cutting Building Blocks"]
-
-        CC --> R["Result<T>"]
-        CC --> E["Error"]
-        CC --> M["Maybe<T>"]
-        CC --> SV["SemanticVersion"]
-        CC --> SC["SupportedCulture"]
-        CC --> CL["IClock"]
-    ```
+```mermaid
+flowchart TD
+    CC["Cross-Cutting Building Blocks"]
+    CC --> R["Result<T>"]
+    CC --> E["Error"]
+    CC --> M["Maybe<T>"]
+    CC --> SV["SemanticVersion"]
+    CC --> SC["SupportedCulture"]
+    CC --> CL["IClock"]
+```
 
 Unlike Domain Building Blocks, these abstractions are independent of business modeling and can therefore be reused across every architectural layer.
 
@@ -4989,19 +4841,14 @@ Contains an Error.
 
 Conceptually:
 
-    ```mermaid
-    flowchart LR
-
-        O["Operation"]
-
-        O --> S["Success"]
-
-        O --> F["Failure"]
-
-        S --> V["Result<T>"]
-
-        F --> ERR["Error"]
-    ```
+```mermaid
+flowchart LR
+    O["Operation"]
+    O --> S["Success"]
+    O --> F["Failure"]
+    S --> V["Result<T>"]
+    F --> ERR["Error"]
+```
 
 This programming model encourages explicit decision-making while eliminating large categories of runtime exceptions.
 
@@ -5130,26 +4977,25 @@ This simple abstraction greatly simplifies automated testing.
 
 Cross-Cutting Building Blocks collaborate with almost every architectural module.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    Domain["Domain"]
+    Validation["Validation"]
+    Specifications["Specifications"]
+    Versioning["Versioning"]
+    Globalization["Globalization"]
+    Results["Results"]
+    Maybe["Maybe"]
+    Time["Time"]
 
-        Domain["Domain"]
-        Validation["Validation"]
-        Specifications["Specifications"]
-        Versioning["Versioning"]
-        Globalization["Globalization"]
-        Results["Results"]
-        Maybe["Maybe"]
-        Time["Time"]
-
-        Domain --> Results
-        Domain --> Maybe
-        Validation --> Results
-        Specifications --> Results
-        Versioning --> Results
-        Globalization --> Results
-        Time --> Results
-    ```
+    Domain --> Results
+    Domain --> Maybe
+    Validation --> Results
+    Specifications --> Results
+    Versioning --> Results
+    Globalization --> Results
+    Time --> Results
+```
 
 Notice that these abstractions remain independent of the business domain while providing services to multiple modules.
 
@@ -5262,16 +5108,15 @@ Applications should rarely, if ever, interact with these components directly.
 
 Infrastructure Building Blocks provide services to the framework rather than to business applications.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    INF["Infrastructure Building Blocks"]
 
-        INF["Infrastructure Building Blocks"]
-
-        INF --> SC["StructuralComparer"]
-        INF --> DC["DictionaryComparer"]
-        INF --> EC["EnumerableComparer"]
-        INF --> OF["ObjectFormatter"]
-    ```
+    INF --> SC["StructuralComparer"]
+    INF --> DC["DictionaryComparer"]
+    INF --> EC["EnumerableComparer"]
+    INF --> OF["ObjectFormatter"]
+```
 
 These components remain internal implementation details.
 
@@ -5343,27 +5188,19 @@ Although invisible to consumers, ObjectFormatter contributes significantly to de
 
 Infrastructure Building Blocks cooperate internally to support higher-level abstractions.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    VO["ValueObject"]
+    SC["StructuralComparer"]
+    DC["DictionaryComparer"]
+    EC["EnumerableComparer"]
+    OF["ObjectFormatter"]
 
-        VO["ValueObject"]
-
-        SC["StructuralComparer"]
-
-        DC["DictionaryComparer"]
-
-        EC["EnumerableComparer"]
-
-        OF["ObjectFormatter"]
-
-        VO --> SC
-
-        SC --> DC
-
-        SC --> EC
-
-        VO --> OF
-    ```
+    VO --> SC
+    SC --> DC
+    SC --> EC
+    VO --> OF
+```
 
 Notice that dependency direction always points towards the infrastructure.
 
@@ -5518,23 +5355,20 @@ Understanding these relationships is considerably more important than understand
 
 The following diagram presents the conceptual relationships between the principal Building Block families.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    D["Domain Building Blocks"]
+    B["Behaviour Building Blocks"]
+    C["Cross-CCutting Building Blocks"]
+    I["Infrastructure Building Blocks"]
 
-        D["Domain Building Blocks"]
-        B["Behaviour Building Blocks"]
-        C["Cross-CCutting Building Blocks"]
-        I["Infrastructure Building Blocks"]
-
-        D --> B
-        D --> C
-
-        B --> C
-
-        I --> D
-        I --> B
-        I --> C
-    ```
+    D --> B
+    D --> C
+    B --> C
+    I --> D
+    I --> B
+    I --> C
+```
 
 This diagram represents **architectural collaboration**, not implementation inheritance.
 
@@ -5546,35 +5380,23 @@ Each family remains responsible for its own concerns while relying upon shared a
 
 Domain Building Blocks collaborate internally to model business concepts.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    ID["EntityId<T>"]
+    E["Entity<TId>"]
+    AR["AggregateRoot<TId>"]
+    VO["ValueObject"]
+    EN["Enumeration"]
+    DEC["DomainEventCollection"]
+    DE["DomainEvent"]
 
-        ID["EntityId<T>"]
-
-        E["Entity<TId>"]
-
-        AR["AggregateRoot<TId>"]
-
-        VO["ValueObject"]
-
-        EN["Enumeration"]
-
-        DEC["DomainEventCollection"]
-
-        DE["DomainEvent"]
-
-        ID --> E
-
-        E --> AR
-
-        E --> VO
-
-        E --> EN
-
-        AR --> DEC
-
-        DEC --> DE
-    ```
+    ID --> E
+    E --> AR
+    E --> VO
+    E --> EN
+    AR --> DEC
+    DEC --> DE
+```
 
 The Aggregate Root acts as the consistency boundary for the entire aggregate.
 
@@ -5590,23 +5412,17 @@ Domain Events communicate completed business facts.
 
 Behavior Building Blocks cooperate independently of business entities.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    SPEC["Specification<T>"]
+    VALID["Validation"]
+    RESULT["ValidationResult"]
+    FAILURE["ValidationFailure"]
 
-        SPEC["Specification<T>"]
-
-        VALID["Validation"]
-
-        RESULT["ValidationResult"]
-
-        FAILURE["ValidationFailure"]
-
-        SPEC --> VALID
-
-        VALID --> RESULT
-
-        RESULT --> FAILURE
-    ```
+    SPEC --> VALID
+    VALID --> RESULT
+    RESULT --> FAILURE
+```
 
 Specifications determine whether business rules are satisfied.
 
@@ -5618,23 +5434,17 @@ Validation translates those rules into explicit validation results.
 
 Cross-Cutting Building Blocks collaborate to provide a unified programming model.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    RESULT["Result<T>"]
+    ERROR["Error"]
+    MAYBE["Maybe<T>"]
+    VERSION["SemanticVersion"]
+    CULTURE["SupportedCulture"]
+    CLOCK["IClock"]
 
-        RESULT["Result<T>"]
-
-        ERROR["Error"]
-
-        MAYBE["Maybe<T>"]
-
-        VERSION["SemanticVersion"]
-
-        CULTURE["SupportedCulture"]
-
-        CLOCK["IClock"]
-
-        RESULT --> ERROR
-    ```
+    RESULT --> ERROR
+```
 
 Notice that these abstractions remain largely independent of one another.
 
@@ -5648,23 +5458,17 @@ The remaining abstractions represent orthogonal architectural concepts.
 
 Infrastructure components remain invisible to application developers.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    SC["StructuralComparer"]
+    DC["DictionaryComparer"]
+    EC["EnumerableComparer"]
+    OF["ObjectFormatter"]
 
-        SC["StructuralComparer"]
-
-        DC["DictionaryComparer"]
-
-        EC["EnumerableComparer"]
-
-        OF["ObjectFormatter"]
-
-        SC --> DC
-
-        SC --> EC
-
-        SC --> OF
-    ```
+    SC --> DC
+    SC --> EC
+    SC --> OF
+```
 
 Infrastructure exists solely to support the implementation of higher-level abstractions.
 
@@ -5713,16 +5517,15 @@ Not every Building Block evolves at the same rate.
 
 The following diagram illustrates the relative stability of the principal abstractions.
 
-    ```mermaid
-    flowchart LR
+```mermaid
+flowchart LR
+    A["Infrastructure"]
+    B["Cross-Cutting"]
+    C["Behaviour"]
+    D["Domain"]
 
-        A["Infrastructure"]
-        B["Cross-Cutting"]
-        C["Behaviour"]
-        D["Domain"]
-
-        A --> B --> C --> D
-    ```
+    A --> B --> C --> D
+```
 
 Moving towards the right, abstractions become increasingly stable and should therefore change less frequently.
 
@@ -6232,20 +6035,19 @@ This uniform structure makes ADRs easier to navigate and review.
 
 Architectural decisions evolve according to a controlled lifecycle.
 
-    ```mermaid
-    flowchart LR
+```mermaid
+flowchart LR
+    P["Proposed"]
+    R["Review"]
+    A["Accepted"]
+    I["Implemented"]
+    F["Frozen"]
 
-        P["Proposed"]
-        R["Review"]
-        A["Accepted"]
-        I["Implemented"]
-        F["Frozen"]
-
-        P --> R
-        R --> A
-        A --> I
-        I --> F
-    ```
+    P --> R
+    R --> A
+    A --> I
+    I --> F
+```
 
 Once a decision reaches the **Frozen** state it should remain stable unless a significant architectural reason justifies its revision.
 
@@ -6275,17 +6077,13 @@ Instead, they explain **why** the architecture has been designed in its current 
 
 Conceptually:
 
-    ```mermaid
-    flowchart TD
-
-        ADR["Architectural Decision Records"]
-
-        ADR --> Principles["Architectural Principles"]
-
-        Principles --> BuildingBlocks["Core Building Blocks"]
-
-        BuildingBlocks --> Implementation["Implementation"]
-    ```
+```mermaid
+flowchart TD
+    ADR["Architectural Decision Records"]
+    ADR --> Principles["Architectural Principles"]
+    Principles --> BuildingBlocks["Core Building Blocks"]
+    BuildingBlocks --> Implementation["Implementation"]
+```
 
 Architecture describes **what exists**.
 
@@ -6533,20 +6331,19 @@ This chapter explains the rationale behind those architectural choices.
 
 Conceptually:
 
-    ```mermaid
-    flowchart LR
+```mermaid
+flowchart LR
+    V["Architectural Vision"]
+    P["Design Principles"]
+    D["Architectural Decisions"]
+    A["Architecture"]
+    I["Implementation"]
 
-        V["Architectural Vision"]
-        P["Design Principles"]
-        D["Architectural Decisions"]
-        A["Architecture"]
-        I["Implementation"]
-
-        V --> P
-        P --> D
-        D --> A
-        A --> I
-    ```
+    V --> P
+    P --> D
+    D --> A
+    A --> I
+```
 
 Architectural Decisions form the bridge between architectural principles and software implementation.
 
@@ -6690,24 +6487,19 @@ Minor implementation details should remain implementation details.
 
 Architectural decisions exist at different levels of abstraction.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    V["Architectural Vision"]
+    P["Architectural Principles"]
+    D["Architectural Decisions"]
+    S["Software Structure"]
+    I["Implementation"]
 
-        V["Architectural Vision"]
-
-        P["Architectural Principles"]
-
-        D["Architectural Decisions"]
-
-        S["Software Structure"]
-
-        I["Implementation"]
-
-        V --> P
-        P --> D
-        D --> S
-        S --> I
-    ```
+    V --> P
+    P --> D
+    D --> S
+    S --> I
+```
 
 The higher the decision appears within the hierarchy, the greater its long-term impact.
 
@@ -6807,24 +6599,19 @@ Architectural Decisions define the architecture.
 
 Architectural Decisions generally operate at one of several levels.
 
-    ```mermaid
-    flowchart TD
+```mermaid
+flowchart TD
+    V["Vision"]
+    A["Architecture"]
+    M["Modules"]
+    API["Public APIs"]
+    CODE["Implementation"]
 
-        V["Vision"]
-
-        A["Architecture"]
-
-        M["Modules"]
-
-        API["Public APIs"]
-
-        CODE["Implementation"]
-
-        V --> A
-        A --> M
-        M --> API
-        API --> CODE
-    ```
+    V --> A
+    A --> M
+    M --> API
+    API --> CODE
+```
 
 Architectural Decisions usually influence one or more of the upper four levels.
 
@@ -6901,24 +6688,19 @@ Likewise, not every Architectural Decision immediately becomes an ADR.
 
 The process is:
 
-    ```mermaid
-    flowchart LR
+```mermaid
+flowchart LR
+    P["Problem"]
+    A["Analysis"]
+    D["Decision"]
+    R["ADR"]
+    I["Implementation"]
 
-        P["Problem"]
-
-        A["Analysis"]
-
-        D["Decision"]
-
-        R["ADR"]
-
-        I["Implementation"]
-
-        P --> A
-        A --> D
-        D --> R
-        R --> I
-    ```
+    P --> A
+    A --> D
+    D --> R
+    R --> I
+```
 
 The ADR documents the decision.
 
@@ -7092,7 +6874,6 @@ Architectural decisions evolve through a controlled review process.
 
 ```mermaid
 flowchart LR
-
     P["Proposed"]
     A["Analysis"]
     R["Review"]
@@ -7239,7 +7020,6 @@ Every Architectural Decision progresses through a well-defined sequence of stage
 
 ```mermaid
 flowchart LR
-
     P["Proposed"]
     A["Analysis"]
     R["Review"]
@@ -7407,15 +7187,10 @@ Each transition between lifecycle stages requires explicit validation.
 
 ```mermaid
 flowchart TD
-
     Proposed -->|"Problem identified"| Analysis
-
     Analysis -->|"Technical evaluation completed"| Review
-
     Review -->|"Architecture approved"| Accepted
-
     Accepted -->|"Implementation completed"| Implemented
-
     Implemented -->|"Validation completed"| Frozen
 ```
 
@@ -7518,19 +7293,12 @@ Architectural Decisions are classified according to their primary responsibility
 
 ```mermaid
 flowchart TD
-
     ADR["Architectural Decision"]
-
     ADR --> STR["Strategic"]
-
     ADR --> ARC["Architectural"]
-
     ADR --> API["Public API"]
-
     ADR --> DOM["Domain"]
-
     ADR --> TEC["Technology"]
-
     ADR --> GOV["Governance"]
 ```
 
@@ -7706,7 +7474,6 @@ Not all decision categories have the same architectural weight.
 
 ```mermaid
 flowchart TD
-
     STR["Strategic"]
     ARC["Architectural"]
     DOM["Domain"]
@@ -7841,7 +7608,6 @@ Many decisions establish the foundation upon which later decisions have been bui
 
 ```mermaid
 flowchart TD
-
     ADR1["ADR-001<br/>Clean Architecture"]
     ADR2["ADR-002<br/>Framework Independence"]
     ADR3["ADR-003<br/>Rich Domain Model"]
@@ -8017,19 +7783,13 @@ The Domain remains completely unaware of external technologies.
 
 ```mermaid
 flowchart TD
-
     APP["Application"]
-
     DOMAIN["Domain"]
-
     INFRA["Infrastructure"]
-
     EXT["External Technologies"]
 
     APP --> DOMAIN
-
     INFRA --> DOMAIN
-
     EXT --> INFRA
 ```
 
@@ -8303,25 +8063,16 @@ Consequently:
 
 ```mermaid
 flowchart TD
-
     DOMAIN["Domain"]
-
     SHARED["Shared Kernel"]
-
     INFRA["Infrastructure"]
-
     EF["Entity Framework"]
-
     ASP["ASP.NET Core"]
-
     SQL["SQL Server"]
-
     REDIS["Redis"]
 
     DOMAIN --> SHARED
-
     INFRA --> DOMAIN
-
     EF --> INFRA
     ASP --> INFRA
     SQL --> INFRA
@@ -8627,15 +8378,10 @@ The Shared Kernel always favours the Rich Domain Model.
 
 ```mermaid
 flowchart TD
-
     AGG["Aggregate Root"]
-
     ENT["Entities"]
-
     VO["Value Objects"]
-
     RULES["Business Rules"]
-
     EVENTS["Domain Events"]
 
     AGG --> ENT
@@ -8935,13 +8681,9 @@ The compiler now enforces semantic correctness.
 
 ```mermaid
 flowchart TD
-
     GUID["Guid"]
-
     CUSTOMER["CustomerId"]
-
     ORDER["OrderId"]
-
     PRODUCT["ProductId"]
 
     GUID --> CUSTOMER
@@ -9262,11 +9004,8 @@ The Result Pattern represents two possible outcomes.
 
 ```mermaid
 flowchart LR
-
     OP["Operation"]
-
     OK["Result.Success"]
-
     FAIL["Result.Failure"]
 
     OP --> OK
@@ -9283,9 +9022,7 @@ The Shared Kernel exposes two primary result types.
 
 ```mermaid
 flowchart TD
-
     RESULT["Result"]
-
     RESULTT["Result<T>"]
 
     RESULT --> RESULTT
@@ -9329,11 +9066,8 @@ The Result Pattern integrates naturally with the Shared Kernel Error model.
 
 ```mermaid
 flowchart LR
-
     OP["Operation"]
-
     RESULT["Result"]
-
     ERROR["Error"]
 
     OP --> RESULT
@@ -9592,15 +9326,10 @@ Validation follows a predictable execution model.
 
 ```mermaid
 flowchart LR
-
     INPUT["Input"]
-
     VALIDATOR["Validator"]
-
     RESULT["ValidationResult"]
-
     SUCCESS["Success"]
-
     FAILURE["ValidationFailure"]
 
     INPUT --> VALIDATOR
@@ -9619,13 +9348,9 @@ The Shared Kernel Validation Architecture is composed of several collaborating b
 
 ```mermaid
 flowchart TD
-
     VALIDATOR["Validator"]
-
     RESULT["ValidationResult"]
-
     FAILURE["ValidationFailure"]
-
     ERROR["ValidationError"]
 
     VALIDATOR --> RESULT
@@ -9780,11 +9505,8 @@ Validation integrates directly with ADR-005.
 
 ```mermaid
 flowchart LR
-
     VALIDATION["Validation"]
-
     RESULT["Result"]
-
     ERROR["Error"]
 
     VALIDATION --> RESULT
@@ -9953,11 +9675,8 @@ Specifications encapsulate business predicates.
 
 ```mermaid
 flowchart LR
-
     ENTITY["Entity"]
-
     SPEC["Specification"]
-
     RESULT["Boolean Result"]
 
     ENTITY --> SPEC
@@ -9974,25 +9693,17 @@ Specifications may be combined to build more sophisticated business logic.
 
 ```mermaid
 flowchart TD
-
     SPEC1["Specification A"]
-
     SPEC2["Specification B"]
-
     SPEC3["Specification C"]
-
     AND["AND"]
-
     OR["OR"]
-
     NOT["NOT"]
 
     SPEC1 --> AND
     SPEC2 --> AND
-
     SPEC2 --> OR
     SPEC3 --> OR
-
     SPEC1 --> NOT
 ```
 
@@ -10183,11 +9894,8 @@ Repositories consume Specifications.
 
 ```mermaid
 flowchart LR
-
     SPEC["Specification"]
-
     REPO["Repository"]
-
     ENTITY["Entities"]
 
     SPEC --> REPO
@@ -10323,22 +10031,15 @@ Other components own business reactions.
 
 ```mermaid
 flowchart LR
-
     AGG["Aggregate Root"]
-
     EVENTS["Domain Events"]
-
     DISPATCHER["Dispatcher"]
-
     HANDLER1["Handler A"]
-
     HANDLER2["Handler B"]
-
     HANDLER3["Handler C"]
 
     AGG --> EVENTS
     EVENTS --> DISPATCHER
-
     DISPATCHER --> HANDLER1
     DISPATCHER --> HANDLER2
     DISPATCHER --> HANDLER3
@@ -10352,17 +10053,11 @@ The Aggregate remains completely unaware of the event consumers.
 
 ```mermaid
 flowchart TD
-
     ACTION["Business Operation"]
-
     EVENT["Raise Domain Event"]
-
     STORE["Store Inside Aggregate"]
-
     COMMIT["Persistence Completed"]
-
     DISPATCH["Dispatcher"]
-
     HANDLERS["Event Handlers"]
 
     ACTION --> EVENT
@@ -10566,13 +10261,9 @@ Aggregate Roots own Domain Events.
 
 ```mermaid
 flowchart TD
-
     AGG["Aggregate Root"]
-
     COLLECTION["DomainEventCollection"]
-
     EVENT1["Domain Event"]
-
     EVENT2["Domain Event"]
 
     AGG --> COLLECTION
@@ -10697,13 +10388,9 @@ Localization determines how that meaning is presented.
 
 ```mermaid
 flowchart TD
-
     DOMAIN["Domain"]
-
     GLOBAL["Globalization"]
-
     PROVIDER["Localization Provider"]
-
     CULTURE["Culture Resources"]
 
     DOMAIN --> GLOBAL
@@ -10756,13 +10443,9 @@ It is **not** responsible for:
 
 ```mermaid
 flowchart LR
-
     ERROR["Business Error"]
-
     MESSAGE["Message Key"]
-
     I18N["Localization Service"]
-
     TEXT["Localized Text"]
 
     ERROR --> MESSAGE
@@ -10808,19 +10491,13 @@ Globalization also supports country-specific implementations.
 
 ```mermaid
 flowchart TD
-
     SHARED["Shared Kernel"]
-
     COUNTRY["Country Abstractions"]
-
     ES["Spain"]
-
     MX["Mexico"]
-
     US["United States"]
 
     SHARED --> COUNTRY
-
     COUNTRY --> ES
     COUNTRY --> MX
     COUNTRY --> US
@@ -11025,13 +10702,9 @@ They communicate compatibility rather than chronology.
 
 ```mermaid
 flowchart LR
-
     VERSION["MAJOR.MINOR.PATCH"]
-
     MAJOR["Breaking Changes"]
-
     MINOR["New Compatible Features"]
-
     PATCH["Bug Fixes"]
 
     VERSION --> MAJOR
@@ -11106,17 +10779,12 @@ Example:
 
 ```mermaid
 flowchart TD
-
     PATCH["PATCH"]
-
     MINOR["MINOR"]
-
     MAJOR["MAJOR"]
 
     PATCH -->|"Compatible"| PATCH
-
     MINOR -->|"Compatible"| PATCH
-
     MAJOR -->|"May Break"| PATCH
 ```
 
@@ -11292,11 +10960,8 @@ Semantic Versioning and the CHANGELOG are complementary.
 
 ```mermaid
 flowchart LR
-
     VERSION["Semantic Version"]
-
     CHANGELOG["CHANGELOG"]
-
     RELEASE["Release"]
 
     VERSION --> RELEASE
@@ -11435,17 +11100,12 @@ The Domain should depend upon abstractions rather than system services.
 
 ```mermaid
 flowchart TD
-
     DOMAIN["Domain"]
-
     ICLOCK["IClock"]
-
     SYSTEM["System Clock"]
-
     FAKE["FakeClock"]
 
     DOMAIN --> ICLOCK
-
     ICLOCK --> SYSTEM
     ICLOCK --> FAKE
 ```
@@ -11458,11 +11118,8 @@ The Domain depends exclusively upon `IClock`.
 
 ```mermaid
 flowchart LR
-
     BUSINESS["Business Logic"]
-
     CLOCK["IClock"]
-
     TIME["Current Time"]
 
     BUSINESS --> CLOCK
@@ -11522,11 +11179,8 @@ Using a `FakeClock`, tests become completely reproducible.
 
 ```mermaid
 flowchart LR
-
     TEST["Unit Test"]
-
     FAKE["FakeClock"]
-
     DOMAIN["Domain"]
 
     TEST --> FAKE
@@ -11751,15 +11405,10 @@ The Shared Kernel classifies its architectural components into four major catego
 
 ```mermaid
 flowchart TD
-
     BB["Building Blocks"]
-
     DOMAIN["Domain"]
-
     CROSS["Cross-Cutting"]
-
     INFRA["Infrastructure"]
-
     SUPPORT["Supporting"]
 
     BB --> DOMAIN
@@ -11848,13 +11497,9 @@ Building Blocks collaborate according to explicit dependency rules.
 
 ```mermaid
 flowchart LR
-
     DOMAIN["Domain"]
-
     CROSS["Cross-Cutting"]
-
     INFRA["Infrastructure"]
-
     SUPPORT["Supporting"]
 
     DOMAIN --> CROSS
@@ -12090,11 +11735,8 @@ They should never implement them repeatedly.
 
 ```mermaid
 flowchart TD
-
     DOMAIN["Domain"]
-
     SERVICES["Cross-Cutting Services"]
-
     INFRA["Infrastructure"]
 
     DOMAIN --> SERVICES
@@ -12190,13 +11832,9 @@ Cross-Cutting Services collaborate but remain loosely coupled.
 
 ```mermaid
 flowchart LR
-
     VALIDATION["Validation"]
-
     RESULT["Result"]
-
     ERROR["Error"]
-
     GLOBAL["Globalization"]
 
     VALIDATION --> RESULT
@@ -12287,17 +11925,11 @@ Cross-Cutting Services become one of the principal Building Block categories.
 
 ```mermaid
 flowchart TD
-
     TAXONOMY["Building Block Taxonomy"]
-
     CROSS["Cross-Cutting Services"]
-
     RESULT["Result"]
-
     VALIDATION["Validation"]
-
     TIME["Time"]
-
     GLOBAL["Globalization"]
 
     TAXONOMY --> CROSS
@@ -12432,13 +12064,9 @@ Consumers should depend upon architectural abstractions rather than framework in
 
 ```mermaid
 flowchart TD
-
     PUBLIC["Public API"]
-
     DOMAIN["Domain"]
-
     INTERNAL["Internal Infrastructure"]
-
     RUNTIME[".NET Runtime"]
 
     PUBLIC --> DOMAIN
@@ -12494,15 +12122,11 @@ The Internal Infrastructure Layer should expose as little surface as possible.
 
 ```mermaid
 flowchart LR
-
     CONSUMER["Framework Consumer"]
-
     API["Public API"]
-
     INTERNAL["Internal Infrastructure"]
 
     CONSUMER --> API
-
     INTERNAL -. Hidden .-> CONSUMER
 ```
 
@@ -12631,11 +12255,8 @@ The Internal Infrastructure Layer supports Cross-Cutting Services without becomi
 
 ```mermaid
 flowchart TD
-
     CROSS["Cross-Cutting Services"]
-
     INTERNAL["Internal Infrastructure"]
-
     DOMAIN["Domain"]
 
     INTERNAL --> CROSS
@@ -12782,26 +12403,18 @@ A Building Block is characterised not only by its own behaviour but also by the 
 
 ```mermaid
 flowchart TD
-
     AGG["Aggregate Root"]
-
     ENTITY["Entity"]
-
     VALUE["Value Object"]
-
     RESULT["Result"]
-
     EVENT["Domain Event"]
-
     SPEC["Specification"]
-
     VALID["Validation"]
 
     AGG --> ENTITY
     AGG --> VALUE
     AGG --> EVENT
     AGG --> RESULT
-
     SPEC --> AGG
     VALID --> RESULT
 ```
@@ -12927,11 +12540,8 @@ Building Block collaboration follows a layered model.
 
 ```mermaid
 flowchart TD
-
     DOMAIN["Domain"]
-
     CROSS["Cross-Cutting"]
-
     INTERNAL["Internal Infrastructure"]
 
     DOMAIN --> CROSS
@@ -13150,17 +12760,11 @@ A predictable framework is easier to understand than a collection of individuall
 
 ```mermaid
 flowchart TD
-
     DESIGN["Uniform Design"]
-
     NAMING["Naming"]
-
     IMMUTABILITY["Immutability"]
-
     EQUALITY["Equality"]
-
     VALIDATION["Validation"]
-
     DOCUMENTATION["Documentation"]
 
     DESIGN --> NAMING
@@ -13436,11 +13040,8 @@ Together they establish a complete architectural model.
 
 ```mermaid
 flowchart LR
-
     TAXONOMY["ADR-012\nTaxonomy"]
-
     COLLAB["ADR-015\nCollaboration"]
-
     DESIGN["ADR-016\nUniform Design"]
 
     TAXONOMY --> COLLAB
@@ -13731,15 +13332,10 @@ The Shared Kernel deliberately seeks equilibrium between several competing force
 
 ```mermaid
 flowchart TD
-
     CORRECTNESS["Correctness"]
-
     MAINTAINABILITY["Maintainability"]
-
     PERFORMANCE["Performance"]
-
     SIMPLICITY["Simplicity"]
-
     FLEXIBILITY["Flexibility"]
 
     CORRECTNESS --- MAINTAINABILITY
@@ -13828,19 +13424,12 @@ These objectives influence every architectural review performed within the proje
 
 ```mermaid
 flowchart TD
-
     IDEA["Architectural Change"]
-
     REVIEW["Architectural Review"]
-
     ADR["Architectural Decision Record"]
-
     IMPLEMENT["Implementation"]
-
     AUDIT["Architectural Audit"]
-
     FREEZE["Module Freeze"]
-
     MAINTAIN["Maintenance"]
 
     IDEA --> REVIEW
@@ -13922,17 +13511,11 @@ Every architectural module follows a controlled lifecycle.
 
 ```mermaid
 flowchart LR
-
     DESIGN["Design"]
-
     IMPLEMENT["Implementation"]
-
     REVIEW["Review"]
-
     AUDIT["Audit"]
-
     FREEZE["Freeze"]
-
     EVOLUTION["Evolution"]
 
     DESIGN --> IMPLEMENT
@@ -14074,13 +13657,9 @@ Architecture should evolve continuously but predictably.
 
 ```mermaid
 flowchart TD
-
     CURRENT["Current Architecture"]
-
     CHANGE["Controlled Change"]
-
     REVIEW["Architectural Review"]
-
     IMPROVED["Improved Architecture"]
 
     CURRENT --> CHANGE
@@ -14182,19 +13761,12 @@ Every architectural review follows the same lifecycle.
 
 ```mermaid
 flowchart TD
-
     ISSUE["Need for Review"]
-
     ANALYSIS["Architectural Analysis"]
-
     REVIEW["Technical Review"]
-
     DECISION["Architectural Decision"]
-
     ADR["Update or New ADR"]
-
     IMPLEMENT["Implementation"]
-
     AUDIT["Architectural Audit"]
 
     ISSUE --> ANALYSIS
@@ -14280,15 +13852,10 @@ An architectural review may produce one of four outcomes.
 
 ```mermaid
 flowchart LR
-
     REVIEW["Review"]
-
     KEEP["Keep"]
-
     UPDATE["Update"]
-
     SUPERSEDE["Supersede"]
-
     REJECT["Reject"]
 
     REVIEW --> KEEP
@@ -14335,13 +13902,9 @@ Architectural Decision Records evolve through well-defined lifecycle states.
 
 ```mermaid
 flowchart LR
-
     PROPOSED["Proposed"]
-
     ACCEPTED["Accepted"]
-
     SUPERSEDED["Superseded"]
-
     DEPRECATED["Deprecated"]
 
     PROPOSED --> ACCEPTED
@@ -14420,13 +13983,9 @@ The Decision Review Process is a core activity within the Architectural Governan
 
 ```mermaid
 flowchart TD
-
     GOVERNANCE["Architectural Governance"]
-
     REVIEW["Decision Review"]
-
     ADR["Architectural Decision"]
-
     EVOLUTION["Controlled Evolution"]
 
     GOVERNANCE --> REVIEW
@@ -14516,19 +14075,12 @@ The framework evolves through controlled iterations.
 
 ```mermaid
 flowchart TD
-
     CURRENT["Current Architecture"]
-
     ANALYSIS["Architectural Analysis"]
-
     PROPOSAL["Improvement Proposal"]
-
     REVIEW["Architectural Review"]
-
     IMPLEMENT["Implementation"]
-
     AUDIT["Architectural Audit"]
-
     RELEASE["Stable Release"]
 
     CURRENT --> ANALYSIS
@@ -14635,15 +14187,10 @@ Not every change has the same architectural impact.
 
 ```mermaid
 flowchart LR
-
     CHANGE["Architectural Change"]
-
     PATCH["Improvement"]
-
     FEATURE["Extension"]
-
     REFACTOR["Refactoring"]
-
     BREAKING["Breaking Change"]
 
     CHANGE --> PATCH
@@ -14715,17 +14262,11 @@ The Shared Kernel grows horizontally rather than vertically.
 
 ```mermaid
 flowchart TD
-
     CORE["Shared Kernel"]
-
     RESULTS["Results"]
-
     VALIDATION["Validation"]
-
     GLOBAL["Globalization"]
-
     TIME["Time"]
-
     FUTURE["Future Modules"]
 
     CORE --> RESULTS
@@ -14795,13 +14336,9 @@ Architectural evolution is governed by the Architectural Governance process.
 
 ```mermaid
 flowchart LR
-
     EVOLUTION["Evolution"]
-
     GOVERNANCE["Governance"]
-
     ADR["ADR"]
-
     RELEASE["Release"]
 
     EVOLUTION --> GOVERNANCE
@@ -14920,13 +14457,9 @@ Architectural decisions are organised into four stability levels.
 
 ```mermaid
 flowchart TD
-
     CORE["Core Decisions"]
-
     STRATEGIC["Strategic Decisions"]
-
     TACTICAL["Tactical Decisions"]
-
     OPERATIONAL["Operational Decisions"]
 
     CORE --> STRATEGIC
@@ -15022,13 +14555,9 @@ Not every modification has the same architectural cost.
 
 ```mermaid
 flowchart LR
-
     OP["Operational"]
-
     TAC["Tactical"]
-
     STR["Strategic"]
-
     CORE["Core"]
 
     OP --> TAC
@@ -15132,11 +14661,8 @@ Occasionally an operational concept becomes strategically important.
 
 ```mermaid
 flowchart TD
-
     OP["Operational"]
-
     TAC["Tactical"]
-
     STR["Strategic"]
 
     OP --> TAC
@@ -15237,13 +14763,9 @@ The Decision Stability Model complements the Architectural Governance process.
 
 ```mermaid
 flowchart LR
-
     STABILITY["Decision Stability"]
-
     GOVERNANCE["Architectural Governance"]
-
     REVIEW["Decision Review"]
-
     EVOLUTION["Controlled Evolution"]
 
     STABILITY --> GOVERNANCE
@@ -15329,19 +14851,12 @@ The architectural decisions presented throughout this chapter can be viewed as c
 
 ```mermaid
 flowchart TD
-
     FOUNDATION["Architectural Foundations"]
-
     BUILDING["Building Blocks"]
-
     SERVICES["Cross-Cutting Services"]
-
     COLLAB["Collaboration"]
-
     DESIGN["Uniform Design"]
-
     GOVERNANCE["Governance"]
-
     EVOLUTION["Evolution"]
 
     FOUNDATION --> BUILDING
@@ -15593,13 +15108,11 @@ Everything else belongs to the internal implementation.
 
 ```mermaid
 flowchart TD
-
     CONSUMER["Framework Consumer"]
     API["Public API"]
     INTERNAL["Internal Infrastructure"]
 
     CONSUMER --> API
-
     API -. Hidden Implementation .-> INTERNAL
 ```
 
@@ -15705,15 +15218,10 @@ Extensibility exists at several architectural levels.
 
 ```mermaid
 flowchart TD
-
     API["Public API"]
-
     BUILDING["Building Blocks"]
-
     SERVICES["Cross-Cutting Services"]
-
     MODULES["Modules"]
-
     APPLICATION["Applications"]
 
     API --> BUILDING
@@ -15780,11 +15288,8 @@ Inheritance is intentionally the least preferred option because it introduces st
 
 ```mermaid
 flowchart LR
-
     CONTRACT["Public Contract"]
-
     EXTENSION["Custom Extension"]
-
     APPLICATION["Application"]
 
     CONTRACT --> EXTENSION
@@ -15834,17 +15339,11 @@ One of the principal extensibility goals of **KUKULCAN.SharedKernel** is interna
 
 ```mermaid
 flowchart TD
-
     SHARED["Shared Kernel"]
-
     COUNTRY["Country Abstractions"]
-
     ES["Spain"]
-
     MX["Mexico"]
-
     US["United States"]
-
     BR["Brazil"]
 
     SHARED --> COUNTRY
@@ -15982,17 +15481,11 @@ Different architectural elements exhibit different stability expectations.
 
 ```mermaid
 flowchart TD
-
     CORE["Core Architecture"]
-
     API["Public API"]
-
     BUILDING["Building Blocks"]
-
     SERVICES["Cross-Cutting Services"]
-
     INTERNAL["Internal Infrastructure"]
-
     IMPLEMENTATION["Implementation Details"]
 
     CORE --> API
@@ -16116,13 +15609,9 @@ Therefore they may evolve without affecting architectural stability.
 
 ```mermaid
 flowchart LR
-
     VERYHIGH["Very High"]
-
     HIGH["High"]
-
     MEDIUM["Medium"]
-
     LOW["Flexible"]
 
     VERYHIGH --> HIGH
@@ -16153,11 +15642,8 @@ The Stability Model works together with Semantic Versioning.
 
 ```mermaid
 flowchart TD
-
     STABILITY["Stability Model"]
-
     SEMVER["Semantic Versioning"]
-
     RELEASE["Release"]
 
     STABILITY --> SEMVER
@@ -16393,15 +15879,10 @@ Architectural priorities are intentionally ordered.
 
 ```mermaid
 flowchart TD
-
     CORRECTNESS["Correctness"]
-
     MAINTAINABILITY["Maintainability"]
-
     READABILITY["Readability"]
-
     PERFORMANCE["Performance"]
-
     OPTIMISATION["Optimisation"]
 
     CORRECTNESS --> MAINTAINABILITY
@@ -16452,11 +15933,8 @@ Architectural components should have well-defined lifetimes.
 
 ```mermaid
 flowchart LR
-
     CREATE["Creation"]
-
     USE["Usage"]
-
     RELEASE["Release"]
 
     CREATE --> USE
@@ -16563,13 +16041,9 @@ Architectural optimisation requires evidence.
 
 ```mermaid
 flowchart TD
-
     MEASURE["Measure"]
-
     ANALYSE["Analyse"]
-
     OPTIMISE["Optimise"]
-
     VERIFY["Verify"]
 
     MEASURE --> ANALYSE
@@ -16711,13 +16185,9 @@ The framework reduces concurrency risks by limiting mutable shared state.
 
 ```mermaid
 flowchart TD
-
     IMMUTABLE["Immutable Objects"]
-
     STATELESS["Stateless Services"]
-
     LOCAL["Local State"]
-
     THREADSAFE["Thread-Safe Architecture"]
 
     IMMUTABLE --> THREADSAFE
@@ -16781,13 +16251,9 @@ Aggregate Roots preserve consistency boundaries.
 
 ```mermaid
 flowchart LR
-
     CLIENT["Application"]
-
     AGG["Aggregate Root"]
-
     ENTITY["Entities"]
-
     VALUE["Value Objects"]
 
     CLIENT --> AGG
@@ -17030,13 +16496,9 @@ The framework follows a layered testing strategy.
 
 ```mermaid
 flowchart TD
-
     E2E["End-to-End Tests"]
-
     INTEGRATION["Integration Tests"]
-
     CONTRACT["Contract Tests"]
-
     UNIT["Unit Tests"]
 
     UNIT --> CONTRACT
@@ -17108,11 +16570,8 @@ Architecture itself should be continuously verified.
 
 ```mermaid
 flowchart TD
-
     RULES["Architectural Rules"]
-
     TESTS["Architecture Tests"]
-
     REPORT["Verification"]
 
     RULES --> TESTS
@@ -17158,13 +16617,9 @@ Architectural components expose dependencies explicitly.
 
 ```mermaid
 flowchart LR
-
     TEST["Test"]
-
     MOCK["Fake Implementation"]
-
     CONTRACT["Interface"]
-
     COMPONENT["Component"]
 
     TEST --> MOCK
@@ -17256,13 +16711,9 @@ The preferred workflow is:
 
 ```mermaid
 flowchart TD
-
     BUG["Bug"]
-
     TEST["Regression Test"]
-
     FIX["Implementation"]
-
     VERIFY["Verification"]
 
     BUG --> TEST
@@ -17440,13 +16891,9 @@ Architectural evolution should always be incremental.
 
 ```mermaid
 flowchart TD
-
     FOUNDATION["Stable Foundation"]
-
     EXTENSION["Incremental Extension"]
-
     IMPROVEMENT["Continuous Improvement"]
-
     MATURITY["Architectural Maturity"]
 
     FOUNDATION --> EXTENSION
@@ -17485,19 +16932,12 @@ One of the principal strategic goals is internationalisation.
 
 ```mermaid
 flowchart TD
-
     SHARED["Shared Kernel"]
-
     COUNTRY["Country Layer"]
-
     ES["Spain"]
-
     MX["Mexico"]
-
     US["United States"]
-
     BR["Brazil"]
-
     EU["European Union"]
 
     SHARED --> COUNTRY
@@ -17589,13 +17029,9 @@ The architecture is expected to evolve through increasing maturity.
 
 ```mermaid
 flowchart LR
-
     INITIAL["Initial"]
-
     STABLE["Stable"]
-
     MATURE["Mature"]
-
     PLATFORM["Platform"]
 
     INITIAL --> STABLE
