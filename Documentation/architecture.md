@@ -982,13 +982,9 @@ This objective allows applications to evolve technologically without affecting t
 ```mermaid
 flowchart TD
 Business --> SharedKernel
-
 Infrastructure --> Business
-
 Infrastructure --> ASPNET[ASP.NET Core]
-
 Infrastructure --> EF[Entity Framework]
-
 Infrastructure --> SQL[(Database)]
 ```
 
@@ -1162,23 +1158,14 @@ The architectural goals reinforce one another.
 
 ```mermaid
 graph TD
-
 Consistency --> Maintainability
-
 Maintainability --> Stability
-
 Stability --> Predictability
-
 Predictability --> DeveloperExperience["Developer Experience"]
-
 FrameworkIndependence["Framework Independence"] --> Reusability
-
 ExplicitModelling["Explicit Modelling"] --> Correctness
-
 Correctness --> Testability
-
 HighCohesion["High Cohesion"] --> Maintainability
-
 LowCoupling["Low Coupling"] --> Extensibility
 ```
 
