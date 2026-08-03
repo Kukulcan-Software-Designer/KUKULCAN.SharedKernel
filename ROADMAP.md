@@ -19,7 +19,7 @@ The long-term objective of KUKULCAN.SharedKernel is to become a stable, modern a
 - CQRS
 - Event-Driven Design
 
-The project prioritizes architectural quality over rapid feature growth.
+The project prioritises architectural quality over rapid feature growth.
 
 ---
 
@@ -180,7 +180,7 @@ Possible enhancements around deterministic testing.
 
 ## Performance
 
-Continuous optimization while preserving readability.
+Continuous optimisation while preserving readability.
 
 ---
 

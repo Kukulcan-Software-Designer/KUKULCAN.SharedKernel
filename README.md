@@ -25,7 +25,7 @@ The framework follows these principles:
 - Clean Architecture
 - SOLID Principles
 - Immutability by default
-- Explicit Domain Modeling
+- Explicit Domain Modelling
 - Framework Independence
 - High Testability
 - Minimal Dependencies
@@ -256,7 +256,7 @@ The framework follows the principles of:
 - Domain-Driven Design (DDD)
 - Clean Architecture
 - SOLID
-- Explicit Domain Modeling
+- Explicit Domain Modelling
 - Low Coupling
 - High Cohesion
 
@@ -492,7 +492,7 @@ Includes:
 
 ## Globalization
 
-Provides culture-aware abstractions without depending on any localization framework.
+Provides culture-aware abstractions without depending on any localisation framework.
 
 Includes:
 
@@ -523,7 +523,7 @@ Only concepts representing part of the domain language become public.
 
 Everything else remains internal.
 
-This minimizes breaking changes and simplifies long-term maintenance.
+This minimises breaking changes and simplifies long-term maintenance.
 
 ---
 
@@ -533,7 +533,7 @@ Several architectural decisions intentionally differentiate this framework from 
 
 ## Rich Domain Model
 
-Entities contain behavior.
+Entities contain behaviour.
 
 Business rules belong inside the domain model.
 
@@ -1152,7 +1152,7 @@ Assert.True(
     customer.HasExpired());
 ```
 
-Time-dependent behavior becomes fully deterministic.
+Time-dependent behaviour becomes fully deterministic.
 
 ---
 
@@ -1340,7 +1340,7 @@ Although these modules are not part of the domain model itself, they represent c
 
 Keeping them inside the Shared Kernel guarantees:
 
-- Consistent behavior
+- Consistent behaviour
 - Consistent APIs
 - Testability
 - Framework independence
@@ -1357,7 +1357,7 @@ Keeping them inside the Shared Kernel guarantees:
 
 ✔ Represent versions using `SemanticVersion`
 
-✔ Inject localization through abstractions
+✔ Inject localisation through abstractions
 
 ---
 
@@ -1669,14 +1669,14 @@ instead of throwing exceptions for business failures.
 
 # Creating New Supported Cultures
 
-Applications may register additional cultures by extending the globalization layer.
+Applications may register additional cultures by extending the globalisation layer.
 
 ```csharp
 SupportedCulture culture =
     SupportedCulture.Parse("es-MX");
 ```
 
-The Shared Kernel intentionally separates culture modeling from localization implementation.
+The Shared Kernel intentionally separates culture modelling from localisation implementation.
 
 ---
 
@@ -1783,7 +1783,7 @@ When extending the framework, follow these recommendations.
 
 ✔ Keep infrastructure outside the domain.
 
-✔ Minimize the public API.
+✔ Minimise the public API.
 
 ---
 
@@ -1842,9 +1842,9 @@ The Domain should only depend on the abstractions provided by the Shared Kernel.
 
 ## Prefer Rich Domain Models
 
-Entities should contain behavior.
+Entities should contain behaviour.
 
-Avoid anemic models such as:
+Avoid anaemic models such as:
 
 ```csharp
 public class Customer
@@ -1986,7 +1986,7 @@ IClock
 
 Value Objects should always be immutable.
 
-Aggregate state should change only through explicit behavior.
+Aggregate state should change only through explicit behaviour.
 
 ---
 
@@ -1998,7 +1998,7 @@ If a class is not intended for consumers, make it internal.
 
 ---
 
-## Minimize Dependencies
+## Minimise Dependencies
 
 The Shared Kernel intentionally depends only on the .NET Base Class Library.
 
@@ -2049,7 +2049,7 @@ The following roadmap describes the expected evolution of the framework.
 
 - Production-ready release
 - Performance review
-- Roslyn analyzers
+- Roslyn analysers
 - Additional unit tests
 - SourceLink support
 
@@ -2061,8 +2061,8 @@ Possible improvements under evaluation.
 
 - Additional Value Objects
 - Additional Specifications
-- Performance optimizations
-- Additional globalization features
+- Performance optimisations
+- Additional globalisation features
 - More domain primitives
 
 No breaking changes are planned.
@@ -2073,7 +2073,7 @@ No breaking changes are planned.
 
 The Shared Kernel is expected to become the architectural foundation for all KUKULCAN products.
 
-Its evolution will prioritize:
+Its evolution will prioritise:
 
 - Stability
 - Simplicity
@@ -2147,7 +2147,7 @@ Every new abstraction should have a clearly defined responsibility.
 
 Breaking changes require explicit discussion before implementation.
 
-The framework prioritizes API stability.
+The framework prioritises API stability.
 
 ---
 
@@ -2234,7 +2234,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 - sublicense
 - sell copies
 
-subject to the conditions described in the LICENSE file.
+subject to the conditions described in the LICENCE file.
 
 ---
 
@@ -2345,4 +2345,4 @@ For questions, bug reports and feature requests, please use the GitHub Issues se
 
 KUKULCAN.SharedKernel is intended to provide a stable, expressive and long-lived foundation for enterprise software.
 
-The project favors architectural consistency over feature accumulation and prioritizes simplicity, explicitness and maintainability above all else.
+The project favours architectural consistency over feature accumulation and prioritises simplicity, explicitness and maintainability above all else.

@@ -71,7 +71,7 @@ Examples of security-related issues include, but are not limited to:
 - Information disclosure
 - Injection vulnerabilities
 - Unsafe serialization
-- Denial of Service caused by framework behavior
+- Denial of Service caused by framework behaviour
 - Dependency-related security vulnerabilities
 - Cryptographic weaknesses
 - Unexpected execution paths affecting application security
@@ -156,18 +156,18 @@ Core architectural principles include:
 - Separation of concerns
 - Framework independence
 - Encapsulation of business rules
-- Deterministic behavior
+- Deterministic behaviour
 - Minimal external dependencies
 
 Although these principles improve robustness, they do **not** eliminate the need for secure application design.
 
-Applications built on top of the Shared Kernel remain responsible for their own authentication, authorization, encryption and infrastructure security.
+Applications built on top of the Shared Kernel remain responsible for their own authentication, authorisation, encryption and infrastructure security.
 
 ---
 
 # Third-Party Dependencies
 
-The Shared Kernel intentionally minimizes third-party dependencies.
+The Shared Kernel intentionally minimises third-party dependencies.
 
 Whenever an external dependency is introduced, it will be evaluated according to:
 
@@ -175,7 +175,7 @@ Whenever an external dependency is introduced, it will be evaluated according to
 - Maintenance status
 - Community adoption
 - Long-term viability
-- License compatibility
+- Licence compatibility
 
 Dependencies with known critical vulnerabilities will be updated or replaced as soon as reasonably possible.
 

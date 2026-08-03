@@ -47,8 +47,8 @@ A good bug report should include:
 - Operating System
 - Complete exception message
 - Stack trace (if applicable)
-- Expected behavior
-- Actual behavior
+- Expected behaviour
+- Actual behaviour
 - Minimal reproducible example
 
 Small reproducible projects greatly improve investigation time.

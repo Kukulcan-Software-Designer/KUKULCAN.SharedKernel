@@ -19,7 +19,7 @@ This release represents the culmination of an extensive architectural design, im
 - CQRS
 - Event-Driven Design
 
-Rather than maximizing the number of features, this release prioritizes:
+Rather than maximising the number of features, this release prioritises:
 
 - Architectural consistency
 - API stability
@@ -41,7 +41,7 @@ The framework exposes a minimal, coherent and strongly typed API designed to rem
 
 ## Modular Architecture
 
-The Shared Kernel is organized into independent modules with clearly defined responsibilities.
+The Shared Kernel is organised into independent modules with clearly defined responsibilities.
 
 Included modules:
 
@@ -124,7 +124,7 @@ making deterministic testing straightforward.
 
 ## Globalization
 
-The first version introduces a globalization layer including:
+The first version introduces a globalisation layer including:
 
 - SupportedCulture
 - Formatting abstractions
@@ -214,7 +214,7 @@ Although the public API is considered stable, future versions may introduce:
 - Performance improvements
 - Additional XML documentation
 - More examples
-- Expanded globalization support
+- Expanded globalisation support
 
 without breaking existing consumers.
 
@@ -232,7 +232,7 @@ Language features:
 - File Scoped Namespaces
 - Implicit Usings
 
-The framework intentionally minimizes external dependencies and relies almost exclusively on the .NET Base Class Library.
+The framework intentionally minimises external dependencies and relies almost exclusively on the .NET Base Class Library.
 
 ---
 

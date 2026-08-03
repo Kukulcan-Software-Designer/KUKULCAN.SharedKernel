@@ -151,7 +151,6 @@ with a strongly typed and semantically rich model.
 
 ```mermaid
 flowchart LR
-
     OPERATION["Business Operation"]
     RESULT["Result"]
     SUCCESS["Success"]
@@ -323,7 +322,6 @@ Every operation therefore becomes a conversation between producer and consumer.
 
 ```mermaid
 flowchart LR
-
     REQUEST["Operation"]
     RESULT["Result"]
     SUCCESS["Business Success"]
@@ -398,7 +396,6 @@ The Result Pattern is intentionally designed so that individual operation outcom
 
 ```mermaid
 flowchart LR
-
     STEP1["Operation A"]
     STEP2["Operation B"]
     STEP3["Operation C"]
@@ -624,15 +621,10 @@ This eliminates multiple competing error-handling strategies.
 
 ```mermaid
 flowchart TD
-
     DOMAIN["Domain"]
-
     VALIDATION["Validation"]
-
     SPECIFICATIONS["Specifications"]
-
     SERVICES["Services"]
-
     RESULT["Result Pattern"]
 
     DOMAIN --> RESULT
@@ -752,13 +744,9 @@ The Result subsystem therefore encourages composition of operations into larger 
 
 ```mermaid
 flowchart LR
-
     OP1["Operation"]
-
     OP2["Operation"]
-
     OP3["Operation"]
-
     FINAL["Final Result"]
 
     OP1 --> OP2
@@ -852,19 +840,12 @@ The architectural goals reinforce one another.
 
 ```mermaid
 flowchart TD
-
     EXPLICIT["Explicit Communication"]
-
     CONSISTENT["Architectural Consistency"]
-
     DOMAIN["Domain Purity"]
-
     API["Public APIs"]
-
     COMPOSE["Composition"]
-
     EXTEND["Extensibility"]
-
     STABLE["Long-Term Stability"]
 
     EXPLICIT --> CONSISTENT
@@ -969,17 +950,12 @@ The Result Pattern represents these possibilities as explicit objects rather tha
 
 ```mermaid
 flowchart LR
-
     OPERATION["Business Operation"]
-
     RESULT["Result"]
-
     SUCCESS["Success"]
-
     FAILURE["Failure"]
 
     OPERATION --> RESULT
-
     RESULT --> SUCCESS
     RESULT --> FAILURE
 ```
@@ -1022,26 +998,17 @@ The Result Pattern models every business operation as an explicit outcome.
 
 ```mermaid
 flowchart TD
-
     START["Business Operation"]
-
     RESULT["Result"]
-
     SUCCESS["Is Success"]
-
     FAILURE["Is Failure"]
-
     ERROR["Error"]
-
     VALUE["Value"]
 
     START --> RESULT
-
     RESULT --> SUCCESS
     RESULT --> FAILURE
-
     SUCCESS --> VALUE
-
     FAILURE --> ERROR
 ```
 
@@ -1125,17 +1092,12 @@ The architecture intentionally separates these responsibilities.
 
 ```mermaid
 flowchart LR
-
     BUSINESS["Business Failure"]
-
     RESULT["Result"]
-
     TECHNICAL["Technical Failure"]
-
     EXCEPTION["Exception"]
 
     BUSINESS --> RESULT
-
     TECHNICAL --> EXCEPTION
 ```
 
@@ -1179,15 +1141,10 @@ Every Result follows a simple lifecycle.
 
 ```mermaid
 flowchart LR
-
     CREATE["Operation"]
-
     RESULT["Create Result"]
-
     CONSUME["Consume"]
-
     PROPAGATE["Propagate"]
-
     COMPLETE["Completed"]
 
     CREATE --> RESULT
@@ -1223,7 +1180,6 @@ The Result Pattern forms the center of the Results subsystem.
 
 ```mermaid
 flowchart TD
-
     RESULT["Result"]
     RESULTT["Result<T>"]
     ERROR["Error"]
@@ -1355,9 +1311,7 @@ Instead, every operation returns an explicit Result.
 
 ```mermaid
 flowchart LR
-
     OPERATION["Business Operation"]
-
     RESULT["Result"]
 
     OPERATION --> RESULT
@@ -1453,13 +1407,9 @@ Those concerns belong to the exception mechanism.
 
 ```mermaid
 flowchart LR
-
     BUSINESS["Business Outcome"]
-
     RESULT["Result"]
-
     TECHNICAL["Technical Failure"]
-
     EXCEPTION["Exception"]
 
     BUSINESS --> RESULT
@@ -1476,13 +1426,9 @@ Individual Results should naturally combine into larger business workflows.
 
 ```mermaid
 flowchart LR
-
     R1["Result"]
-
     R2["Result"]
-
     R3["Result"]
-
     FINAL["Result"]
 
     R1 --> R2
@@ -1614,19 +1560,12 @@ The architectural principles reinforce one another.
 
 ```mermaid
 flowchart TD
-
     EXPLICIT["Explicitness"]
-
     TYPES["Strong Typing"]
-
     IMMUTABLE["Immutability"]
-
     DETERMINISTIC["Determinism"]
-
     COMPOSITION["Composability"]
-
     CONSISTENCY["Consistency"]
-
     STABILITY["Architectural Stability"]
 
     EXPLICIT --> TYPES
@@ -1717,13 +1656,9 @@ The Results subsystem is composed of three major architectural categories.
 
 ```mermaid
 flowchart TD
-
     RESULTS["Results"]
-
     OUTCOME["Outcome Types"]
-
     ERRORS["Error Types"]
-
     SUPPORT["Support Components"]
 
     RESULTS --> OUTCOME
@@ -1808,15 +1743,10 @@ Instead, they model business semantics.
 
 ```mermaid
 flowchart LR
-
     FAILURE["Failure"]
-
     ERROR["Error"]
-
     CODE["Error Code"]
-
     MESSAGE["Message"]
-
     METADATA["Metadata"]
 
     FAILURE --> ERROR
@@ -1881,13 +1811,9 @@ Support Components enrich or simplify the Result subsystem without representing 
 
 ```mermaid
 flowchart TD
-
     SUPPORT["Support Components"]
-
     FACTORY["ErrorFactory"]
-
     EXTENSIONS["ResultExtensions"]
-
     METADATA["Error Metadata"]
 
     SUPPORT --> FACTORY
@@ -1951,33 +1877,21 @@ The relationships between the architectural components are illustrated below.
 
 ```mermaid
 flowchart TD
-
     RESULT["Result"]
-
     RESULTT["Result<T>"]
-
     ERROR["Error"]
-
     COMMON["CommonErrors"]
-
     CODES["CommonErrorCodes"]
-
     FACTORY["ErrorFactory"]
-
     EXTENSIONS["ResultExtensions"]
-
     METADATA["Error Metadata"]
 
     RESULT --> ERROR
     RESULTT --> ERROR
-
     COMMON --> ERROR
     CODES --> COMMON
-
     FACTORY --> ERROR
-
     ERROR --> METADATA
-
     EXTENSIONS --> RESULT
     EXTENSIONS --> RESULTT
 ```
@@ -2104,13 +2018,9 @@ The subsystem is organized into three major groups.
 
 ```mermaid
 flowchart TD
-
     RESULTS["Results Subsystem"]
-
     OUTCOME["Outcome Components"]
-
     ERRORS["Error Components"]
-
     SUPPORT["Support Components"]
 
     RESULTS --> OUTCOME
@@ -2184,31 +2094,19 @@ The core components collaborate to produce a complete operation outcome.
 
 ```mermaid
 flowchart TD
-
     OPERATION["Business Operation"]
-
     RESULT["Result / Result<T>"]
-
     ERROR["Error"]
-
     METADATA["Error Metadata"]
-
     COMMON["CommonErrors"]
-
     FACTORY["ErrorFactory"]
-
     EXTENSIONS["ResultExtensions"]
 
     OPERATION --> RESULT
-
     RESULT --> ERROR
-
     ERROR --> METADATA
-
     COMMON --> ERROR
-
     FACTORY --> ERROR
-
     EXTENSIONS --> RESULT
 ```
 
@@ -2367,11 +2265,8 @@ A `Result` has only two possible states.
 
 ```mermaid
 flowchart TD
-
     RESULT["Result"]
-
     SUCCESS["Success"]
-
     FAILURE["Failure"]
 
     RESULT --> SUCCESS
@@ -2468,13 +2363,9 @@ A Result follows a very simple lifecycle.
 
 ```mermaid
 flowchart LR
-
     CREATE["Create"]
-
     CONSUME["Consume"]
-
     PROPAGATE["Propagate"]
-
     COMPLETE["Completed"]
 
     CREATE --> CONSUME
@@ -2566,9 +2457,7 @@ No synchronization is required.
 
 ```mermaid
 flowchart LR
-
     RESULT["Result"]
-
     RESULTT["Result<T>"]
 
     RESULT --> RESULTT
@@ -2591,9 +2480,7 @@ Every failed Result owns exactly one Error.
 
 ```mermaid
 flowchart LR
-
     RESULT["Failed Result"]
-
     ERROR["Error"]
 
     RESULT --> ERROR
@@ -2707,20 +2594,14 @@ The value exists **only when the operation succeeds**.
 
 ```mermaid
 flowchart TD
-
     RESULT["Result<T>"]
-
     SUCCESS["Success"]
-
     FAILURE["Failure"]
-
     VALUE["T Value"]
-
     ERROR["Error"]
 
     RESULT --> SUCCESS
     RESULT --> FAILURE
-
     SUCCESS --> VALUE
     FAILURE --> ERROR
 ```
@@ -2816,13 +2697,9 @@ A Value exists **only** when the operation succeeds.
 
 ```mermaid
 flowchart LR
-
     SUCCESS["Success"]
-
     VALUE["Value"]
-
     FAILURE["Failure"]
-
     ERROR["Error"]
 
     SUCCESS --> VALUE
@@ -2915,9 +2792,7 @@ This guarantees:
 
 ```mermaid
 flowchart LR
-
     RESULT["Result"]
-
     GENERIC["Result<T>"]
 
     RESULT --> GENERIC
@@ -2941,9 +2816,7 @@ Every failed `Result<T>` owns exactly one Error.
 
 ```mermaid
 flowchart LR
-
     RESULT["Failed Result<T>"]
-
     ERROR["Error"]
 
     RESULT --> ERROR
@@ -3117,19 +2990,13 @@ Without exposing infrastructure-specific concepts.
 
 ```mermaid
 flowchart TD
-
     FAILURE["Business Failure"]
-
     ERROR["Error"]
-
     CODE["Code"]
-
     MESSAGE["Message"]
-
     METADATA["Metadata"]
 
     FAILURE --> ERROR
-
     ERROR --> CODE
     ERROR --> MESSAGE
     ERROR --> METADATA
@@ -3288,9 +3155,7 @@ Every failed Result owns exactly one Error.
 
 ```mermaid
 flowchart LR
-
     RESULT["Failed Result"]
-
     ERROR["Error"]
 
     RESULT --> ERROR
@@ -3312,9 +3177,7 @@ The relationship is identical for generic Results.
 
 ```mermaid
 flowchart LR
-
     RESULT["Failed Result<T>"]
-
     ERROR["Error"]
 
     RESULT --> ERROR
@@ -3334,9 +3197,7 @@ Instead, reusable Error definitions are centralized within `CommonErrors`.
 
 ```mermaid
 flowchart LR
-
     COMMON["CommonErrors"]
-
     ERROR["Error"]
 
     COMMON --> ERROR
@@ -3356,9 +3217,7 @@ Complex Error construction should be delegated to `ErrorFactory`.
 
 ```mermaid
 flowchart LR
-
     FACTORY["ErrorFactory"]
-
     ERROR["Error"]
 
     FACTORY --> ERROR
@@ -3374,9 +3233,7 @@ Metadata enriches an Error without altering its meaning.
 
 ```mermaid
 flowchart LR
-
     ERROR["Error"]
-
     METADATA["Metadata"]
 
     ERROR --> METADATA
@@ -3547,17 +3404,12 @@ This information assists:
 
 ```mermaid
 flowchart TD
-
     ERROR["Error"]
-
     METADATA["Metadata"]
-
     ENTRY1["Key"]
-
     ENTRY2["Value"]
 
     ERROR --> METADATA
-
     METADATA --> ENTRY1
     METADATA --> ENTRY2
 ```
@@ -3662,9 +3514,7 @@ Every Metadata collection belongs to exactly one Error.
 
 ```mermaid
 flowchart LR
-
     ERROR["Error"]
-
     METADATA["Metadata"]
 
     ERROR --> METADATA
@@ -3680,15 +3530,11 @@ The preferred mechanism for attaching Metadata is through `ErrorFactory`.
 
 ```mermaid
 flowchart LR
-
     FACTORY["ErrorFactory"]
-
     ERROR["Error"]
-
     METADATA["Metadata"]
 
     FACTORY --> ERROR
-
     ERROR --> METADATA
 ```
 
@@ -3932,15 +3778,10 @@ This approach ensures:
 
 ```mermaid
 flowchart TD
-
     COMMON["CommonErrors"]
-
     ERROR1["NotFound"]
-
     ERROR2["Conflict"]
-
     ERROR3["Unauthorized"]
-
     ERROR4["Validation"]
 
     COMMON --> ERROR1
@@ -3959,9 +3800,7 @@ Every member of `CommonErrors` returns an immutable `Error`.
 
 ```mermaid
 flowchart LR
-
     COMMON["CommonErrors"]
-
     ERROR["Error"]
 
     COMMON --> ERROR
@@ -3981,11 +3820,8 @@ Instead, every predefined Error references a stable identifier defined in `Commo
 
 ```mermaid
 flowchart LR
-
     CODES["CommonErrorCodes"]
-
     COMMON["CommonErrors"]
-
     ERROR["Error"]
 
     CODES --> COMMON
@@ -4007,11 +3843,8 @@ This separation provides two important advantages.
 
 ```mermaid
 flowchart LR
-
     FACTORY["ErrorFactory"]
-
     COMMON["CommonErrors"]
-
     ERROR["Error"]
 
     FACTORY --> COMMON
@@ -4280,11 +4113,8 @@ Because the codes are stable, they may safely be used for:
 
 ```mermaid
 flowchart TD
-
     CODE["CommonErrorCode"]
-
     ERROR["Error"]
-
     RESULT["Failed Result"]
 
     CODE --> ERROR
@@ -4305,13 +4135,9 @@ Within the Results subsystem, `CommonErrorCodes` occupies the lowest semantic le
 
 ```mermaid
 flowchart TD
-
     CODES["CommonErrorCodes"]
-
     ERRORS["CommonErrors"]
-
     ERROR["Error"]
-
     RESULT["Result"]
 
     CODES --> ERRORS
@@ -4409,9 +4235,7 @@ Every predefined Error references exactly one Common Error Code.
 
 ```mermaid
 flowchart LR
-
     CODE["CommonErrorCode"]
-
     ERROR["CommonError"]
 
     CODE --> ERROR
@@ -4629,15 +4453,11 @@ This approach provides:
 
 ```mermaid
 flowchart TD
-
     CONSUMER["Consumer"]
-
     FACTORY["ErrorFactory"]
-
     ERROR["Error"]
 
     CONSUMER --> FACTORY
-
     FACTORY --> ERROR
 ```
 
@@ -4653,9 +4473,7 @@ The factory produces a valid immutable instance.
 
 ```mermaid
 flowchart LR
-
     FACTORY["ErrorFactory"]
-
     ERROR["Error"]
 
     FACTORY --> ERROR
@@ -4673,15 +4491,11 @@ The responsibilities of `ErrorFactory` and `CommonErrors` are intentionally diff
 
 ```mermaid
 flowchart TD
-
     FACTORY["ErrorFactory"]
-
     COMMON["CommonErrors"]
-
     ERROR["Error"]
 
     FACTORY --> ERROR
-
     COMMON --> ERROR
 ```
 
@@ -4702,11 +4516,8 @@ Whenever appropriate, the factory uses identifiers defined in `CommonErrorCodes`
 
 ```mermaid
 flowchart LR
-
     CODES["CommonErrorCodes"]
-
     FACTORY["ErrorFactory"]
-
     ERROR["Error"]
 
     CODES --> FACTORY
@@ -4723,15 +4534,11 @@ One of the primary responsibilities of the factory is attaching contextual Metad
 
 ```mermaid
 flowchart TD
-
     FACTORY["ErrorFactory"]
-
     ERROR["Error"]
-
     METADATA["Metadata"]
 
     FACTORY --> ERROR
-
     ERROR --> METADATA
 ```
 
@@ -4997,15 +4804,11 @@ applications use expressive extension methods that preserve readability while ma
 
 ```mermaid
 flowchart TD
-
     RESULT["Result"]
-
     EXTENSIONS["ResultExtensions"]
-
     WORKFLOW["Business Workflow"]
 
     RESULT --> EXTENSIONS
-
     EXTENSIONS --> WORKFLOW
 ```
 
@@ -5021,9 +4824,7 @@ They never modify Results.
 
 ```mermaid
 flowchart LR
-
     RESULT["Result"]
-
     EXT["Extensions"]
 
     RESULT --> EXT
@@ -5041,9 +4842,7 @@ The same applies to generic Results.
 
 ```mermaid
 flowchart LR
-
     RESULT["Result<T>"]
-
     EXT["Extensions"]
 
     RESULT --> EXT
@@ -5061,15 +4860,11 @@ Instead, they propagate existing failures.
 
 ```mermaid
 flowchart TD
-
     RESULT["Failed Result"]
-
     ERROR["Error"]
-
     EXT["Extension"]
 
     RESULT --> ERROR
-
     RESULT --> EXT
 ```
 
@@ -5083,13 +4878,9 @@ One of the primary responsibilities of `ResultExtensions` is composing multiple 
 
 ```mermaid
 flowchart LR
-
     R1["Result"]
-
     R2["Result"]
-
     R3["Result"]
-
     FINAL["Result"]
 
     R1 --> R2
@@ -5148,11 +4939,8 @@ Many business operations depend on previous successful operations.
 
 ```mermaid
 flowchart LR
-
     CUSTOMER["Customer"]
-
     ADDRESS["Address"]
-
     ORDER["Order"]
 
     CUSTOMER --> ADDRESS
@@ -5169,13 +4957,9 @@ Some workflows require several independent Results.
 
 ```mermaid
 flowchart LR
-
     R1["Result"]
-
     R2["Result"]
-
     R3["Result"]
-
     COMBINED["Combined Result"]
 
     R1 --> COMBINED
@@ -5195,11 +4979,8 @@ When one operation fails, subsequent operations should normally not execute.
 
 ```mermaid
 flowchart LR
-
     STEP1["Success"]
-
     STEP2["Failure"]
-
     STEP3["Skipped"]
 
     STEP1 --> STEP2
@@ -5379,11 +5160,8 @@ The framework defines two success representations.
 
 ```mermaid
 flowchart TD
-
     SUCCESS["Success"]
-
     RESULT["Result"]
-
     RESULTT["Result<T>"]
 
     SUCCESS --> RESULT
@@ -5433,15 +5211,11 @@ The operation communicates:
 
 ```mermaid
 flowchart LR
-
     OPERATION["Business Operation"]
-
     SUCCESS["Success"]
-
     VALUE["Business Value"]
 
     OPERATION --> SUCCESS
-
     SUCCESS --> VALUE
 ```
 
@@ -5510,9 +5284,7 @@ It exists to preserve consistency across every Result instance.
 
 ```mermaid
 flowchart LR
-
     SUCCESS["Success"]
-
     NONE["Error.None"]
 
     SUCCESS --> NONE
@@ -5548,18 +5320,13 @@ For generic Results, the business value belongs exclusively to the Success state
 
 ```mermaid
 flowchart TD
-
     RESULT["Result<T>"]
-
     SUCCESS["Success"]
-
     VALUE["Value"]
-
     FAILURE["Failure"]
 
     RESULT --> SUCCESS
     RESULT --> FAILURE
-
     SUCCESS --> VALUE
 ```
 
@@ -5573,13 +5340,9 @@ Successful Results naturally propagate through composed workflows.
 
 ```mermaid
 flowchart LR
-
     STEP1["Success"]
-
     STEP2["Success"]
-
     STEP3["Success"]
-
     FINAL["Success"]
 
     STEP1 --> STEP2
@@ -5616,11 +5379,8 @@ Success and Failure are complementary architectural states.
 
 ```mermaid
 flowchart TD
-
     RESULT["Result"]
-
     SUCCESS["Success"]
-
     FAILURE["Failure"]
 
     RESULT --> SUCCESS
@@ -5637,11 +5397,8 @@ Every business operation ultimately produces one of two outcomes.
 
 ```mermaid
 flowchart LR
-
     OPERATION["Business Operation"]
-
     SUCCESS["Success"]
-
     FAILURE["Failure"]
 
     OPERATION --> SUCCESS
@@ -5781,15 +5538,11 @@ Every failed operation consists of two architectural elements.
 
 ```mermaid
 flowchart TD
-
     FAILURE["Failure"]
-
     RESULT["Result"]
-
     ERROR["Error"]
 
     FAILURE --> RESULT
-
     RESULT --> ERROR
 ```
 
@@ -5827,9 +5580,7 @@ Every failure owns exactly one Error.
 
 ```mermaid
 flowchart LR
-
     RESULT["Failed Result"]
-
     ERROR["Error"]
 
     RESULT --> ERROR
@@ -5896,13 +5647,9 @@ Such situations remain the responsibility of the exception mechanism.
 
 ```mermaid
 flowchart LR
-
     BUSINESS["Business Failure"]
-
     RESULT["Result"]
-
     TECHNICAL["Technical Failure"]
-
     EXCEPTION["Exception"]
 
     BUSINESS --> RESULT
@@ -5919,13 +5666,9 @@ Failures naturally propagate through composed workflows.
 
 ```mermaid
 flowchart LR
-
     STEP1["Success"]
-
     STEP2["Failure"]
-
     STEP3["Skipped"]
-
     FINAL["Failure"]
 
     STEP1 --> STEP2
@@ -5947,13 +5690,9 @@ Whenever one operation fails, the composed workflow returns the same failure.
 
 ```mermaid
 flowchart LR
-
     R1["Result"]
-
     R2["Result"]
-
     R3["Result"]
-
     FAILURE["Failure"]
 
     R1 --> R2
@@ -6095,9 +5834,7 @@ Most failures should reuse predefined Error definitions.
 
 ```mermaid
 flowchart LR
-
     FAILURE["Failure"]
-
     COMMON["CommonErrors"]
 
     FAILURE --> COMMON
@@ -6113,9 +5850,7 @@ When contextual information is required, failures should be created through `Err
 
 ```mermaid
 flowchart LR
-
     FACTORY["ErrorFactory"]
-
     FAILURE["Failure"]
 
     FACTORY --> FAILURE
@@ -6361,11 +6096,8 @@ Unexpected infrastructure failures remain exceptions.
 
 ```mermaid
 flowchart LR
-
     VALIDATION["Validation"]
-
     BUSINESS["Business"]
-
     RESULT["Failed Result"]
 
     VALIDATION --> RESULT
@@ -6387,11 +6119,8 @@ Every reusable Error belongs to exactly one semantic category.
 
 ```mermaid
 flowchart TD
-
     TAXONOMY["Error Taxonomy"]
-
     COMMON["CommonErrors"]
-
     ERROR["Error"]
 
     TAXONOMY --> COMMON
@@ -6408,9 +6137,7 @@ Each Error Category contains multiple stable Error Codes.
 
 ```mermaid
 flowchart LR
-
     CATEGORY["Category"]
-
     CODE["CommonErrorCode"]
 
     CATEGORY --> CODE
@@ -6549,15 +6276,11 @@ without modifying the Error itself.
 
 ```mermaid
 flowchart TD
-
     ERROR["Error"]
-
     METADATA["Metadata"]
-
     ENTRY["Metadata Entry"]
 
     ERROR --> METADATA
-
     METADATA --> ENTRY
 ```
 
@@ -6573,15 +6296,11 @@ Within the Results subsystem, Metadata occupies a supporting role.
 
 ```mermaid
 flowchart TD
-
     RESULT["Result"]
-
     ERROR["Error"]
-
     METADATA["Metadata"]
 
     RESULT --> ERROR
-
     ERROR --> METADATA
 ```
 
@@ -6686,17 +6405,11 @@ Although Metadata is extensible, most entries naturally belong to several catego
 
 ```mermaid
 flowchart TD
-
     META["Metadata"]
-
     VALIDATION["Validation"]
-
     ENTITY["Entity"]
-
     BUSINESS["Business"]
-
     REQUEST["Request"]
-
     DIAGNOSTICS["Diagnostics"]
 
     META --> VALIDATION
@@ -6808,15 +6521,11 @@ Metadata follows the same immutable lifecycle as its parent Error.
 
 ```mermaid
 flowchart LR
-
     CREATE["Created"]
-
     ATTACHED["Attached to Error"]
-
     PROPAGATED["Propagated"]
-
     CONSUMED["Consumed"]
-
+    
     CREATE --> ATTACHED
     ATTACHED --> PROPAGATED
     PROPAGATED --> CONSUMED
@@ -6832,11 +6541,8 @@ Whenever a failed Result propagates through multiple operations, its Metadata tr
 
 ```mermaid
 flowchart LR
-
     STEP1["Failure"]
-
     STEP2["Failure"]
-
     STEP3["Failure"]
 
     STEP1 --> STEP2
@@ -6855,9 +6561,7 @@ Each Metadata collection belongs exclusively to one Error.
 
 ```mermaid
 flowchart LR
-
     ERROR["Error"]
-
     METADATA["Metadata"]
 
     ERROR --> METADATA
@@ -7048,13 +6752,9 @@ Composition allows developers to focus on business behavior instead of control f
 
 ```mermaid
 flowchart LR
-
     OP1["Operation A"]
-
     OP2["Operation B"]
-
     OP3["Operation C"]
-
     RESULT["Final Result"]
 
     OP1 --> OP2
@@ -7090,13 +6790,9 @@ The most common composition model is sequential execution.
 
 ```mermaid
 flowchart LR
-
     VALIDATE["Validate"]
-
     LOAD["Load"]
-
     EXECUTE["Execute"]
-
     SAVE["Save"]
 
     VALIDATE --> LOAD
@@ -7114,13 +6810,9 @@ One of the defining characteristics of Result Composition is automatic short-cir
 
 ```mermaid
 flowchart LR
-
     STEP1["Success"]
-
     STEP2["Failure"]
-
     STEP3["Skipped"]
-
     FINAL["Failure"]
 
     STEP1 --> STEP2
@@ -7143,13 +6835,9 @@ Successful operations naturally continue the workflow.
 
 ```mermaid
 flowchart LR
-
     STEP1["Success"]
-
     STEP2["Success"]
-
     STEP3["Success"]
-
     FINAL["Success"]
 
     STEP1 --> STEP2
@@ -7167,11 +6855,8 @@ Composition also applies to `Result<T>`.
 
 ```mermaid
 flowchart LR
-
     CUSTOMER["Result<Customer>"]
-
     ORDER["Result<Order>"]
-
     INVOICE["Result<Invoice>"]
 
     CUSTOMER --> ORDER
@@ -7188,11 +6873,8 @@ Some operations transform one successful value into another.
 
 ```mermaid
 flowchart LR
-
     CUSTOMER["Customer"]
-
     DTO["CustomerDto"]
-
     RESPONSE["ApiResponse"]
 
     CUSTOMER --> DTO
@@ -7209,13 +6891,9 @@ Some workflows depend on multiple independent Results.
 
 ```mermaid
 flowchart TD
-
     R1["Result A"]
-
     R2["Result B"]
-
     R3["Result C"]
-
     FINAL["Combined Result"]
 
     R1 --> FINAL
@@ -7233,11 +6911,8 @@ Business workflows frequently compose multiple smaller workflows.
 
 ```mermaid
 flowchart TD
-
     WORKFLOW1["Workflow A"]
-
     WORKFLOW2["Workflow B"]
-
     FINAL["Application Workflow"]
 
     WORKFLOW1 --> FINAL
@@ -7254,13 +6929,9 @@ Errors propagate without modification.
 
 ```mermaid
 flowchart LR
-
     ERROR["Business Error"]
-
     RESULT1["Result"]
-
     RESULT2["Result"]
-
     FINAL["Result"]
 
     ERROR --> RESULT1
@@ -7278,11 +6949,8 @@ Result Composition is primarily implemented through `ResultExtensions`.
 
 ```mermaid
 flowchart LR
-
     RESULT["Result"]
-
     EXT["ResultExtensions"]
-
     WORKFLOW["Workflow"]
 
     RESULT --> EXT
@@ -7442,15 +7110,11 @@ They allow developers to describe *what* should happen instead of *how* to navig
 
 ```mermaid
 flowchart LR
-
     RESULT["Result"]
-
     OPERATION["Functional Operation"]
-
     NEWRESULT["Result"]
 
     RESULT --> OPERATION
-
     OPERATION --> NEWRESULT
 ```
 
@@ -7480,11 +7144,8 @@ Transformation converts one successful value into another while preserving failu
 
 ```mermaid
 flowchart LR
-
     CUSTOMER["Customer"]
-
     DTO["CustomerDto"]
-
     RESPONSE["ApiResponse"]
 
     CUSTOMER --> DTO
@@ -7529,11 +7190,8 @@ Binding connects one business operation to another.
 
 ```mermaid
 flowchart LR
-
     CUSTOMER["Customer"]
-
     ORDER["Order"]
-
     INVOICE["Invoice"]
 
     CUSTOMER --> ORDER
@@ -7550,13 +7208,9 @@ Business workflows naturally form chains of dependent operations.
 
 ```mermaid
 flowchart LR
-
     VALIDATE["Validate"]
-
     LOAD["Load"]
-
     PROCESS["Process"]
-
     SAVE["Save"]
 
     VALIDATE --> LOAD
@@ -7574,11 +7228,8 @@ Functional Operations never alter an existing Error.
 
 ```mermaid
 flowchart LR
-
     FAILURE["Failure"]
-
     OPERATION["Functional Operation"]
-
     FAILURE2["Same Failure"]
 
     FAILURE --> OPERATION
@@ -7595,11 +7246,8 @@ Failures automatically terminate dependent operations.
 
 ```mermaid
 flowchart LR
-
     STEP1["Success"]
-
     STEP2["Failure"]
-
     STEP3["Skipped"]
 
     STEP1 --> STEP2
@@ -7616,13 +7264,9 @@ Multiple Functional Operations naturally compose into larger workflows.
 
 ```mermaid
 flowchart TD
-
     MAP["Map"]
-
     BIND["Bind"]
-
     COMBINE["Combine"]
-
     RESULT["Final Result"]
 
     MAP --> BIND
@@ -7640,11 +7284,8 @@ Every Functional Operation preserves immutability.
 
 ```mermaid
 flowchart LR
-
     ORIGINAL["Original Result"]
-
     OPERATION["Operation"]
-
     NEW["New Result"]
 
     ORIGINAL --> OPERATION
@@ -7676,11 +7317,8 @@ Functional Operations are primarily exposed through `ResultExtensions`.
 
 ```mermaid
 flowchart LR
-
     RESULT["Result"]
-
     EXT["ResultExtensions"]
-
     FUNCTIONAL["Functional Operations"]
 
     RESULT --> EXT
@@ -7697,9 +7335,7 @@ Functional Operations provide the mechanisms that implement the Result Compositi
 
 ```mermaid
 flowchart LR
-
     FUNCTIONAL["Functional Operations"]
-
     COMPOSITION["Result Composition"]
 
     FUNCTIONAL --> COMPOSITION
@@ -7849,15 +7485,10 @@ Pipelines transform individual business operations into cohesive application pro
 
 ```mermaid
 flowchart LR
-
     INPUT["Input"]
-
     STEP1["Operation A"]
-
     STEP2["Operation B"]
-
     STEP3["Operation C"]
-
     OUTPUT["Result"]
 
     INPUT --> STEP1
@@ -7932,13 +7563,9 @@ The pipeline executes from left to right.
 
 ```mermaid
 flowchart LR
-
     VALIDATE["Validate"]
-
     LOAD["Load Aggregate"]
-
     EXECUTE["Execute Business Rule"]
-
     SAVE["Persist"]
 
     VALIDATE --> LOAD
@@ -7956,13 +7583,9 @@ When every stage succeeds:
 
 ```mermaid
 flowchart LR
-
     A["Success"]
-
     B["Success"]
-
     C["Success"]
-
     FINAL["Success"]
 
     A --> B
@@ -7980,13 +7603,9 @@ When a stage fails:
 
 ```mermaid
 flowchart LR
-
     A["Success"]
-
     B["Failure"]
-
     C["Skipped"]
-
     FINAL["Failure"]
 
     A --> B
@@ -8020,13 +7639,9 @@ Complex application workflows frequently compose multiple pipelines.
 
 ```mermaid
 flowchart TD
-
     PIPE1["Validation Pipeline"]
-
     PIPE2["Business Pipeline"]
-
     PIPE3["Persistence Pipeline"]
-
     FINAL["Application Result"]
 
     PIPE1 --> PIPE2
@@ -8044,13 +7659,9 @@ Pipelines often transform business values.
 
 ```mermaid
 flowchart LR
-
     REQUEST["Request"]
-
     CUSTOMER["Customer"]
-
     DTO["CustomerDto"]
-
     RESPONSE["ApiResponse"]
 
     REQUEST --> CUSTOMER
@@ -8068,13 +7679,9 @@ Errors flow through the pipeline without modification.
 
 ```mermaid
 flowchart LR
-
     ERROR["Error"]
-
     STEP1["Result"]
-
     STEP2["Result"]
-
     STEP3["Result"]
 
     ERROR --> STEP1
@@ -8108,9 +7715,7 @@ Functional Operations provide the mechanisms used to implement pipelines.
 
 ```mermaid
 flowchart LR
-
     FUNCTIONAL["Functional Operations"]
-
     PIPELINE["Result Pipeline"]
 
     FUNCTIONAL --> PIPELINE
@@ -8126,9 +7731,7 @@ Result Pipelines are a concrete application of the Result Composition Model.
 
 ```mermaid
 flowchart LR
-
     COMPOSITION["Result Composition"]
-
     PIPELINE["Pipeline"]
 
     COMPOSITION --> PIPELINE
@@ -8291,11 +7894,8 @@ Validation therefore becomes an integral part of the business execution pipeline
 
 ```mermaid
 flowchart LR
-
     INPUT["Input"]
-
     VALIDATOR["Validator"]
-
     RESULT["Result"]
 
     INPUT --> VALIDATOR
@@ -8314,13 +7914,9 @@ Validation occurs before business execution.
 
 ```mermaid
 flowchart LR
-
     REQUEST["Request"]
-
     VALIDATE["Validate"]
-
     EXECUTE["Business Logic"]
-
     RESPONSE["Result"]
 
     REQUEST --> VALIDATE
@@ -8338,9 +7934,7 @@ Successful validation simply produces a successful Result.
 
 ```mermaid
 flowchart LR
-
     VALIDATION["Validation"]
-
     SUCCESS["Success"]
 
     VALIDATION --> SUCCESS
@@ -8356,11 +7950,8 @@ Failed validation produces an explicit business failure.
 
 ```mermaid
 flowchart LR
-
     VALIDATION["Validation"]
-
     ERROR["Validation Error"]
-
     FAILURE["Failed Result"]
 
     VALIDATION --> ERROR
@@ -8424,11 +8015,8 @@ The validation subsystem may internally collect multiple failures before convert
 
 ```mermaid
 flowchart TD
-
     VALIDATION["ValidationResult"]
-
     CONVERSION["Conversion"]
-
     RESULT["Failed Result"]
 
     VALIDATION --> CONVERSION
@@ -8445,11 +8033,8 @@ Each individual validation failure contributes to the final business Result.
 
 ```mermaid
 flowchart LR
-
     FAILURE["ValidationFailure"]
-
     ERROR["Error"]
-
     RESULT["Result"]
 
     FAILURE --> ERROR
@@ -8466,13 +8051,9 @@ Validation naturally integrates into Result Pipelines.
 
 ```mermaid
 flowchart LR
-
     VALIDATE["Validate"]
-
     LOAD["Load Aggregate"]
-
     EXECUTE["Business Logic"]
-
     SAVE["Persist"]
 
     VALIDATE --> LOAD
@@ -8484,11 +8065,8 @@ If validation fails:
 
 ```mermaid
 flowchart LR
-
     VALIDATE["Failure"]
-
     LOAD["Skipped"]
-
     EXECUTE["Skipped"]
 
     VALIDATE --> LOAD
@@ -8544,13 +8122,9 @@ Unexpected validator failures, however, remain runtime exceptions.
 
 ```mermaid
 flowchart LR
-
     BUSINESS["Validation Failure"]
-
     RESULT["Result"]
-
     RUNTIME["Unexpected Failure"]
-
     EXCEPTION["Exception"]
 
     BUSINESS --> RESULT
@@ -8681,15 +8255,10 @@ Its purpose is to eliminate ambiguity throughout the framework.
 
 ```mermaid
 flowchart TD
-
     OPERATION["Business Operation"]
-
     BUSINESS["Expected Business Failure"]
-
     TECHNICAL["Unexpected Technical Failure"]
-
     RESULT["Result"]
-
     EXCEPTION["Exception"]
 
     OPERATION --> BUSINESS
