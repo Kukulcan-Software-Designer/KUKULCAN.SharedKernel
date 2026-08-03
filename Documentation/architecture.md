@@ -667,13 +667,9 @@ The preferred dependency graph resembles a directed acyclic graph rather than a 
 
 ```mermaid
 flowchart LR
-
 Results --> Internals
-
 Validation --> Results
-
 Domain --> DomainEvents
-
 Specifications --> Domain
 
 Time
@@ -876,6 +872,7 @@ Instead, they reinforce one another.
 ```mermaid
 mindmap
   root((Architecture))
+  
     Simplicity
     Strong Typing
     Explicit Modelling
@@ -984,7 +981,6 @@ This objective allows applications to evolve technologically without affecting t
 
 ```mermaid
 flowchart TD
-
 Business --> SharedKernel
 
 Infrastructure --> Business
