@@ -11886,3 +11886,381 @@ These examples demonstrate the following architectural principles:
 
 Collectively, these examples illustrate the intended usage patterns of the Globalization subsystem while preserving the principles of Domain-Driven Design and Clean Architecture.
 
+# 22. References
+
+The Globalization subsystem of **KUKULCAN.SharedKernel** is based upon well-established software engineering principles, international standards, and architectural patterns that promote deterministic behavior, maintainability, scalability, and framework independence.
+
+The following references provide the conceptual foundation upon which this subsystem has been designed.
+
+---
+
+# Architectural References
+
+## Domain-Driven Design
+
+Eric Evans
+
+> *Domain-Driven Design: Tackling Complexity in the Heart of Software*
+
+Primary concepts adopted:
+
+- Ubiquitous Language
+- Value Objects
+- Shared Kernel
+- Domain Services
+- Bounded Contexts
+- Explicit Modeling
+
+---
+
+## Implementing Domain-Driven Design
+
+Vaughn Vernon
+
+Primary concepts adopted:
+
+- Shared Kernel design
+- Strategic Design
+- Tactical Patterns
+- Aggregate consistency
+- Context boundaries
+
+---
+
+## Clean Architecture
+
+Robert C. Martin
+
+Primary concepts adopted:
+
+- Dependency Rule
+- Layered Architecture
+- Framework Independence
+- Stable Abstractions
+- SOLID principles
+
+---
+
+## SOLID Principles
+
+Robert C. Martin
+
+Applied principles include:
+
+- Single Responsibility Principle
+- Open/Closed Principle
+- Liskov Substitution Principle
+- Interface Segregation Principle
+- Dependency Inversion Principle
+
+---
+
+# Internationalization References
+
+## Unicode Standard
+
+Unicode Consortium
+
+Primary concepts:
+
+- Unicode character representation
+- Multilingual text
+- Character normalization
+- International text processing
+
+Reference:
+
+https://www.unicode.org/
+
+---
+
+## BCP 47 — Language Tags
+
+IETF Best Current Practice
+
+Defines standardized language identifiers.
+
+Examples:
+
+```text
+en-US
+
+es-ES
+
+fr-FR
+```
+
+Reference:
+
+https://www.rfc-editor.org/rfc/bcp/bcp47.txt
+
+---
+
+## ISO 639
+
+International Organization for Standardization
+
+Defines language codes.
+
+Examples:
+
+```text
+en
+
+es
+
+fr
+
+de
+```
+
+---
+
+## ISO 3166
+
+International Organization for Standardization
+
+Defines country and region identifiers.
+
+Examples:
+
+```text
+US
+
+ES
+
+FR
+
+MX
+```
+
+---
+
+## ISO 4217
+
+International Organization for Standardization
+
+Defines currency identifiers.
+
+Examples:
+
+```text
+EUR
+
+USD
+
+GBP
+
+JPY
+```
+
+---
+
+## ISO 8601
+
+International Organization for Standardization
+
+Defines standardized date and time representations.
+
+Example:
+
+```text
+2026-12-31T20:00:00Z
+```
+
+Used as the preferred invariant temporal representation.
+
+---
+
+# Time References
+
+## IANA Time Zone Database
+
+Provides standardized time zone definitions.
+
+Examples:
+
+```text
+Europe/Madrid
+
+America/New_York
+
+Asia/Tokyo
+```
+
+Reference:
+
+https://www.iana.org/time-zones
+
+---
+
+# .NET References
+
+## Microsoft Globalization Documentation
+
+Microsoft Learn
+
+Topics include:
+
+- CultureInfo
+- DateTimeFormatInfo
+- NumberFormatInfo
+- ResourceManager
+- Globalization APIs
+
+Reference:
+
+https://learn.microsoft.com/dotnet/core/extensions/globalization
+
+---
+
+## .NET Localization
+
+Microsoft Learn
+
+Topics include:
+
+- Localization
+- Resource files
+- Culture handling
+- Formatting
+
+Reference:
+
+https://learn.microsoft.com/aspnet/core/fundamentals/localization
+
+---
+
+# Design References
+
+## Immutable Objects
+
+Joshua Bloch
+
+Concepts adopted:
+
+- immutable state
+- thread safety
+- deterministic behavior
+
+---
+
+## Enterprise Integration Patterns
+
+Gregor Hohpe
+
+Relevant concepts:
+
+- message localization
+- distributed execution
+- deterministic communication
+
+---
+
+## Patterns of Enterprise Application Architecture
+
+Martin Fowler
+
+Relevant concepts:
+
+- Repository
+- Service Layer
+- Separation of Concerns
+- Dependency Management
+
+---
+
+# SharedKernel References
+
+The following KUKULCAN architectural documents complement this specification.
+
+- `architecture.md`
+- `sharedkernel.md`
+- `results.md`
+- `validation.md`
+- `events.md`
+- `specifications.md`
+- `time.md`
+- `primitives.md`
+- `valueobjects.md`
+
+These documents collectively define the architectural standards of **KUKULCAN.SharedKernel**.
+
+---
+
+# Architectural Principles Referenced
+
+The Globalization subsystem directly applies the following architectural principles:
+
+- Explicit execution context.
+- Immutability.
+- Deterministic execution.
+- Separation of concerns.
+- Dependency inversion.
+- Framework independence.
+- Stateless services.
+- Provider abstraction.
+- Stable public contracts.
+- Enterprise scalability.
+
+---
+
+# Standards Summary
+
+| Standard   | Purpose                      |
+|------------|------------------------------|
+| Unicode    | Character encoding           |
+| ISO 639    | Language identifiers         |
+| ISO 3166   | Country identifiers          |
+| ISO 4217   | Currency identifiers         |
+| ISO 8601   | Date and time representation |
+| BCP 47     | Language tags                |
+| IANA TZDB  | Time zone definitions        |
+
+---
+
+# Recommended Reading
+
+Readers interested in extending or maintaining the Globalization subsystem should be familiar with:
+
+- Domain-Driven Design
+- Clean Architecture
+- SOLID
+- Unicode
+- BCP 47
+- ISO 8601
+- ISO 4217
+- IANA Time Zone Database
+- Microsoft .NET Globalization documentation
+
+A solid understanding of these references greatly simplifies future architectural evolution.
+
+---
+
+# Reference Philosophy
+
+The Globalization subsystem intentionally relies upon internationally recognized standards and proven architectural patterns instead of framework-specific behaviors.
+
+This approach ensures:
+
+- long-term maintainability;
+- interoperability;
+- predictable behavior;
+- portability;
+- enterprise readiness.
+
+These references collectively define the conceptual foundation upon which the Globalization subsystem of **KUKULCAN.SharedKernel** has been designed.
+
+# 23. Summary
+
+The **Globalization** subsystem of **KUKULCAN.SharedKernel** provides a complete architectural foundation for building multilingual, multicultural, and globally distributed applications while preserving the principles of **Domain-Driven Design**, **Clean Architecture**, and **SOLID**.
+
+Rather than being limited to localization, the subsystem establishes a unified architectural model for handling cultures, formatting, resources, temporal representation, and internationalization concerns across the entire platform.
+
+Globalization is treated as an infrastructure capability that remains completely independent of business logic.
+
+---
+
+# Architectural Vision
+
+The primary objective of the subsystem is to ensure
