@@ -25,10 +25,13 @@
 
     <ItemGroup>
       <Folder Include="Abstractions\" />
+      <Folder Include="Builders\" />
       <Folder Include="Collections\" />
       <Folder Include="Common\" />
+      <Folder Include="Contracts\" />
       <Folder Include="Domain\" />
       <Folder Include="Exceptions\" />
+      <Folder Include="Fixtures\" />
       <Folder Include="Globalization\" />
       <Folder Include="Identification\" />
       <Folder Include="Internals\" />
@@ -40,9 +43,14 @@
       <Folder Include="Results\" />
       <Folder Include="Serialization\" />
       <Folder Include="Specifications\" />
+      <Folder Include="TestData\" />
       <Folder Include="Time\" />
       <Folder Include="Validation\" />
       <Folder Include="Versioning\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Source\KUKULCAN.SharedKernel\KUKULCAN.SharedKernel.csproj" />
     </ItemGroup>
 
 </Project>
