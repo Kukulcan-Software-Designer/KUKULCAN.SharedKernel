@@ -1,6 +1,12 @@
 # VALIDATION.md
 
-# Validation Subsystem
+> **KUKULCAN.SharedKernel**
+>
+> **Validation Architecture**
+>
+> **Status: **Stable
+> Version: **1.0.0-beta1**
+---
 
 ## Table of Contents
 

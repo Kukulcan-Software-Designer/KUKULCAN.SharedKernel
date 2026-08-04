@@ -1,11 +1,11 @@
 # Architecture
 
-## KUKULCAN.SharedKernel
-
+> **KUKULCAN.SharedKernel**
+>
 > **Architecture Handbook**
 >
+> **Status: **Stable
 > Version: **1.0.0-beta1**
-
 ---
 
 # Table of Contents

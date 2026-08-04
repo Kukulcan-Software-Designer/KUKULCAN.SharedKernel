@@ -2,12 +2,10 @@
 
 > **KUKULCAN.SharedKernel**
 >
-> **Subsystem Documentation**
->
 > **Domain Events Architecture**
 >
-> Version 1.0
-
+> **Status: **Stable
+> Version: **1.0.0-beta1**
 ---
 
 # Table of Contents

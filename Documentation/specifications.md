@@ -1,5 +1,12 @@
 # Specification Pattern
 
+> **KUKULCAN.SharedKernel**
+>
+> **Specification Architecture**
+>
+> **Status: **Stable
+> Version: **1.0.0-beta1**
+---
 ## Table of Contents
 
 1. [Introduction](#1-introduction)
