@@ -33,5 +33,7 @@
   <Folder Name="/Source/">
     <Project Path="Source/KUKULCAN.SharedKernel/KUKULCAN.SharedKernel.csproj" />
   </Folder>
-  <Folder Name="/Tests/" />
+  <Folder Name="/Tests/">
+    <Project Path="Tests/KUKULCAN.SharedKernel.UnitTests/KUKULCAN.SharedKernel.UnitTests.csproj" />
+  </Folder>
 </Solution>
