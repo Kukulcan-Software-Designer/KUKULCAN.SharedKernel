@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers.Internal;
@@ -129,8 +132,7 @@ internal static partial class ReflectionCache
     /// <summary>
     /// Gets the cache entry associated with the specified key.
     /// </summary>
-    public static ReflectionCacheEntry GetEntry(
-        ReflectionCacheKey key)
+    public static ReflectionCacheEntry GetEntry(ReflectionCacheKey key)
     {
         return RequireEntry(key);
     }
@@ -138,9 +140,7 @@ internal static partial class ReflectionCache
     /// <summary>
     /// Attempts to obtain the cache entry associated with the specified key.
     /// </summary>
-    public static bool TryGetEntry(
-        ReflectionCacheKey key,
-        out ReflectionCacheEntry? entry)
+    public static bool TryGetEntry(ReflectionCacheKey key, out ReflectionCacheEntry? entry)
     {
         return TryRequireEntry(key, out entry);
     }
@@ -148,8 +148,7 @@ internal static partial class ReflectionCache
     /// <summary>
     /// Gets the cached value associated with the specified key.
     /// </summary>
-    public static object? GetValue(
-        ReflectionCacheKey key)
+    public static object? GetValue(ReflectionCacheKey key)
     {
         return RequireValue(key);
     }
@@ -157,8 +156,7 @@ internal static partial class ReflectionCache
     /// <summary>
     /// Gets the cached value associated with the specified key.
     /// </summary>
-    public static TValue GetValue<TValue>(
-        ReflectionCacheKey key)
+    public static TValue GetValue<TValue>(ReflectionCacheKey key)
     {
         return RequireValue<TValue>(key);
     }
@@ -212,37 +210,38 @@ internal static partial class ReflectionCache
 
     #region Enumeration
 
-    public static IReadOnlyCollection<ReflectionCacheEntry> Enumerate() => EnumerateEntries();
+    public static IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> Enumerate()
+        => PairCollection;
 
-    public static IReadOnlyCollection<ReflectionCacheEntry> EnumerateCategory(string category)
+    public static IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> EnumerateCategory(string category)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(category);
 
         return EnumerateByKey(key => StringComparer.Ordinal.Equals(key.Category, category));
     }
 
-    public static IReadOnlyCollection<ReflectionCacheEntry> EnumerateType(Type ownerType)
+    public static IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> EnumerateType(Type ownerType)
     {
         ArgumentNullException.ThrowIfNull(ownerType);
 
-        return EnumerateByKey(key => key.OwnerType == ownerType);
+        return PairCollection.Where(pair => pair.Key.OwnerType == ownerType);
     }
 
-    public static IReadOnlyCollection<ReflectionCacheEntry> EnumerateAssembly(Assembly assembly)
+    public static IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> EnumerateAssembly(Assembly assembly)
     {
         ArgumentNullException.ThrowIfNull(assembly);
 
         return EnumerateByKey(key => key.OwnerType.Assembly == assembly);
     }
 
-    public static IReadOnlyCollection<ReflectionCacheEntry> EnumerateModule(Module module)
+    public static IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> EnumerateModule(Module module)
     {
         ArgumentNullException.ThrowIfNull(module);
 
         return EnumerateByKey(key => key.OwnerType.Module == module);
     }
 
-    public static IReadOnlyCollection<ReflectionCacheEntry> EnumerateNamespace(string @namespace)
+    public static IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> EnumerateNamespace(string @namespace)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(@namespace);
 
@@ -253,18 +252,19 @@ internal static partial class ReflectionCache
                 StringComparison.Ordinal));
     }
 
-    public static IReadOnlyCollection<ReflectionCacheEntry> EnumerateAssignableTo(Type baseType)
+    public static IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> EnumerateAssignableTo(Type baseType)
     {
         ArgumentNullException.ThrowIfNull(baseType);
 
         return EnumerateByKey(key => baseType.IsAssignableFrom(key.OwnerType));
     }
 
-    public static IReadOnlyCollection<ReflectionCacheEntry> Find(Func<ReflectionCacheEntry, bool> predicate)
+    public static IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> Find(
+        Func<ReflectionCacheEntry, bool> predicate)
     {
         ArgumentNullException.ThrowIfNull(predicate);
 
-        return EnumerateEntries(predicate);
+        return PairCollection.Where(pair => predicate(pair.Value));
     }
 
     public static ReflectionCacheEntry? FindFirst(Func<ReflectionCacheEntry, bool> predicate)

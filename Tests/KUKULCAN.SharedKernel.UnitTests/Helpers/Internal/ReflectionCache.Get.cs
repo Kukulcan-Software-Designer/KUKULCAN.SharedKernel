@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers.Internal;
 
 /// <summary>
@@ -8,9 +12,7 @@ internal static partial class ReflectionCache
     /// <summary>
     /// Attempts to retrieve a cached value.
     /// </summary>
-    public static bool TryGet<T>(
-        ReflectionCacheKey key,
-        out T? value)
+    public static bool TryGet<T>(ReflectionCacheKey key, out T? value)
     {
         ArgumentNullException.ThrowIfNull(key);
 

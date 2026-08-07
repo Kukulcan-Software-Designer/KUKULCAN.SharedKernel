@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Statistics;
 
@@ -10,9 +13,7 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates a ratio.
     /// </summary>
-    public static double Ratio(
-        double numerator,
-        double denominator)
+    public static double Ratio(double numerator, double denominator)
     {
         if (Math.Abs(denominator) <= StatisticsConstants.DefaultTolerance)
             return StatisticsConstants.ZeroPercent;
@@ -23,24 +24,19 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates a percentage.
     /// </summary>
-    public static double Percentage(
-        double numerator,
-        double denominator)
+    public static double Percentage(double numerator, double denominator)
     {
-        return Ratio(
-            numerator,
-            denominator) * StatisticsConstants.PercentMultiplier;
+        return Ratio(numerator, denominator) * StatisticsConstants.PercentMultiplier;
     }
 
     /// <summary>
     /// Calculates the arithmetic mean.
     /// </summary>
-    public static double Mean(
-        IEnumerable<double> values)
+    public static double Mean(IEnumerable<double> values)
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var array = values.ToArray();
+        double[] array = values.ToArray();
 
         if (array.Length == 0)
             return 0;
@@ -51,8 +47,7 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates the arithmetic mean.
     /// </summary>
-    public static double Mean(
-        IEnumerable<int> values)
+    public static double Mean(IEnumerable<int> values)
     {
         ArgumentNullException.ThrowIfNull(values);
 
@@ -62,8 +57,7 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates the arithmetic mean.
     /// </summary>
-    public static double Mean(
-        IEnumerable<long> values)
+    public static double Mean(IEnumerable<long> values)
     {
         ArgumentNullException.ThrowIfNull(values);
 
@@ -73,19 +67,16 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates the median.
     /// </summary>
-    public static double Median(
-        IEnumerable<double> values)
+    public static double Median(IEnumerable<double> values)
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var array = values
-            .OrderBy(static x => x)
-            .ToArray();
+        double[] array = values.OrderBy(static x => x).ToArray();
 
         if (array.Length == 0)
             return 0;
 
-        var middle = array.Length / 2;
+        int middle = array.Length / 2;
 
         if ((array.Length & 1) == 0)
             return (array[middle - 1] + array[middle]) / 2.0;
@@ -96,12 +87,11 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates the minimum value.
     /// </summary>
-    public static double Minimum(
-        IEnumerable<double> values)
+    public static double Minimum(IEnumerable<double> values)
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var array = values.ToArray();
+        double[] array = values.ToArray();
 
         if (array.Length == 0)
             return 0;
@@ -112,12 +102,11 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates the maximum value.
     /// </summary>
-    public static double Maximum(
-        IEnumerable<double> values)
+    public static double Maximum(IEnumerable<double> values)
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var array = values.ToArray();
+        double[] array = values.ToArray();
 
         if (array.Length == 0)
             return 0;
@@ -128,12 +117,11 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates the range.
     /// </summary>
-    public static double Range(
-        IEnumerable<double> values)
+    public static double Range(IEnumerable<double> values)
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var array = values.ToArray();
+        double[] array = values.ToArray();
 
         if (array.Length == 0)
             return 0;
@@ -144,17 +132,15 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates the population variance.
     /// </summary>
-    public static double Variance(
-        IEnumerable<double> values)
+    public static double Variance(IEnumerable<double> values)
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var array = values.ToArray();
-
+        double[] array = [.. values];
         if (array.Length == 0)
             return 0;
 
-        var mean = array.Average();
+        double mean = array.Average();
 
         return array
             .Select(x => Math.Pow(x - mean, 2))
@@ -164,23 +150,19 @@ public static class StatisticsMath
     /// <summary>
     /// Calculates the standard deviation.
     /// </summary>
-    public static double StandardDeviation(
-        IEnumerable<double> values)
+    public static double StandardDeviation(IEnumerable<double> values)
     {
-        return Math.Sqrt(
-            Variance(values));
+        return Math.Sqrt(Variance(values));
     }
 
     /// <summary>
     /// Calculates the coefficient of variation.
     /// </summary>
-    public static double CoefficientOfVariation(
-        IEnumerable<double> values)
+    public static double CoefficientOfVariation(IEnumerable<double> values)
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var mean = Mean(values);
-
+        double mean = Mean(values);
         if (Math.Abs(mean) <= StatisticsConstants.DefaultTolerance)
             return 0;
 
@@ -190,10 +172,7 @@ public static class StatisticsMath
     /// <summary>
     /// Determines whether two values are approximately equal.
     /// </summary>
-    public static bool NearlyEquals(
-        double left,
-        double right,
-        double tolerance = StatisticsConstants.DefaultTolerance)
+    public static bool NearlyEquals(double left, double right, double tolerance = StatisticsConstants.DefaultTolerance)
     {
         return Math.Abs(left - right) <= tolerance;
     }
@@ -201,45 +180,32 @@ public static class StatisticsMath
     /// <summary>
     /// Clamps a value.
     /// </summary>
-    public static double Clamp(
-        double value,
-        double minimum,
-        double maximum)
+    public static double Clamp(double value, double minimum, double maximum)
     {
-        return Math.Min(
-            Math.Max(value, minimum),
-            maximum);
+        return Math.Min(Math.Max(value, minimum), maximum);
     }
 
     /// <summary>
     /// Normalizes a value to the range 0..1.
     /// </summary>
-    public static double Normalize(
-        double value,
-        double minimum,
-        double maximum)
+    public static double Normalize(double value, double minimum, double maximum)
     {
         if (NearlyEquals(maximum, minimum))
             return 0;
 
-        return Clamp(
-            (value - minimum) / (maximum - minimum),
-            0,
-            1);
+        return Clamp((value - minimum) / (maximum - minimum), 0, 1);
     }
 
     /// <summary>
     /// Calculates a weighted mean.
     /// </summary>
-    public static double WeightedMean(
-        IEnumerable<double> values,
-        IEnumerable<double> weights)
+    public static double WeightedMean(IEnumerable<double> values, IEnumerable<double> weights)
     {
         ArgumentNullException.ThrowIfNull(values);
         ArgumentNullException.ThrowIfNull(weights);
 
-        var valueArray = values.ToArray();
-        var weightArray = weights.ToArray();
+        double[] valueArray = [.. values];
+        double[] weightArray = [.. weights];
 
         if (valueArray.Length != weightArray.Length)
             throw new ArgumentException("Values and weights must have the same length.");
@@ -247,14 +213,14 @@ public static class StatisticsMath
         if (valueArray.Length == 0)
             return 0;
 
-        var totalWeight = weightArray.Sum();
+        double totalWeight = weightArray.Sum();
 
         if (NearlyEquals(totalWeight, 0))
             return 0;
 
         double total = 0;
 
-        for (var i = 0; i < valueArray.Length; i++)
+        for (int i = 0; i < valueArray.Length; i++)
         {
             total += valueArray[i] * weightArray[i];
         }
@@ -265,13 +231,11 @@ public static class StatisticsMath
     /// <summary>
     /// Attempts to calculate the mean.
     /// </summary>
-    public static bool TryMean(
-        IEnumerable<double> values,
-        [NotNullWhen(true)] out double? result)
+    public static bool TryMean(IEnumerable<double> values, [NotNullWhen(true)] out double? result)
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var array = values.ToArray();
+        double[] array = values.ToArray();
 
         if (array.Length == 0)
         {

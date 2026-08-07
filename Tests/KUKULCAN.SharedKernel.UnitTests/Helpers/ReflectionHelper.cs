@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Concurrent;
+using System.Linq;
 using System.Reflection;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers;
@@ -160,6 +161,12 @@ public partial class ReflectionHelper
     /// </summary>
     protected const BindingFlags All = BindingFlags.Instance | BindingFlags.Static |
                                        BindingFlags.Public | BindingFlags.NonPublic;
+    private static string BuildConstructorSignature(ConstructorInfo constructor)
+    {
+        ArgumentNullException.ThrowIfNull(constructor);
+
+        return string.Join(", ", constructor.GetParameters().Select(p => p.ParameterType.Name));
+    }
 
     #endregion
 }

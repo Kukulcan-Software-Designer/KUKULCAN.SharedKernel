@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers;
@@ -48,7 +49,7 @@ public partial class ReflectionHelper
     {
         ArgumentNullException.ThrowIfNull(type);
 
-        var constructors = GetConstructors(type);
+        IReadOnlyCollection<ConstructorInfo> constructors = GetConstructors(type);
 
         if (constructors.Count == 0)
             return 0;
@@ -75,9 +76,7 @@ public partial class ReflectionHelper
     {
         ArgumentNullException.ThrowIfNull(type);
 
-        return GetConstructors(type)
-            .OrderBy(c => c.GetParameters().Length)
-            .FirstOrDefault();
+        return GetConstructors(type).OrderBy(c => c.GetParameters().Length).FirstOrDefault();
     }
 
     #endregion
@@ -101,10 +100,7 @@ public partial class ReflectionHelper
     {
         ArgumentNullException.ThrowIfNull(type);
 
-        var signatures =
-            GetConstructors(type)
-                .Select(BuildConstructorSignature)
-                .ToArray();
+        string[] signatures = [.. GetConstructors(type).Select(BuildConstructorSignature)];
 
         return signatures.Length == signatures.Distinct().Count();
     }

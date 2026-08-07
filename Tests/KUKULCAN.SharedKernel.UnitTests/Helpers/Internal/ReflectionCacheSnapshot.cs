@@ -6,25 +6,13 @@ namespace KUKULCAN.SharedKernel.UnitTests.Helpers.Internal;
 /// <summary>
 /// Represents an immutable snapshot of the cache.
 /// </summary>
-internal sealed class ReflectionCacheSnapshot
+internal sealed class ReflectionCacheSnapshot(IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> entries)
 {
-    public ReflectionCacheSnapshot(
-        IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> entries)
-    {
-        Entries = new ReadOnlyDictionary<
-            ReflectionCacheKey,
-            ReflectionCacheEntry>(
-            new Dictionary<
-                ReflectionCacheKey,
-                ReflectionCacheEntry>(entries));
-    }
-
     /// <summary>
     /// Gets the snapshot entries.
     /// </summary>
-    public IReadOnlyDictionary<
-        ReflectionCacheKey,
-        ReflectionCacheEntry> Entries { get; }
+    public IReadOnlyDictionary<ReflectionCacheKey, ReflectionCacheEntry> Entries { get; }
+        = new ReadOnlyDictionary<ReflectionCacheKey, ReflectionCacheEntry>(new Dictionary<ReflectionCacheKey, ReflectionCacheEntry>(entries));
 
     /// <summary>
     /// Gets the number of entries.

@@ -1,3 +1,4 @@
+using System;
 using KUKULCAN.SharedKernel.UnitTests.Helpers;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
@@ -5,7 +6,7 @@ namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
 /// <summary>
 /// Fluent builder used to validate a CLR type.
 /// </summary>
-public sealed partial class TypeAssertionBuilder
+public partial class TypeAssertionBuilder
 {
     private readonly ReflectionHelper _reflection;
 

@@ -1,3 +1,4 @@
+using System;
 using FluentAssertions;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
@@ -5,7 +6,7 @@ namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
 /// <summary>
 /// Provides assertions related to the CLR type kind.
 /// </summary>
-public sealed partial class TypeAssertionBuilder
+public partial class TypeAssertionBuilder
 {
     #region Class
 

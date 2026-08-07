@@ -20,11 +20,12 @@ internal static partial class ReflectionCache
     /// <returns>
     /// Immutable reflection cache snapshot.
     /// </returns>
-    private static ReflectionCacheSnapshot CreateSnapshot(IEnumerable<ReflectionCacheEntry> entries)
+    private static ReflectionCacheSnapshot CreateSnapshot(
+        IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> entries)
     {
         ArgumentNullException.ThrowIfNull(entries);
 
-        return ReflectionCacheSnapshot.Create(entries);
+        return new ReflectionCacheSnapshot(entries);
     }
 
     #endregion
@@ -45,21 +46,6 @@ internal static partial class ReflectionCache
     #endregion
 
     #region Filtered snapshots
-
-    /// <summary>
-    /// Creates an immutable snapshot containing the cache entries
-    /// belonging to the specified category.
-    /// </summary>
-    /// <param name="category">
-    /// Cache category.
-    /// </param>
-    /// <returns>
-    /// Immutable reflection cache snapshot.
-    /// </returns>
-    public static ReflectionCacheSnapshot SnapshotByCategory(ReflectionCacheCategory category)
-    {
-        return CreateSnapshot(EnumerateCategory(category));
-    }
 
     /// <summary>
     /// Creates an immutable snapshot containing the cache entries
@@ -88,8 +74,7 @@ internal static partial class ReflectionCache
     /// <returns>
     /// Immutable reflection cache snapshot.
     /// </returns>
-    public static ReflectionCacheSnapshot SnapshotByAssembly(
-        Assembly assembly)
+    public static ReflectionCacheSnapshot SnapshotByAssembly(Assembly assembly)
     {
         ArgumentNullException.ThrowIfNull(assembly);
 
@@ -145,49 +130,6 @@ internal static partial class ReflectionCache
         ArgumentNullException.ThrowIfNull(baseType);
 
         return CreateSnapshot(EnumerateAssignableTo(baseType));
-    }
-
-    #endregion
-
-    #region Specialized snapshots
-
-    /// <summary>
-    /// Creates an immutable snapshot containing only entries that expose metadata.
-    /// </summary>
-    /// <returns>
-    /// Immutable reflection cache snapshot.
-    /// </returns>
-    public static ReflectionCacheSnapshot SnapshotWithMetadata()
-    {
-        return CreateSnapshot(Find(entry => entry.Metadata.Count != 0));
-    }
-
-    /// <summary>
-    /// Creates an immutable snapshot containing only expired entries.
-    /// </summary>
-    /// <returns>
-    /// Immutable reflection cache snapshot.
-    /// </returns>
-    public static ReflectionCacheSnapshot SnapshotExpired()
-    {
-        return CreateSnapshot(Find(entry => entry.IsExpired));
-    }
-
-    /// <summary>
-    /// Creates an immutable snapshot containing the entries satisfying
-    /// the specified predicate.
-    /// </summary>
-    /// <param name="predicate">
-    /// Predicate used to select cache entries.
-    /// </param>
-    /// <returns>
-    /// Immutable reflection cache snapshot.
-    /// </returns>
-    public static ReflectionCacheSnapshot Snapshot(Func<ReflectionCacheEntry, bool> predicate)
-    {
-        ArgumentNullException.ThrowIfNull(predicate);
-
-        return CreateSnapshot(Find(predicate));
     }
 
     #endregion

@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Statistics;
 
@@ -12,9 +15,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Creates a distribution from the specified sequence.
     /// </summary>
-    public static DistributionSnapshot<T> ToDistribution<T>(
-        this IEnumerable<T> source)
-        where T : notnull
+    public static DistributionSnapshot<T> ToDistribution<T>(this IEnumerable<T> source) where T : notnull
     {
         ArgumentNullException.ThrowIfNull(source);
 
@@ -24,23 +25,19 @@ public static class StatisticsExtensions
     /// <summary>
     /// Creates a distribution using the specified selector.
     /// </summary>
-    public static DistributionSnapshot<TKey> ToDistribution<TSource, TKey>(
-        this IEnumerable<TSource> source,
-        Func<TSource, TKey> selector)
-        where TKey : notnull
+    public static DistributionSnapshot<TKey> ToDistribution<TSource, TKey>(this IEnumerable<TSource> source,
+        Func<TSource, TKey> selector) where TKey : notnull
     {
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(selector);
 
-        return StatisticsBuilder.BuildDistribution(
-            source.Select(selector));
+        return StatisticsBuilder.BuildDistribution(source.Select(selector));
     }
 
     /// <summary>
     /// Calculates the arithmetic mean.
     /// </summary>
-    public static double Mean(
-        this IEnumerable<double> source)
+    public static double Mean(this IEnumerable<double> source)
     {
         ArgumentNullException.ThrowIfNull(source);
 
@@ -50,8 +47,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Calculates the arithmetic mean.
     /// </summary>
-    public static double Mean(
-        this IEnumerable<int> source)
+    public static double Mean(this IEnumerable<int> source)
     {
         ArgumentNullException.ThrowIfNull(source);
 
@@ -61,8 +57,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Calculates the median.
     /// </summary>
-    public static double Median(
-        this IEnumerable<double> source)
+    public static double Median(this IEnumerable<double> source)
     {
         ArgumentNullException.ThrowIfNull(source);
 
@@ -72,8 +67,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Calculates the variance.
     /// </summary>
-    public static double Variance(
-        this IEnumerable<double> source)
+    public static double Variance(this IEnumerable<double> source)
     {
         ArgumentNullException.ThrowIfNull(source);
 
@@ -83,8 +77,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Calculates the standard deviation.
     /// </summary>
-    public static double StandardDeviation(
-        this IEnumerable<double> source)
+    public static double StandardDeviation(this IEnumerable<double> source)
     {
         ArgumentNullException.ThrowIfNull(source);
 
@@ -94,8 +87,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Calculates the coefficient of variation.
     /// </summary>
-    public static double CoefficientOfVariation(
-        this IEnumerable<double> source)
+    public static double CoefficientOfVariation(this IEnumerable<double> source)
     {
         ArgumentNullException.ThrowIfNull(source);
 
@@ -138,9 +130,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Gets a required metric.
     /// </summary>
-    public static T Require<T>(
-        this StatisticsSnapshot snapshot,
-        string metricName)
+    public static T Require<T>(this StatisticsSnapshot snapshot, string metricName)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
@@ -150,9 +140,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Determines whether a metric exists.
     /// </summary>
-    public static bool HasMetric(
-        this StatisticsSnapshot snapshot,
-        string metricName)
+    public static bool HasMetric(this StatisticsSnapshot snapshot, string metricName)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
@@ -162,8 +150,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Enumerates metric names.
     /// </summary>
-    public static IEnumerable<string> MetricNames(
-        this StatisticsSnapshot snapshot)
+    public static IEnumerable<string> MetricNames(this StatisticsSnapshot snapshot)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
@@ -173,8 +160,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Enumerates metric values.
     /// </summary>
-    public static IEnumerable<object?> MetricValues(
-        this StatisticsSnapshot snapshot)
+    public static IEnumerable<object?> MetricValues(this StatisticsSnapshot snapshot)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
@@ -188,9 +174,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Gets the dominant entry.
     /// </summary>
-    public static DistributionEntry<TKey>? Dominant<TKey>(
-        this DistributionSnapshot<TKey> snapshot)
-        where TKey : notnull
+    public static DistributionEntry<TKey>? Dominant<TKey>(this DistributionSnapshot<TKey> snapshot) where TKey : notnull
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
@@ -200,10 +184,8 @@ public static class StatisticsExtensions
     /// <summary>
     /// Gets the top N entries.
     /// </summary>
-    public static IReadOnlyList<DistributionEntry<TKey>> Top<TKey>(
-        this DistributionSnapshot<TKey> snapshot,
-        int count)
-        where TKey : notnull
+    public static IReadOnlyList<DistributionEntry<TKey>> Top<TKey>(this DistributionSnapshot<TKey> snapshot,
+        int count) where TKey : notnull
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
@@ -213,9 +195,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Gets the bottom N entries.
     /// </summary>
-    public static IReadOnlyList<DistributionEntry<TKey>> Bottom<TKey>(
-        this DistributionSnapshot<TKey> snapshot,
-        int count)
+    public static IReadOnlyList<DistributionEntry<TKey>> Bottom<TKey>(this DistributionSnapshot<TKey> snapshot, int count)
         where TKey : notnull
     {
         ArgumentNullException.ThrowIfNull(snapshot);
@@ -226,10 +206,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Determines whether the specified key exists.
     /// </summary>
-    public static bool ContainsKey<TKey>(
-        this DistributionSnapshot<TKey> snapshot,
-        TKey key)
-        where TKey : notnull
+    public static bool ContainsKey<TKey>(this DistributionSnapshot<TKey> snapshot, TKey key) where TKey : notnull
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
@@ -243,8 +220,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Formats a statistics snapshot.
     /// </summary>
-    public static string ToStatisticsString(
-        this StatisticsSnapshot snapshot)
+    public static string ToStatisticsString(this StatisticsSnapshot snapshot)
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 
@@ -254,9 +230,7 @@ public static class StatisticsExtensions
     /// <summary>
     /// Formats a distribution.
     /// </summary>
-    public static string ToStatisticsString<TKey>(
-        this DistributionSnapshot<TKey> snapshot)
-        where TKey : notnull
+    public static string ToStatisticsString<TKey>(this DistributionSnapshot<TKey> snapshot) where TKey : notnull
     {
         ArgumentNullException.ThrowIfNull(snapshot);
 

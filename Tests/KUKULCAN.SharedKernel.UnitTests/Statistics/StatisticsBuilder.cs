@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Statistics;
 
@@ -84,10 +87,7 @@ public sealed class StatisticsBuilder
     public StatisticsSnapshot Build()
     {
         return new StatisticsSnapshot(
-            new ReadOnlyDictionary<string, object?>(
-                new Dictionary<string, object?>(
-                    _metrics,
-                    StringComparer.Ordinal)));
+            new ReadOnlyDictionary<string, object?>(new Dictionary<string, object?>(_metrics, StringComparer.Ordinal)));
     }
 
     /// <summary>
@@ -99,16 +99,13 @@ public sealed class StatisticsBuilder
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var grouped = values
+        IOrderedEnumerable<IGrouping<TKey, TKey>> grouped = values
             .GroupBy(static x => x)
             .OrderByDescending(static g => g.Count())
             .ThenBy(static g => g.Key);
-
-        var total = grouped.Sum(static g => g.Count());
-
-        var rank = 0;
-
-        var entries = grouped.Select(g =>
+        int total = grouped.Sum(static g => g.Count());
+        int rank = 0;
+        IEnumerable<DistributionEntry<TKey>> entries = grouped.Select(g =>
             new DistributionEntry<TKey>
             {
                 Key = g.Key,
@@ -124,16 +121,14 @@ public sealed class StatisticsBuilder
     /// Creates a distribution snapshot from an existing dictionary.
     /// </summary>
     public static DistributionSnapshot<TKey> BuildDistribution<TKey>(
-        IReadOnlyDictionary<TKey, int> values)
-        where TKey : notnull
+        IReadOnlyDictionary<TKey, int> values) where TKey : notnull
     {
         ArgumentNullException.ThrowIfNull(values);
 
-        var total = values.Values.Sum();
+        int total = values.Values.Sum();
+        int rank = 0;
 
-        var rank = 0;
-
-        var entries = values
+        IEnumerable<DistributionEntry<TKey>> entries = values
             .OrderByDescending(static x => x.Value)
             .ThenBy(static x => x.Key)
             .Select(x =>

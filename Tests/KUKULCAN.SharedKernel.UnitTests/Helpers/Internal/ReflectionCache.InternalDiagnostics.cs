@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers.Internal;
@@ -343,24 +342,22 @@ internal static partial class ReflectionCache
     /// <see langword="true"/> if the cache entry exists;
     /// otherwise <see langword="false"/>.
     /// </returns>
-    private static bool TryRequireEntry(
-        ReflectionCacheKey key,
-        out ReflectionCacheEntry? entry)
+    private static bool TryRequireEntry(ReflectionCacheKey key, out ReflectionCacheEntry? entry)
     {
         ArgumentNullException.ThrowIfNull(key);
 
         return _entries.TryGetValue(key, out entry);
     }
+
     /// <summary>
     /// Enumerates cache entries whose key satisfies the specified predicate.
     /// </summary>
-    private static IReadOnlyCollection<ReflectionCacheEntry> EnumerateByKey(
+    private static IEnumerable<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>> EnumerateByKey(
         Func<ReflectionCacheKey, bool> predicate)
     {
         ArgumentNullException.ThrowIfNull(predicate);
 
-        return EnumerateEntries(
-            pair => predicate(pair.Key));
+        return PairCollection.Where(pair => predicate(pair.Key));
     }
 
     /// <summary>

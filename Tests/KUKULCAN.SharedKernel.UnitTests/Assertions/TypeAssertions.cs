@@ -1,3 +1,5 @@
+using System;
+
 namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
 
 /// <summary>

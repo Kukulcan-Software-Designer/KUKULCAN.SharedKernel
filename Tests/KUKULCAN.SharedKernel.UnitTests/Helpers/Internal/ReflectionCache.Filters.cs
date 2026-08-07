@@ -16,9 +16,7 @@ internal static partial class ReflectionCache
         return pair => StringComparer.Ordinal.Equals(pair.Key.Category, category);
     }
 
-    internal static Func<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>, bool>
-        ByType(
-            Type ownerType)
+    internal static Func<KeyValuePair<ReflectionCacheKey, ReflectionCacheEntry>, bool> ByType(Type ownerType)
     {
         ArgumentNullException.ThrowIfNull(ownerType);
 

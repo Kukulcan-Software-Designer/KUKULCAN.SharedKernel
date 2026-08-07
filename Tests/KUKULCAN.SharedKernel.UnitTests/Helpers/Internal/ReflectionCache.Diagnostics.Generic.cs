@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers.Internal;
 
 /// <summary>

@@ -10,6 +10,7 @@
 
     <ItemGroup>
         <PackageReference Include="AutoFixture" Version="4.18.1" />
+        <PackageReference Include="AutoFixture.AutoMoq" Version="4.18.1" />
         <PackageReference Include="coverlet.collector" Version="6.0.4"/>
         <PackageReference Include="FluentAssertions" Version="8.10.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.0"/>
@@ -21,32 +22,6 @@
 
     <ItemGroup>
         <Using Include="NUnit.Framework"/>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Abstractions\" />
-      <Folder Include="Builders\" />
-      <Folder Include="Collections\" />
-      <Folder Include="Common\" />
-      <Folder Include="Contracts\" />
-      <Folder Include="Domain\" />
-      <Folder Include="Exceptions\" />
-      <Folder Include="Fixtures\" />
-      <Folder Include="Globalization\" />
-      <Folder Include="Identification\" />
-      <Folder Include="Internals\" />
-      <Folder Include="Localization\" />
-      <Folder Include="Messaging\" />
-      <Folder Include="Money\" />
-      <Folder Include="Pagination\" />
-      <Folder Include="Primitives\" />
-      <Folder Include="Results\" />
-      <Folder Include="Serialization\" />
-      <Folder Include="Specifications\" />
-      <Folder Include="TestData\" />
-      <Folder Include="Time\" />
-      <Folder Include="Validation\" />
-      <Folder Include="Versioning\" />
     </ItemGroup>
 
     <ItemGroup>

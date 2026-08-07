@@ -14,18 +14,15 @@ public partial class ReflectionHelper
 {
     #region Type
 
-    public bool IsClass<T>()
-        => typeof(T).IsClass;
+    public bool IsClass<T>() => typeof(T).IsClass;
 
-    public bool IsAbstract<T>()
-        => typeof(T).IsAbstract;
+    public bool IsAbstract<T>() => typeof(T).IsAbstract;
 
-    public bool IsSealed<T>()
-        => typeof(T).IsSealed;
+    public bool IsSealed<T>() => typeof(T).IsSealed;
 
     public bool IsStatic<T>()
     {
-        var type = typeof(T);
+        Type type = typeof(T);
 
         return type.IsAbstract &&
                type.IsSealed;
@@ -70,12 +67,9 @@ public partial class ReflectionHelper
         return PublicProperties<T>().Any();
     }
 
-    public bool HasPublicProperty<T>(
-        string propertyName)
+    public bool HasPublicProperty<T>(string propertyName)
     {
-        return TryFindProperty<T>(
-            propertyName,
-            out _);
+        return TryFindProperty<T>(propertyName, out _);
     }
 
     #endregion
@@ -87,12 +81,9 @@ public partial class ReflectionHelper
         return PublicMethods<T>().Any();
     }
 
-    public bool HasPublicMethod<T>(
-        string methodName)
+    public bool HasPublicMethod<T>(string methodName)
     {
-        return TryFindMethod<T>(
-            methodName,
-            out _);
+        return TryFindMethod<T>(methodName, out _);
     }
 
     #endregion
@@ -104,39 +95,14 @@ public partial class ReflectionHelper
         return PublicFields<T>().Any();
     }
 
-    public bool HasPublicField<T>(
-        string fieldName)
+    public bool HasPublicField<T>(string fieldName)
     {
-        return TryFindField<T>(
-            fieldName,
-            out _);
+        return TryFindField<T>(fieldName, out _);
     }
 
     public bool HasNoPublicFields<T>()
     {
         return !HasPublicFields<T>();
-    }
-
-    #endregion
-
-    #region Interfaces
-
-    public bool Implements<TImplementation, TInterface>()
-    {
-        return typeof(TInterface)
-            .IsAssignableFrom(typeof(TImplementation));
-    }
-
-    #endregion
-
-    #region Attributes
-
-    public bool HasAttribute<TObject, TAttribute>()
-        where TAttribute : Attribute
-    {
-        return typeof(TObject)
-            .GetCustomAttribute<TAttribute>()
-            is not null;
     }
 
     #endregion
@@ -154,8 +120,7 @@ public partial class ReflectionHelper
             {
                 var setter = x.SetMethod;
 
-                return setter is null ||
-                       !setter.IsPublic;
+                return setter is null || !setter.IsPublic;
             });
     }
 
@@ -165,23 +130,12 @@ public partial class ReflectionHelper
 
     public bool OverridesEquals<T>()
     {
-        return typeof(T)
-            .GetMethod(
-                nameof(object.Equals),
-                new[]
-                {
-                    typeof(object)
-                })?
-            .DeclaringType != typeof(object);
+        return typeof(T).GetMethod(nameof(object.Equals), [typeof(object)])?.DeclaringType != typeof(object);
     }
 
     public bool OverridesHashCode<T>()
     {
-        return typeof(T)
-            .GetMethod(
-                nameof(GetHashCode),
-                Type.EmptyTypes)?
-            .DeclaringType != typeof(object);
+        return typeof(T).GetMethod(nameof(GetHashCode), Type.EmptyTypes)?.DeclaringType != typeof(object);
     }
 
     #endregion

@@ -113,7 +113,7 @@ public partial class ReflectionHelper
 
     #region Constructors
 
-    public static bool TryFindDefaultConstructor<T>(
+    public bool TryFindDefaultConstructor<T>(
         out ConstructorInfo? constructor)
     {
         constructor = PublicConstructors<T>()
@@ -122,7 +122,7 @@ public partial class ReflectionHelper
         return constructor is not null;
     }
 
-    public static ConstructorInfo GetRequiredDefaultConstructor<T>()
+    public ConstructorInfo GetRequiredDefaultConstructor<T>()
     {
         if (TryFindDefaultConstructor<T>(out var constructor))
             return constructor!;

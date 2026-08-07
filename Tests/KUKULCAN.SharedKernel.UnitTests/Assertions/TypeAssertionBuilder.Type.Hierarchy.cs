@@ -6,7 +6,7 @@ namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
 /// Provides assertions related to inheritance,
 /// assignability and interface implementation.
 /// </summary>
-public sealed partial class TypeAssertionBuilder
+public partial class TypeAssertionBuilder
 {
     #region Base Type
 

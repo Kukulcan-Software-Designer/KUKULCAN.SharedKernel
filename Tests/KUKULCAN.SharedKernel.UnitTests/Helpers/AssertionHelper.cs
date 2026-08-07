@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using FluentAssertions;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers;

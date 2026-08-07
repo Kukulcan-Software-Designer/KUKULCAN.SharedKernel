@@ -1,6 +1,5 @@
+using System;
 using System.Globalization;
-using System.Reflection;
-
 using FluentAssertions;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
@@ -9,7 +8,7 @@ namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
 /// Provides assertions related to assembly metadata,
 /// namespaces and naming conventions.
 /// </summary>
-public sealed partial class TypeAssertionBuilder
+public partial class TypeAssertionBuilder
 {
     #region Assembly
 
@@ -20,7 +19,8 @@ public sealed partial class TypeAssertionBuilder
     {
         Type.Assembly
             .Should()
-            .Be(typeof(TAssemblyMarker).Assembly,
+            .BeSameAs(
+                typeof(TAssemblyMarker).Assembly,
                 $"{Type.FullName} should belong to assembly {typeof(TAssemblyMarker).Assembly.GetName().Name}.");
 
         return this;
@@ -246,7 +246,7 @@ public sealed partial class TypeAssertionBuilder
 
         Type.Assembly
             .GetName()
-            .CultureInfo
+            .CultureInfo!
             .Name
             .Should()
             .Be(cultureName);

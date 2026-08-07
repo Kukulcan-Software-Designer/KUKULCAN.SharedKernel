@@ -1,5 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
-
+using System.Threading;
 using FluentAssertions;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
@@ -15,7 +18,7 @@ namespace KUKULCAN.SharedKernel.UnitTests.Assertions;
 /// of the builder in order to keep each partial class focused
 /// on a single responsibility.
 /// </summary>
-public sealed partial class TypeAssertionBuilder
+public partial class TypeAssertionBuilder
 {
     #region Helpers
 
