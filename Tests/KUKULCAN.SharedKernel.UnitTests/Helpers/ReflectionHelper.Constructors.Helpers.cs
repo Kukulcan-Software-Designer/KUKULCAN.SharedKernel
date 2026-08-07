@@ -1,6 +1,6 @@
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers;
 
-public class ReflectionHelper_Constructors_Helpers
+public partial class ReflectionHelper
 {
-    
+
 }

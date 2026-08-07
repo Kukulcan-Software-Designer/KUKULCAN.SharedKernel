@@ -1,6 +1,6 @@
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers.Internal;
 
-public class ReflectionCache_Events
+internal static partial class ReflectionCache
 {
-    
+
 }
