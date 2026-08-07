@@ -1,9 +1,7 @@
 using AutoFixture;
 using AutoFixture.AutoMoq;
-using FluentAssertions;
 using KUKULCAN.SharedKernel.UnitTests.Helpers;
 using Moq;
-using NUnit.Framework;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Infrastructure;
 
