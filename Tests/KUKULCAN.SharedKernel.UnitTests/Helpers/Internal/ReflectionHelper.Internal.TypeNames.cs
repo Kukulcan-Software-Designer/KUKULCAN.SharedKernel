@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers.Internal;
 
 /// <summary>

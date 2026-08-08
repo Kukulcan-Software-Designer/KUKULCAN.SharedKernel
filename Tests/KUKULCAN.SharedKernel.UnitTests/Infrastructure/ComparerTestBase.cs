@@ -1,6 +1,10 @@
 namespace KUKULCAN.SharedKernel.UnitTests.Infrastructure;
 
-public class ComparerTestBase
+/// <summary>
+/// Provides the common base infrastructure for tests that validate
+/// comparison and equality behavior.
+/// </summary>
+public abstract class ComparerTestBase : TestBase
 {
-    
+
 }

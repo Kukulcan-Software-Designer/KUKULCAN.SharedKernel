@@ -1,6 +1,10 @@
 namespace KUKULCAN.SharedKernel.UnitTests.Infrastructure;
 
-public class SerializationTestBase
+/// <summary>
+/// Provides the common base infrastructure for tests that validate
+/// serialization and deserialization behavior.
+/// </summary>
+public abstract class SerializationTestBase : TestBase
 {
-    
+
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers.Internal;

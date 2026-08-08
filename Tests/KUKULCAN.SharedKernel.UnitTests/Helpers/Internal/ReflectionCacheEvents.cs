@@ -1,5 +1,3 @@
-using System;
-
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers.Internal;
 
 /// <summary>
@@ -15,34 +13,23 @@ internal sealed class ReflectionCacheEvents
 
     public event EventHandler? CacheCleared;
 
-    internal void RaiseAdded(
-        ReflectionCacheEntry entry)
+    internal void RaiseAdded(ReflectionCacheEntry entry)
     {
-        EntryAdded?.Invoke(
-            this,
-            entry);
+        EntryAdded?.Invoke(this, entry);
     }
 
-    internal void RaiseRemoved(
-        ReflectionCacheEntry entry)
+    internal void RaiseRemoved(ReflectionCacheEntry entry)
     {
-        EntryRemoved?.Invoke(
-            this,
-            entry);
+        EntryRemoved?.Invoke(this, entry);
     }
 
-    internal void RaiseInvalidated(
-        ReflectionCacheEntry entry)
+    internal void RaiseInvalidated(ReflectionCacheEntry entry)
     {
-        EntryInvalidated?.Invoke(
-            this,
-            entry);
+        EntryInvalidated?.Invoke(this, entry);
     }
 
     internal void RaiseCleared()
     {
-        CacheCleared?.Invoke(
-            this,
-            EventArgs.Empty);
+        CacheCleared?.Invoke(this, EventArgs.Empty);
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using FluentAssertions;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Assertions;

@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.UnitTests.Helpers;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Assertions;

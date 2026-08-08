@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 
 namespace KUKULCAN.SharedKernel.UnitTests.Helpers;
@@ -54,8 +51,7 @@ public partial class ReflectionHelper
     /// <summary>
     /// Gets the number of parameters of the supplied constructor.
     /// </summary>
-    public int GetParameterCount(
-        ConstructorInfo constructor)
+    public int GetParameterCount(ConstructorInfo constructor)
     {
         ArgumentNullException.ThrowIfNull(constructor);
 

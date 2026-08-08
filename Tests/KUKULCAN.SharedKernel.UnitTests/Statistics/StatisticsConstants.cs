@@ -5,4 +5,6 @@ namespace KUKULCAN.SharedKernel.UnitTests.Statistics;
 /// </summary>
 public static partial class StatisticsConstants
 {
+    // The actual constants used by the tests
+    // they must be kept here.
 }
