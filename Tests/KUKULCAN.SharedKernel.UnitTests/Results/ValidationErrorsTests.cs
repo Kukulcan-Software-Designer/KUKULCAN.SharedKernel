@@ -277,63 +277,63 @@ public sealed class ValidationErrorsTests
         {
             Assert.That(
                 () => ValidationErrors.Required(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.Null(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.Empty(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.InvalidFormat(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.InvalidPattern(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.InvalidEmail(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.InvalidPhone(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.InvalidUrl(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.CollectionMustBeEmpty(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.CollectionMustNotBeEmpty(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.Duplicate(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.InvalidCollectionItem(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.PastDate(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.FutureDate(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
 
             Assert.That(
                 () => ValidationErrors.InvalidEnum(null!),
-                Throws.ArgumentException);
+                Throws.TypeOf<ArgumentNullException>());
         });
     }
 
