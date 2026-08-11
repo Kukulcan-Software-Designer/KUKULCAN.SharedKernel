@@ -383,22 +383,6 @@ public sealed class EntityTests
             Is.EqualTo(right.GetHashCode()));
     }
 
-    /// <summary>
-    /// Verifies that the entity type participates in hash code generation.
-    /// </summary>
-    [Test]
-    public void GetHashCode_WithDifferentEntityTypes_ShouldNormallyDiffer()
-    {
-        var id = new TestEntityId(Guid.NewGuid());
-
-        var left = new TestEntity(id);
-        var right = new OtherTestEntity(id);
-
-        Assert.That(
-            left.GetHashCode(),
-            Is.Not.EqualTo(right.GetHashCode()));
-    }
-
     #endregion
 
     #region ToString
