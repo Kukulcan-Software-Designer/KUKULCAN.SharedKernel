@@ -28,4 +28,10 @@
       <ProjectReference Include="..\..\Source\KUKULCAN.SharedKernel\KUKULCAN.SharedKernel.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Attributes\" />
+      <Folder Include="Globalization\" />
+      <Folder Include="Versioning\" />
+    </ItemGroup>
+
 </Project>
