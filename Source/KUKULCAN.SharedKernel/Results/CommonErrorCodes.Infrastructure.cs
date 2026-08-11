@@ -16,7 +16,7 @@ public static partial class CommonErrorCodes
     public const string Timeout = "INFRASTRUCTURE.TIMEOUT";
 
     /// <summary>
-    /// The operation was cancelled.
+    /// The operation was canceled.
     /// </summary>
     public const string Cancelled = "INFRASTRUCTURE.CANCELLED";
 }

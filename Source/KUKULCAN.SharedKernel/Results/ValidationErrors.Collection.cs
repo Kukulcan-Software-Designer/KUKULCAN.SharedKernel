@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results.Internals;
 
 namespace KUKULCAN.SharedKernel.Results;
@@ -24,9 +23,7 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.CollectionMustBeEmpty,
-            ValidationMessages.CollectionMustBeEmpty(propertyName));
+        return new Error(CommonErrorCodes.CollectionMustBeEmpty, ValidationMessages.CollectionMustBeEmpty(propertyName));
     }
 
     /// <summary>
@@ -45,9 +42,7 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.CollectionMustNotBeEmpty,
-            ValidationMessages.CollectionMustNotBeEmpty(propertyName));
+        return new Error(CommonErrorCodes.CollectionMustNotBeEmpty, ValidationMessages.CollectionMustNotBeEmpty(propertyName));
     }
 
     /// <summary>
@@ -66,9 +61,7 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.Duplicate,
-            ValidationMessages.Duplicate(propertyName));
+        return new Error(CommonErrorCodes.Duplicate, ValidationMessages.Duplicate(propertyName));
     }
 
     /// <summary>
@@ -87,8 +80,6 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.InvalidCollectionItem,
-            ValidationMessages.InvalidCollectionItem(propertyName));
+        return new Error(CommonErrorCodes.InvalidCollectionItem, ValidationMessages.InvalidCollectionItem(propertyName));
     }
 }

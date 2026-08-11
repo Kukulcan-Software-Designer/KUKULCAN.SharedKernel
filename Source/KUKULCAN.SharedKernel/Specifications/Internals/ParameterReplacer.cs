@@ -1,5 +1,3 @@
-using System;
-
 namespace KUKULCAN.SharedKernel.Specifications.Internals;
 
 /// <summary>
@@ -33,9 +31,7 @@ internal sealed class ParameterReplacer : ExpressionVisitor
     {
         ArgumentNullException.ThrowIfNull(node);
 
-        return node == _source
-            ? _target
-            : base.VisitParameter(node);
+        return node == _source ? _target : base.VisitParameter(node);
     }
 
     /// <summary>
@@ -59,7 +55,6 @@ internal sealed class ParameterReplacer : ExpressionVisitor
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(target);
 
-        return new ParameterReplacer(source, target)
-            .Visit(expression)!;
+        return new ParameterReplacer(source, target).Visit(expression)!;
     }
 }

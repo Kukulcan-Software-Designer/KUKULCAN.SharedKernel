@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Exceptions.Internals;
 using KUKULCAN.SharedKernel.Results;
 using KUKULCAN.SharedKernel.Validations;
@@ -47,14 +46,12 @@ public sealed class ValidationException : SharedKernelException
         : base(ValidationErrors.ValidationFailed(), innerException)
     {
         ArgumentNullException.ThrowIfNull(validationResult);
-
         if (validationResult.IsValid)
         {
             throw new ArgumentException(
                 ExceptionMessages.ValidationResultMustContainFailures(),
                 nameof(validationResult));
         }
-
         ValidationResult = validationResult;
     }
 
@@ -66,6 +63,5 @@ public sealed class ValidationException : SharedKernelException
     /// <summary>
     /// Gets the validation failures.
     /// </summary>
-    public IReadOnlyList<ValidationFailure> Failures =>
-        ValidationResult.Failures;
+    public IReadOnlyList<ValidationFailure> Failures => ValidationResult.Failures;
 }

@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Identifiers.Internals;
 
 namespace KUKULCAN.SharedKernel.Identifiers;
@@ -25,14 +24,11 @@ public abstract class GuidEntityId : EntityId<Guid>
     /// <exception cref="ArgumentException">
     /// <paramref name="value"/> is <see cref="Guid.Empty"/>.
     /// </exception>
-    protected GuidEntityId(Guid value)
-        : base(value)
+    protected GuidEntityId(Guid value) : base(value)
     {
         if (value == Guid.Empty)
         {
-            throw new ArgumentException(
-                IdentifierMessages.GuidCannotBeEmpty(),
-                nameof(value));
+            throw new ArgumentException(IdentifierMessages.GuidCannotBeEmpty(), nameof(value));
         }
     }
 }

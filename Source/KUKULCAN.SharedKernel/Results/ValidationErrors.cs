@@ -15,8 +15,6 @@ public static partial class ValidationErrors
     /// </returns>
     public static Error ValidationFailed()
     {
-        return new Error(
-            CommonErrorCodes.ValidationFailed,
-            ValidationMessages.ValidationFailed());
+        return new Error(CommonErrorCodes.ValidationFailed, ValidationMessages.ValidationFailed());
     }
 }

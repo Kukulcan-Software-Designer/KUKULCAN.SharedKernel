@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-
 namespace KUKULCAN.SharedKernel.Globalization.Culture;
 
 /// <summary>
@@ -34,7 +31,7 @@ public sealed class SupportedCulture : IEquatable<SupportedCulture>, IComparable
     /// Gets all registered supported cultures.
     /// </summary>
     public static IReadOnlyCollection<SupportedCulture> All =>
-        new ReadOnlyCollection<SupportedCulture>(_registered.Values.OrderBy(c => c.Name).ToList());
+        new ReadOnlyCollection<SupportedCulture>([.. _registered.Values.OrderBy(c => c.Name)]);
 
     /// <summary>
     /// Gets the culture name.
@@ -88,7 +85,9 @@ public sealed class SupportedCulture : IEquatable<SupportedCulture>, IComparable
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
 
-        return _registered.TryGetValue(name, out SupportedCulture? culture) ? culture : throw new ArgumentException($"Culture '{name}' is not supported.", nameof(name));
+        return _registered.TryGetValue(name, out SupportedCulture? culture)
+            ? culture :
+            throw new ArgumentException($"Culture '{name}' is not supported.", nameof(name));
     }
 
     /// <summary>

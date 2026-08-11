@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Domain;
 
 namespace KUKULCAN.SharedKernel.Versioning;
@@ -57,12 +56,8 @@ public sealed class SemanticVersion : ValueObject, IComparable<SemanticVersion>,
         Major = major;
         Minor = minor;
         Patch = patch;
-        Prerelease = string.IsNullOrWhiteSpace(prerelease)
-            ? null
-            : prerelease;
-        BuildMetadata = string.IsNullOrWhiteSpace(buildMetadata)
-            ? null
-            : buildMetadata;
+        Prerelease = string.IsNullOrWhiteSpace(prerelease) ? null : prerelease;
+        BuildMetadata = string.IsNullOrWhiteSpace(buildMetadata) ? null : buildMetadata;
     }
 
     /// <summary>
@@ -127,12 +122,7 @@ public sealed class SemanticVersion : ValueObject, IComparable<SemanticVersion>,
         {
             return false;
         }
-        version = new SemanticVersion(
-            major,
-            minor,
-            patch,
-            prerelease,
-            build);
+        version = new SemanticVersion(major, minor, patch, prerelease, build);
 
         return true;
     }
@@ -144,8 +134,7 @@ public sealed class SemanticVersion : ValueObject, IComparable<SemanticVersion>,
         => TryParse(s, null, out version);
 
     /// <inheritdoc/>
-    public static SemanticVersion Parse(ReadOnlySpan<char> s, IFormatProvider? provider)
-        => Parse(s.ToString(), provider);
+    public static SemanticVersion Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
 
     /// <inheritdoc/>
     public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, [MaybeNullWhen(false)] out SemanticVersion result)

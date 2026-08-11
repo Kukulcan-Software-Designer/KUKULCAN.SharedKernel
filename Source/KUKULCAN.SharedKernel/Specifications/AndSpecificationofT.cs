@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Specifications.Internals;
 
 namespace KUKULCAN.SharedKernel.Specifications;

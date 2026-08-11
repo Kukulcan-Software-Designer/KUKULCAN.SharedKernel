@@ -1,4 +1,3 @@
-using System;
 using System.Reflection;
 
 namespace KUKULCAN.SharedKernel.Validations.Internals;
@@ -31,23 +30,18 @@ internal static class PropertyNameHelper
         ArgumentNullException.ThrowIfNull(expression);
         Expression body = expression.Body;
 
-        if (body is UnaryExpression unary &&
-            unary.NodeType == ExpressionType.Convert)
+        if (body is UnaryExpression unary && unary.NodeType == ExpressionType.Convert)
         {
             body = unary.Operand;
         }
         if (body is not MemberExpression member || member.Member is not PropertyInfo property)
         {
-            throw new ArgumentException(
-                ValidationInternalMessages.ExpressionMustReferenceProperty(),
-                nameof(expression));
+            throw new ArgumentException(ValidationInternalMessages.ExpressionMustReferenceProperty(), nameof(expression));
 
         }
         if (property.GetMethod is null)
         {
-            throw new ArgumentException(
-                ValidationInternalMessages.PropertyMustBeReadable(),
-                nameof(expression));
+            throw new ArgumentException(ValidationInternalMessages.PropertyMustBeReadable(), nameof(expression));
         }
 
         return property;

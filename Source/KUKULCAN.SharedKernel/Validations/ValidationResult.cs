@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using KUKULCAN.SharedKernel.Results;
 using KUKULCAN.SharedKernel.Validations.Internals;
 
@@ -13,8 +11,7 @@ public sealed record ValidationResult
     /// <summary>
     /// Represents a successful validation result.
     /// </summary>
-    public static readonly ValidationResult Success = new(
-        Array.Empty<ValidationFailure>());
+    public static readonly ValidationResult Success = new(Array.Empty<ValidationFailure>());
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ValidationResult"/> class.
@@ -24,7 +21,7 @@ public sealed record ValidationResult
     /// </param>
     private ValidationResult(IEnumerable<ValidationFailure> failures)
     {
-        ValidationFailure[] array = failures.ToArray();
+        ValidationFailure[] array = [.. failures];
 
         Failures = Array.AsReadOnly(array);
     }
@@ -90,7 +87,7 @@ public sealed record ValidationResult
     /// </returns>
     public Result ToResult()
     {
-        return IsValid
-            ? Result.Success()
-            : Result.Failure(ValidationErrors.ValidationFailed());
-    }}
+        return IsValid ? Result.Success() : Result.Failure(ValidationErrors.ValidationFailed());
+    }
+
+}

@@ -1,5 +1,3 @@
-using System;
-
 namespace KUKULCAN.SharedKernel.Results;
 
 /// <summary>
@@ -25,14 +23,9 @@ public  class Result
 
         switch (isSuccess)
         {
-            case true when error != Error.None:
-                throw new ArgumentException("A successful result cannot contain an error.", nameof(error));
-            case false when error == Error.None:
-                throw new ArgumentException("A failed result must contain an error.", nameof(error));
-            default:
-                IsSuccess = isSuccess;
-                Error = error;
-                break;
+            case true when error != Error.None: throw new ArgumentException("A successful result cannot contain an error.", nameof(error));
+            case false when error == Error.None: throw new ArgumentException("A failed result must contain an error.", nameof(error));
+            default: IsSuccess = isSuccess; Error = error; break;
         }
     }
 
@@ -86,8 +79,6 @@ public  class Result
     /// </returns>
     public override string ToString()
     {
-        return IsSuccess
-            ? "Success"
-            : $"Failure: {Error}";
+        return IsSuccess ? "Success" : $"Failure: {Error}";
     }
 }

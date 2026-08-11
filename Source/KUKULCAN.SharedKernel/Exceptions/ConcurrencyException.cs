@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results;
 
 namespace KUKULCAN.SharedKernel.Exceptions;
@@ -27,8 +26,7 @@ public sealed class ConcurrencyException : SharedKernelException
     /// <param name="innerException">
     /// The exception that caused the current exception.
     /// </param>
-    public ConcurrencyException(Error error, Exception? innerException)
-        : base(error, innerException)
+    public ConcurrencyException(Error error, Exception? innerException) : base(error, innerException)
     {
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results.Internals;
 
 namespace KUKULCAN.SharedKernel.Results;
@@ -24,9 +23,7 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.Required,
-            ValidationMessages.Required(propertyName));
+        return new Error(CommonErrorCodes.Required, ValidationMessages.Required(propertyName));
     }
 
     /// <summary>
@@ -45,9 +42,7 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.Null,
-            ValidationMessages.Null(propertyName));
+        return new Error(CommonErrorCodes.Null, ValidationMessages.Null(propertyName));
     }
 
     /// <summary>
@@ -66,8 +61,6 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.Empty,
-            ValidationMessages.Empty(propertyName));
+        return new Error(CommonErrorCodes.Empty, ValidationMessages.Empty(propertyName));
     }
 }

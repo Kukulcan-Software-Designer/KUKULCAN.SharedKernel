@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results.Internals;
 
 namespace KUKULCAN.SharedKernel.Results;
@@ -21,9 +20,7 @@ public static class CommonErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(resource);
 
-        return new Error(
-            CommonErrorCodes.NotFound,
-            CommonMessages.NotFound(resource));
+        return new Error(CommonErrorCodes.NotFound, CommonMessages.NotFound(resource));
     }
 
     /// <summary>
@@ -39,9 +36,7 @@ public static class CommonErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(resource);
 
-        return new Error(
-            CommonErrorCodes.Conflict,
-            CommonMessages.Conflict(resource));
+        return new Error(CommonErrorCodes.Conflict, CommonMessages.Conflict(resource));
     }
 
     /// <summary>
@@ -57,9 +52,7 @@ public static class CommonErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(operation);
 
-        return new Error(
-            CommonErrorCodes.InvalidOperation,
-            CommonMessages.InvalidOperation(operation));
+        return new Error(CommonErrorCodes.InvalidOperation, CommonMessages.InvalidOperation(operation));
     }
 
     /// <summary>
@@ -75,9 +68,7 @@ public static class CommonErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(operation);
 
-        return new Error(
-            CommonErrorCodes.NotSupported,
-            CommonMessages.NotSupported(operation));
+        return new Error(CommonErrorCodes.NotSupported, CommonMessages.NotSupported(operation));
     }
 
     /// <summary>
@@ -88,9 +79,7 @@ public static class CommonErrors
     /// </returns>
     public static Error Unauthorized()
     {
-        return new Error(
-            CommonErrorCodes.Unauthorized,
-            CommonMessages.Unauthorized());
+        return new Error(CommonErrorCodes.Unauthorized, CommonMessages.Unauthorized());
     }
 
     /// <summary>
@@ -101,9 +90,7 @@ public static class CommonErrors
     /// </returns>
     public static Error Forbidden()
     {
-        return new Error(
-            CommonErrorCodes.Forbidden,
-            CommonMessages.Forbidden());
+        return new Error(CommonErrorCodes.Forbidden, CommonMessages.Forbidden());
     }
 
     /// <summary>
@@ -114,22 +101,18 @@ public static class CommonErrors
     /// </returns>
     public static Error Timeout()
     {
-        return new Error(
-            CommonErrorCodes.Timeout,
-            CommonMessages.Timeout());
+        return new Error(CommonErrorCodes.Timeout, CommonMessages.Timeout());
     }
 
     /// <summary>
-    /// Creates an error indicating that the operation was cancelled.
+    /// Creates an error indicating that the operation was canceled.
     /// </summary>
     /// <returns>
     /// A <see cref="Error"/> representing the failure.
     /// </returns>
     public static Error Cancelled()
     {
-        return new Error(
-            CommonErrorCodes.Cancelled,
-            CommonMessages.Cancelled());
+        return new Error(CommonErrorCodes.Cancelled, CommonMessages.Cancelled());
     }
 
     /// <summary>
@@ -140,9 +123,7 @@ public static class CommonErrors
     /// </returns>
     public static Error Unexpected()
     {
-        return new Error(
-            CommonErrorCodes.Unexpected,
-            CommonMessages.Unexpected());
+        return new Error(CommonErrorCodes.Unexpected, CommonMessages.Unexpected());
     }
 
     /// <summary>
@@ -153,8 +134,6 @@ public static class CommonErrors
     /// </returns>
     public static Error Unknown()
     {
-        return new Error(
-            CommonErrorCodes.Unknown,
-            CommonMessages.Unknown());
+        return new Error(CommonErrorCodes.Unknown, CommonMessages.Unknown());
     }
 }

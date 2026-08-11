@@ -1,6 +1,3 @@
-using System;
-using System.Threading;
-using System.Threading.Tasks;
 using KUKULCAN.SharedKernel.DomainEvents.Abstractions;
 
 namespace KUKULCAN.SharedKernel.DomainEvents.Dispatching;
@@ -25,7 +22,6 @@ public sealed class DomainEventDispatcher
     public DomainEventDispatcher(IDomainEventDispatcher dispatcher)
     {
         ArgumentNullException.ThrowIfNull(dispatcher);
-
         _dispatcher = dispatcher;
     }
 
@@ -47,7 +43,6 @@ public sealed class DomainEventDispatcher
     public async Task DispatchAsync(IEnumerable<IDomainEvent> domainEvents, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(domainEvents);
-
         foreach (IDomainEvent domainEvent in domainEvents)
         {
             cancellationToken.ThrowIfCancellationRequested();

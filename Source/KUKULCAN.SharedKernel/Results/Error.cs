@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results.Internals;
 
 namespace KUKULCAN.SharedKernel.Results;
@@ -12,9 +11,7 @@ public sealed record Error
     /// <summary>
     /// Gets an <see cref="Error"/> that represents the absence of an error.
     /// </summary>
-    public static readonly Error None = new(
-        CommonErrorCodes.None,
-        CommonMessages.None());
+    public static readonly Error None = new(CommonErrorCodes.None, CommonMessages.None());
 
     /// <summary>
     /// Initializes a new instance of the <see cref="Error"/> class.

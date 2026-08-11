@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Abstractions;
 
 namespace KUKULCAN.SharedKernel.Time.Extensions;
@@ -47,9 +46,7 @@ public static class ClockExtensions
         {
             ArgumentNullException.ThrowIfNull(clock);
 
-            return clock.UtcNow.DayOfWeek is
-                DayOfWeek.Saturday or
-                DayOfWeek.Sunday;
+            return clock.UtcNow.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday;
         }
 
         /// <summary>
@@ -80,8 +77,7 @@ public static class ClockExtensions
         {
             ArgumentNullException.ThrowIfNull(clock);
 
-            return date.UtcDateTime.Date ==
-                   clock.UtcNow.UtcDateTime.Date;
+            return date.UtcDateTime.Date == clock.UtcNow.UtcDateTime.Date;
         }
 
         /// <summary>

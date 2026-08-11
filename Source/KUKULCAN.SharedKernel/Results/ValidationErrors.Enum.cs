@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results.Internals;
 
 namespace KUKULCAN.SharedKernel.Results;
@@ -24,8 +23,6 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.InvalidEnum,
-            ValidationMessages.InvalidEnum(propertyName));
+        return new Error(CommonErrorCodes.InvalidEnum, ValidationMessages.InvalidEnum(propertyName));
     }
 }

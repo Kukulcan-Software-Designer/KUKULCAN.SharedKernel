@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Identifiers.Internals;
 
 namespace KUKULCAN.SharedKernel.Identifiers;

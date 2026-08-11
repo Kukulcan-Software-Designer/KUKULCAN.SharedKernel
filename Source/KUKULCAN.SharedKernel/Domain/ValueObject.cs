@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Domain.Internals;
 
 namespace KUKULCAN.SharedKernel.Domain;
@@ -35,19 +34,14 @@ public abstract class ValueObject : IEquatable<ValueObject>
         {
             return true;
         }
-        if (GetType() != other.GetType())
-        {
-            return false;
-        }
 
-        return StructuralEqualityComparer.Equals(GetEqualityComponents(), other.GetEqualityComponents());
+        return GetType() == other.GetType() && StructuralEqualityComparer.Equals(GetEqualityComponents(), other.GetEqualityComponents());
     }
 
     /// <inheritdoc/>
     public override bool Equals(object? obj)
     {
-        return obj is ValueObject other &&
-               Equals(other);
+        return obj is ValueObject other && Equals(other);
     }
 
     /// <inheritdoc/>

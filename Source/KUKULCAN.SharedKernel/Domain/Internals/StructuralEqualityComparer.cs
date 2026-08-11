@@ -1,6 +1,3 @@
-using System;
-using System.Linq;
-
 namespace KUKULCAN.SharedKernel.Domain.Internals;
 
 /// <summary>
@@ -124,23 +121,31 @@ internal static class StructuralEqualityComparer
         IEnumerator leftEnumerator = left.GetEnumerator();
         IEnumerator rightEnumerator = right.GetEnumerator();
 
-        while (true)
+        try
         {
-            bool hasLeft = leftEnumerator.MoveNext();
-            bool hasRight = rightEnumerator.MoveNext();
+            while (true)
+            {
+                bool hasLeft = leftEnumerator.MoveNext();
+                bool hasRight = rightEnumerator.MoveNext();
 
-            if (hasLeft != hasRight)
-            {
-                return false;
+                if (hasLeft != hasRight)
+                {
+                    return false;
+                }
+                if (!hasLeft)
+                {
+                    return true;
+                }
+                if (!AreEqual(leftEnumerator.Current, rightEnumerator.Current))
+                {
+                    return false;
+                }
             }
-            if (!hasLeft)
-            {
-                return true;
-            }
-            if (!AreEqual(leftEnumerator.Current, rightEnumerator.Current))
-            {
-                return false;
-            }
+        }
+        finally
+        {
+            (leftEnumerator as IDisposable)?.Dispose();
+            (rightEnumerator as IDisposable)?.Dispose();
         }
     }
 
@@ -182,8 +187,10 @@ internal static class StructuralEqualityComparer
         {
             return value.ToString() ?? string.Empty;
         }
-        List<string> values = [];
-        values.AddRange(from object? item in enumerable select FormatComponent(item));
+        List<string> values =
+        [
+            .. from object? item in enumerable select FormatComponent(item)
+        ];
 
         return $"[{string.Join(", ", values)}]";
     }

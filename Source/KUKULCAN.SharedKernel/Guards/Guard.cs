@@ -1,5 +1,3 @@
-using System;
-
 namespace KUKULCAN.SharedKernel.Guards;
 
 /// <summary>
@@ -28,7 +26,9 @@ public static class Guard
     /// </exception>
     public static T NotDefault<T>(T value, [CallerArgumentExpression(nameof(value))] string? parameterName = null) where T : struct
     {
-        return EqualityComparer<T>.Default.Equals(value, default) ? throw new ArgumentException("The value cannot be the default value.", parameterName) : value;
+        return EqualityComparer<T>.Default.Equals(value, default)
+            ? throw new ArgumentException("The value cannot be the default value.", parameterName)
+            : value;
     }
 
     /// <summary>
@@ -48,7 +48,9 @@ public static class Guard
     /// </exception>
     public static Guid NotEmpty(Guid value, [CallerArgumentExpression(nameof(value))] string? parameterName = null)
     {
-        return value == Guid.Empty ? throw new ArgumentException("The Guid cannot be empty.", parameterName) : value;
+        return value == Guid.Empty
+            ? throw new ArgumentException("The Guid cannot be empty.", parameterName)
+            : value;
     }
 
     /// <summary>
@@ -77,6 +79,8 @@ public static class Guard
     {
         ArgumentNullException.ThrowIfNull(collection);
 
-        return collection.Count == 0 ? throw new ArgumentException("The collection cannot be empty.", parameterName) : collection;
+        return collection.Count == 0
+            ? throw new ArgumentException("The collection cannot be empty.", parameterName)
+            : collection;
     }
 }

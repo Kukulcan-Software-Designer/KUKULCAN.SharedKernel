@@ -8,6 +8,10 @@ namespace KUKULCAN.SharedKernel.UnitTests.Globalization.Models;
 [TestFixture]
 public sealed class LocalizedStringTests
 {
+    /// <summary>
+    /// Verifies that construction preserves every localized-string component.
+    /// </summary>
+    /// <param name="resourceNotFound">Whether the resource lookup failed.</param>
     [TestCase(false)]
     [TestCase(true)]
     public void Constructor_ShouldPreserveLocalizedStringData(bool resourceNotFound)
@@ -25,6 +29,9 @@ public sealed class LocalizedStringTests
         }
     }
 
+    /// <summary>
+    /// Verifies that localized strings with equal components are equal and have matching hash codes.
+    /// </summary>
     [Test]
     public void Equality_WithSameData_ShouldReturnTrue()
     {
@@ -38,6 +45,9 @@ public sealed class LocalizedStringTests
         }
     }
 
+    /// <summary>
+    /// Verifies that localized strings with different keys are not equal.
+    /// </summary>
     [Test]
     public void Equality_WithDifferentKey_ShouldReturnFalse()
     {
@@ -47,6 +57,9 @@ public sealed class LocalizedStringTests
         Assert.That(first, Is.Not.EqualTo(second));
     }
 
+    /// <summary>
+    /// Verifies that localized strings with different values are not equal.
+    /// </summary>
     [Test]
     public void Equality_WithDifferentValue_ShouldReturnFalse()
     {
@@ -56,6 +69,9 @@ public sealed class LocalizedStringTests
         Assert.That(first, Is.Not.EqualTo(second));
     }
 
+    /// <summary>
+    /// Verifies that localized strings with different resource-not-found states are not equal.
+    /// </summary>
     [Test]
     public void Equality_WithDifferentResourceNotFoundValue_ShouldReturnFalse()
     {
@@ -65,6 +81,9 @@ public sealed class LocalizedStringTests
         Assert.That(first, Is.Not.EqualTo(second));
     }
 
+    /// <summary>
+    /// Verifies that a with-expression creates a changed copy without mutating the original instance.
+    /// </summary>
     [Test]
     public void WithExpression_ShouldCreateNewInstanceWithoutChangingOriginal()
     {

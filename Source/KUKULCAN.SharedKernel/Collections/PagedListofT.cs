@@ -1,5 +1,3 @@
-using System;
-
 namespace KUKULCAN.SharedKernel.Collections;
 
 public sealed record PagedList<T>

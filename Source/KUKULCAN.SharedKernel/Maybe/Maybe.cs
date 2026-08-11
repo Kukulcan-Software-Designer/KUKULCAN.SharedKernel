@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Maybe.Internals;
 
 namespace KUKULCAN.SharedKernel.Maybe;
@@ -41,11 +40,7 @@ public readonly struct Maybe<T> : IEquatable<Maybe<T>>
     /// <exception cref="InvalidOperationException">
     /// The instance does not contain a value.
     /// </exception>
-    public T Value =>
-        _hasValue
-            ? _value
-            : throw new InvalidOperationException(
-                MaybeMessages.NoValuePresent());
+    public T Value => _hasValue ? _value : throw new InvalidOperationException(MaybeMessages.NoValuePresent());
 
     /// <summary>
     /// Attempts to retrieve the contained value.
@@ -58,8 +53,7 @@ public readonly struct Maybe<T> : IEquatable<Maybe<T>>
     /// <see langword="true"/> if a value exists;
     /// otherwise <see langword="false"/>.
     /// </returns>
-    public bool TryGetValue(
-        [MaybeNullWhen(false)] out T value)
+    public bool TryGetValue([MaybeNullWhen(false)] out T value)
     {
         value = _value;
 
@@ -78,9 +72,7 @@ public readonly struct Maybe<T> : IEquatable<Maybe<T>>
     /// </returns>
     public T GetValueOr(T defaultValue)
     {
-        return _hasValue
-            ? _value
-            : defaultValue;
+        return _hasValue ? _value : defaultValue;
     }
 
     /// <summary>
@@ -97,9 +89,7 @@ public readonly struct Maybe<T> : IEquatable<Maybe<T>>
     {
         ArgumentNullException.ThrowIfNull(factory);
 
-        return _hasValue
-            ? _value
-            : factory();
+        return _hasValue ? _value : factory();
     }
 
     /// <inheritdoc/>
@@ -109,41 +99,30 @@ public readonly struct Maybe<T> : IEquatable<Maybe<T>>
         {
             return false;
         }
-
         if (!_hasValue)
         {
             return true;
         }
 
-        return EqualityComparer<T>.Default.Equals(
-            _value,
-            other._value);
+        return EqualityComparer<T>.Default.Equals(_value, other._value);
     }
 
     /// <inheritdoc/>
     public override bool Equals(object? obj)
     {
-        return obj is Maybe<T> other &&
-               Equals(other);
+        return obj is Maybe<T> other && Equals(other);
     }
 
     /// <inheritdoc/>
     public override int GetHashCode()
     {
-        if (!_hasValue)
-        {
-            return 0;
-        }
-
-        return EqualityComparer<T>.Default.GetHashCode(_value!);
+        return !_hasValue ? 0 : EqualityComparer<T>.Default.GetHashCode(_value!);
     }
 
     /// <summary>
     /// Determines whether two optional values are equal.
     /// </summary>
-    public static bool operator ==(
-        Maybe<T> left,
-        Maybe<T> right)
+    public static bool operator ==(Maybe<T> left, Maybe<T> right)
     {
         return left.Equals(right);
     }
@@ -151,9 +130,7 @@ public readonly struct Maybe<T> : IEquatable<Maybe<T>>
     /// <summary>
     /// Determines whether two optional values are different.
     /// </summary>
-    public static bool operator !=(
-        Maybe<T> left,
-        Maybe<T> right)
+    public static bool operator !=(Maybe<T> left, Maybe<T> right)
     {
         return !left.Equals(right);
     }
@@ -166,16 +143,12 @@ public readonly struct Maybe<T> : IEquatable<Maybe<T>>
     /// </param>
     public static implicit operator Maybe<T>(T? value)
     {
-        return value is null
-            ? None
-            : new Maybe<T>(value, true);
+        return value is null ? None : new Maybe<T>(value, true);
     }
 
     /// <inheritdoc/>
     public override string ToString()
     {
-        return _hasValue
-            ? _value?.ToString() ?? string.Empty
-            : "None";
+        return _hasValue ? _value?.ToString() ?? string.Empty : "None";
     }
 }

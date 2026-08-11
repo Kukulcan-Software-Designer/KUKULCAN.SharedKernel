@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Abstractions;
 using KUKULCAN.SharedKernel.Abstractions.Capabilities;
 using KUKULCAN.SharedKernel.DomainEvents.Abstractions;

@@ -8,7 +8,7 @@ namespace KUKULCAN.SharedKernel.Abstractions;
 /// <typeparam name="TId">
 /// Type of the entity identifier.
 /// </typeparam>
-public interface IEntity<TId> : IEntity where TId : IEntityId
+public interface IEntity<out TId> : IEntity where TId : IEntityId
 {
     /// <summary>
     /// Gets the entity identifier.

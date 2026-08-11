@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results.Internals;
 
 namespace KUKULCAN.SharedKernel.Results;
@@ -26,16 +25,11 @@ public static partial class ValidationErrors
     /// <exception cref="ArgumentException">
     /// <paramref name="propertyName"/> is null, empty or consists only of white-space characters.
     /// </exception>
-    public static Error GreaterThan<T>(
-        string propertyName,
-        T limit)
-        where T : IComparable<T>
+    public static Error GreaterThan<T>(string propertyName, T limit) where T : IComparable<T>
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.GreaterThan,
-            ValidationMessages.GreaterThan(propertyName, limit));
+        return new Error(CommonErrorCodes.GreaterThan, ValidationMessages.GreaterThan(propertyName, limit));
     }
 
     /// <summary>
@@ -56,16 +50,11 @@ public static partial class ValidationErrors
     /// <exception cref="ArgumentException">
     /// <paramref name="propertyName"/> is null, empty or consists only of white-space characters.
     /// </exception>
-    public static Error GreaterThanOrEqual<T>(
-        string propertyName,
-        T limit)
-        where T : IComparable<T>
+    public static Error GreaterThanOrEqual<T>(string propertyName, T limit) where T : IComparable<T>
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.GreaterThanOrEqual,
-            ValidationMessages.GreaterThanOrEqual(propertyName, limit));
+        return new Error(CommonErrorCodes.GreaterThanOrEqual, ValidationMessages.GreaterThanOrEqual(propertyName, limit));
     }
 
     /// <summary>
@@ -86,16 +75,11 @@ public static partial class ValidationErrors
     /// <exception cref="ArgumentException">
     /// <paramref name="propertyName"/> is null, empty or consists only of white-space characters.
     /// </exception>
-    public static Error LessThan<T>(
-        string propertyName,
-        T limit)
-        where T : IComparable<T>
+    public static Error LessThan<T>(string propertyName, T limit) where T : IComparable<T>
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.LessThan,
-            ValidationMessages.LessThan(propertyName, limit));
+        return new Error(CommonErrorCodes.LessThan, ValidationMessages.LessThan(propertyName, limit));
     }
 
     /// <summary>
@@ -116,16 +100,11 @@ public static partial class ValidationErrors
     /// <exception cref="ArgumentException">
     /// <paramref name="propertyName"/> is null, empty or consists only of white-space characters.
     /// </exception>
-    public static Error LessThanOrEqual<T>(
-        string propertyName,
-        T limit)
-        where T : IComparable<T>
+    public static Error LessThanOrEqual<T>(string propertyName, T limit) where T : IComparable<T>
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.LessThanOrEqual,
-            ValidationMessages.LessThanOrEqual(propertyName, limit));
+        return new Error(CommonErrorCodes.LessThanOrEqual, ValidationMessages.LessThanOrEqual(propertyName, limit));
     }
 
     /// <summary>
@@ -149,16 +128,10 @@ public static partial class ValidationErrors
     /// <exception cref="ArgumentException">
     /// <paramref name="propertyName"/> is null, empty or consists only of white-space characters.
     /// </exception>
-    public static Error Between<T>(
-        string propertyName,
-        T minimum,
-        T maximum)
-        where T : IComparable<T>
+    public static Error Between<T>(string propertyName, T minimum, T maximum) where T : IComparable<T>
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.Between,
-            ValidationMessages.Between(propertyName, minimum, maximum));
+        return new Error(CommonErrorCodes.Between, ValidationMessages.Between(propertyName, minimum, maximum));
     }
 }

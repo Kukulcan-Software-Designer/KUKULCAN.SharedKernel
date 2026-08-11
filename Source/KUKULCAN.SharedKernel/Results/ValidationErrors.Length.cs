@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results.Internals;
 
 namespace KUKULCAN.SharedKernel.Results;
@@ -31,9 +30,7 @@ public static partial class ValidationErrors
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(minimumLength);
 
-        return new Error(
-            CommonErrorCodes.MinLength,
-            ValidationMessages.MinLength(propertyName, minimumLength));
+        return new Error(CommonErrorCodes.MinLength, ValidationMessages.MinLength(propertyName, minimumLength));
     }
 
     /// <summary>
@@ -54,16 +51,12 @@ public static partial class ValidationErrors
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="maximumLength"/> is less than or equal to zero.
     /// </exception>
-    public static Error MaxLength(
-        string propertyName,
-        int maximumLength)
+    public static Error MaxLength(string propertyName, int maximumLength)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(maximumLength);
 
-        return new Error(
-            CommonErrorCodes.MaxLength,
-            ValidationMessages.MaxLength(propertyName, maximumLength));
+        return new Error(CommonErrorCodes.MaxLength, ValidationMessages.MaxLength(propertyName, maximumLength));
     }
 
     /// <summary>
@@ -84,15 +77,11 @@ public static partial class ValidationErrors
     /// <exception cref="ArgumentOutOfRangeException">
     /// <paramref name="expectedLength"/> is less than or equal to zero.
     /// </exception>
-    public static Error ExactLength(
-        string propertyName,
-        int expectedLength)
+    public static Error ExactLength(string propertyName, int expectedLength)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
         ArgumentOutOfRangeException.ThrowIfNegativeOrZero(expectedLength);
 
-        return new Error(
-            CommonErrorCodes.ExactLength,
-            ValidationMessages.ExactLength(propertyName, expectedLength));
+        return new Error(CommonErrorCodes.ExactLength, ValidationMessages.ExactLength(propertyName, expectedLength));
     }
 }

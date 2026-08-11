@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.DomainEvents.Abstractions;
 
 namespace KUKULCAN.SharedKernel.DomainEvents.Collections;

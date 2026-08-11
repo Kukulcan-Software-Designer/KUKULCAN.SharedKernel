@@ -9,6 +9,9 @@ namespace KUKULCAN.SharedKernel.UnitTests.Globalization.Culture;
 [TestFixture]
 public sealed class SupportedCultureTests
 {
+    /// <summary>
+    /// Verifies that every predefined culture exposes its canonical name.
+    /// </summary>
     [Test]
     public void PredefinedCultures_ShouldExposeExpectedNames()
     {
@@ -21,6 +24,9 @@ public sealed class SupportedCultureTests
         }
     }
 
+    /// <summary>
+    /// Verifies that all predefined cultures are returned in name order.
+    /// </summary>
     [Test]
     public void All_ShouldContainEveryPredefinedCultureInNameOrder()
     {
@@ -37,6 +43,9 @@ public sealed class SupportedCultureTests
             ]));
     }
 
+    /// <summary>
+    /// Verifies that the registered culture collection exposes each predefined instance.
+    /// </summary>
     [Test]
     public void All_ShouldExposeTheRegisteredInstances()
     {
@@ -51,6 +60,11 @@ public sealed class SupportedCultureTests
         }
     }
 
+    /// <summary>
+    /// Verifies that a Spanish (Spain) name resolves to its registered culture,
+    /// regardless of casing.
+    /// </summary>
+    /// <param name="name">The name used to retrieve the culture.</param>
     [TestCase("es-ES")]
     [TestCase("ES-es")]
     public void FromName_WithSpanishSpainName_ShouldReturnRegisteredCulture(string name)
@@ -60,6 +74,11 @@ public sealed class SupportedCultureTests
         Assert.That(culture, Is.SameAs(SupportedCulture.SpanishSpain));
     }
 
+    /// <summary>
+    /// Verifies that a Spanish (Mexico) name resolves to its registered culture,
+    /// regardless of casing.
+    /// </summary>
+    /// <param name="name">The name used to retrieve the culture.</param>
     [TestCase("es-MX")]
     [TestCase("ES-mx")]
     public void FromName_WithSpanishMexicoName_ShouldReturnRegisteredCulture(string name)
@@ -69,6 +88,11 @@ public sealed class SupportedCultureTests
         Assert.That(culture, Is.SameAs(SupportedCulture.SpanishMexico));
     }
 
+    /// <summary>
+    /// Verifies that an English (United States) name resolves to its registered culture,
+    /// regardless of casing.
+    /// </summary>
+    /// <param name="name">The name used to retrieve the culture.</param>
     [TestCase("en-US")]
     [TestCase("EN-us")]
     public void FromName_WithEnglishUnitedStatesName_ShouldReturnRegisteredCulture(string name)
@@ -78,6 +102,9 @@ public sealed class SupportedCultureTests
         Assert.That(culture, Is.SameAs(SupportedCulture.EnglishUnitedStates));
     }
 
+    /// <summary>
+    /// Verifies that a null culture name is rejected.
+    /// </summary>
     [Test]
     public void FromName_WithNullName_ShouldThrowArgumentNullException()
     {
@@ -87,6 +114,10 @@ public sealed class SupportedCultureTests
         Assert.That(exception.ParamName, Is.EqualTo("name"));
     }
 
+    /// <summary>
+    /// Verifies that empty and whitespace-only culture names are rejected.
+    /// </summary>
+    /// <param name="name">The invalid culture name.</param>
     [TestCase("")]
     [TestCase("   ")]
     public void FromName_WithEmptyOrWhitespaceName_ShouldThrowArgumentException(string name)
@@ -97,6 +128,9 @@ public sealed class SupportedCultureTests
         Assert.That(exception.ParamName, Is.EqualTo("name"));
     }
 
+    /// <summary>
+    /// Verifies that an unregistered culture name is rejected and identified in the error.
+    /// </summary>
     [Test]
     public void FromName_WithUnsupportedName_ShouldThrowArgumentException()
     {
@@ -110,6 +144,11 @@ public sealed class SupportedCultureTests
         }
     }
 
+    /// <summary>
+    /// Verifies whether a culture name is registered, independently of casing.
+    /// </summary>
+    /// <param name="name">The culture name to evaluate.</param>
+    /// <param name="expected">The expected registration result.</param>
     [TestCase("es-ES", true)]
     [TestCase("ES-es", true)]
     [TestCase("es-MX", true)]
@@ -120,6 +159,9 @@ public sealed class SupportedCultureTests
         Assert.That(SupportedCulture.IsSupported(name), Is.EqualTo(expected));
     }
 
+    /// <summary>
+    /// Verifies that a null culture name is rejected when checking registration.
+    /// </summary>
     [Test]
     public void IsSupported_WithNullName_ShouldThrowArgumentNullException()
     {
@@ -129,6 +171,10 @@ public sealed class SupportedCultureTests
         Assert.That(exception.ParamName, Is.EqualTo("name"));
     }
 
+    /// <summary>
+    /// Verifies that empty and whitespace-only names are rejected when checking registration.
+    /// </summary>
+    /// <param name="name">The invalid culture name.</param>
     [TestCase("")]
     [TestCase("   ")]
     public void IsSupported_WithEmptyOrWhitespaceName_ShouldThrowArgumentException(string name)
@@ -139,6 +185,10 @@ public sealed class SupportedCultureTests
         Assert.That(exception.ParamName, Is.EqualTo("name"));
     }
 
+    /// <summary>
+    /// Verifies that the exposed metadata matches the associated .NET culture.
+    /// </summary>
+    /// <param name="culture">The predefined culture whose metadata is verified.</param>
     [TestCaseSource(nameof(PredefinedCultures))]
     public void CultureMetadata_ShouldMatchUnderlyingCultureInfo(SupportedCulture culture)
     {
@@ -156,6 +206,9 @@ public sealed class SupportedCultureTests
         }
     }
 
+    /// <summary>
+    /// Verifies that a culture is equal to an equivalent culture and has a consistent hash code.
+    /// </summary>
     [Test]
     public void Equality_WithSameCulture_ShouldReturnTrue()
     {
@@ -169,6 +222,9 @@ public sealed class SupportedCultureTests
         }
     }
 
+    /// <summary>
+    /// Verifies that a culture is not equal to a different culture, null, or another object type.
+    /// </summary>
     [Test]
     public void Equality_WithDifferentOrNullCulture_ShouldReturnFalse()
     {
@@ -182,6 +238,9 @@ public sealed class SupportedCultureTests
         }
     }
 
+    /// <summary>
+    /// Verifies that equality and inequality operators follow culture equality semantics.
+    /// </summary>
     [Test]
     public void EqualityOperators_ShouldReflectCultureEquality()
     {
@@ -198,6 +257,9 @@ public sealed class SupportedCultureTests
         }
     }
 
+    /// <summary>
+    /// Verifies that cultures are compared by name and sort above a null culture.
+    /// </summary>
     [Test]
     public void CompareTo_ShouldSortByNameAndTreatNullAsLower()
     {
@@ -211,6 +273,9 @@ public sealed class SupportedCultureTests
         }
     }
 
+    /// <summary>
+    /// Verifies that the string representation is the culture name.
+    /// </summary>
     [Test]
     public void ToString_ShouldReturnCultureName()
     {

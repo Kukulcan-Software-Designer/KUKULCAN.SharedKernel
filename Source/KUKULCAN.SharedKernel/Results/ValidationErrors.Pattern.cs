@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results.Internals;
 
 namespace KUKULCAN.SharedKernel.Results;
@@ -24,9 +23,7 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.InvalidFormat,
-            ValidationMessages.InvalidFormat(propertyName));
+        return new Error(CommonErrorCodes.InvalidFormat, ValidationMessages.InvalidFormat(propertyName));
     }
 
     /// <summary>
@@ -45,9 +42,7 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.InvalidPattern,
-            ValidationMessages.InvalidPattern(propertyName));
+        return new Error(CommonErrorCodes.InvalidPattern, ValidationMessages.InvalidPattern(propertyName));
     }
 
     /// <summary>
@@ -66,9 +61,7 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.InvalidEmail,
-            ValidationMessages.InvalidEmail(propertyName));
+        return new Error(CommonErrorCodes.InvalidEmail, ValidationMessages.InvalidEmail(propertyName));
     }
 
     /// <summary>
@@ -87,9 +80,7 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.InvalidPhone,
-            ValidationMessages.InvalidPhone(propertyName));
+        return new Error(CommonErrorCodes.InvalidPhone, ValidationMessages.InvalidPhone(propertyName));
     }
 
     /// <summary>
@@ -108,8 +99,6 @@ public static partial class ValidationErrors
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(propertyName);
 
-        return new Error(
-            CommonErrorCodes.InvalidUrl,
-            ValidationMessages.InvalidUrl(propertyName));
+        return new Error(CommonErrorCodes.InvalidUrl, ValidationMessages.InvalidUrl(propertyName));
     }
 }

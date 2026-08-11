@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Abstractions;
 using KUKULCAN.SharedKernel.Identifiers.Interfaces;
 
@@ -55,8 +54,7 @@ public abstract class Entity<TId> : IEntity<TId>, IEquatable<Entity<TId>> where 
             return true;
         }
 
-        return GetType() == other.GetType() &&
-               EqualityComparer<TId>.Default.Equals(Id, other.Id);
+        return GetType() == other.GetType() && EqualityComparer<TId>.Default.Equals(Id, other.Id);
     }
 
     /// <inheritdoc/>

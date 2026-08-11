@@ -1,5 +1,3 @@
-using System;
-
 namespace KUKULCAN.SharedKernel.Internals.Equality;
 
 /// <summary>

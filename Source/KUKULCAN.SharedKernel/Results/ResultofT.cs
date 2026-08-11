@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results.Internals;
 
 namespace KUKULCAN.SharedKernel.Results;
@@ -40,9 +39,7 @@ public sealed class Result<T> : Result
     {
         get
         {
-            return IsFailure
-                ? throw new InvalidOperationException(CommonMessages.ResultValueUnavailable())
-                : _value!;
+            return IsFailure ? throw new InvalidOperationException(CommonMessages.ResultValueUnavailable()) : _value!;
         }
     }
 
@@ -87,8 +84,6 @@ public sealed class Result<T> : Result
     /// </returns>
     public override string ToString()
     {
-        return IsSuccess
-            ? $"Success ({Value})"
-            : $"Failure: {Error}";
+        return IsSuccess ? $"Success ({Value})" : $"Failure: {Error}";
     }
 }

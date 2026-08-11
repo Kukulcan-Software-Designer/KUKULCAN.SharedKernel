@@ -1,4 +1,3 @@
-using System;
 using KUKULCAN.SharedKernel.Results;
 
 namespace KUKULCAN.SharedKernel.Exceptions;

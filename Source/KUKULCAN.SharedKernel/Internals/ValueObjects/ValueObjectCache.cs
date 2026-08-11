@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using System.Reflection;
 using KUKULCAN.SharedKernel.Attributes;
 
@@ -10,8 +8,7 @@ namespace KUKULCAN.SharedKernel.Internals.ValueObjects;
 /// </summary>
 internal static class ValueObjectCache
 {
-    private static readonly ConcurrentDictionary<Type, ValueObjectMetadata>
-        _cache = new();
+    private static readonly ConcurrentDictionary<Type, ValueObjectMetadata> _cache = new();
 
     /// <summary>
     /// Gets cached metadata for the specified ValueObject type.
@@ -29,31 +26,21 @@ internal static class ValueObjectCache
     }
     private static ValueObjectMetadata CreateMetadata(Type type)
     {
-        PropertyInfo[] properties =
-            type.GetProperties(BindingFlags.Instance |
-                               BindingFlags.Public);
+        PropertyInfo[] properties = type.GetProperties(BindingFlags.Instance | BindingFlags.Public);
         bool explicitMode =
-            properties.Any(p =>
-                p.IsDefined(
-                    typeof(ValueObjectMemberAttribute),
-                    inherit: true));
-        IEnumerable<PropertyInfo> selected =
-            properties
-                .Where(IsCandidate);
+            properties.Any(p => p.IsDefined(typeof(ValueObjectMemberAttribute), inherit: true));
+        IEnumerable<PropertyInfo> selected = properties.Where(IsCandidate);
         if (explicitMode)
         {
-            selected =
-                selected.Where(p =>
-                    p.IsDefined(
-                        typeof(ValueObjectMemberAttribute),
-                        inherit: true));
+            selected = selected.Where(p => p.IsDefined(typeof(ValueObjectMemberAttribute), inherit: true));
         }
         IReadOnlyList<ValueObjectProperty> members =
-            selected
+        [
+            .. selected
                 .OrderBy(GetOrder)
                 .ThenBy(p => p.Name)
                 .Select(CreateMember)
-                .ToArray();
+        ];
 
         return new ValueObjectMetadata
         {
@@ -77,6 +64,7 @@ internal static class ValueObjectCache
             return false;
         if (property.GetIndexParameters().Length != 0)
             return false;
+
         return !property.IsDefined(
             typeof(IgnoreEqualityAttribute),
             inherit: true);
@@ -84,9 +72,7 @@ internal static class ValueObjectCache
 
     private static int GetOrder(PropertyInfo property)
     {
-        EqualityOrderAttribute? attribute =
-            property.GetCustomAttribute<EqualityOrderAttribute>(
-                inherit: true);
+        var attribute = property.GetCustomAttribute<EqualityOrderAttribute>(inherit: true);
 
         return attribute?.Order ?? int.MaxValue;
     }
