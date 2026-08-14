@@ -5,7 +5,7 @@
 > **Architecture Handbook**
 >
 > **Status: **Stable
-> Version: **1.0.0-beta1**
+> Version: **1.0.0**
 ---
 
 # Table of Contents
@@ -152,7 +152,7 @@ Once frozen, modules are expected to evolve conservatively, preserving API stabi
 Current architectural baseline:
 
 ```
-v1.0.0-beta1
+v1.0.0
 ```
 
 This handbook documents the architecture corresponding to that release.

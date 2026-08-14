@@ -5,7 +5,7 @@
 > **Globalization Architecture**
 >
 > **Status: **Stable
-> Version: **1.0.0-beta1**
+> Version: **1.0.0**
 ---
 ## Table of Contents
 

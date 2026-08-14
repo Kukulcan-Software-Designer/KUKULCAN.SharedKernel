@@ -23,7 +23,7 @@ Examples:
 
 ```
 1.0.0-alpha1
-1.0.0-beta1
+1.0.0
 1.0.0-rc1
 1.0.0
 ```
@@ -68,7 +68,7 @@ Security improvements.
 
 ---
 
-# [1.0.0-beta1] - 2026-07-30
+# [1.0.0] - 2026-07-30
 
 ## Added
 
@@ -300,7 +300,7 @@ No migration steps are required.
 
 # Frozen Modules
 
-The following modules are considered architecturally frozen for **v1.0.0-beta1**.
+The following modules are considered architecturally frozen for **v1.0.0**.
 
 - Abstractions
 - Attributes
@@ -325,7 +325,7 @@ Future changes to these modules will prioritize backward compatibility.
 
 # Release Summary
 
-**KUKULCAN.SharedKernel v1.0.0-beta1** represents the first public beta of the framework.
+**KUKULCAN.SharedKernel v1.0.0** represents the first public beta of the framework.
 
 This release provides a stable architectural foundation for building enterprise applications following Domain-Driven Design and Clean Architecture.
 

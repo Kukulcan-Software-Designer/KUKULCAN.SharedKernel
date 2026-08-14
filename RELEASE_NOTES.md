@@ -1,6 +1,6 @@
 # Release Notes
 
-## KUKULCAN.SharedKernel v1.0.0-beta1
+## KUKULCAN.SharedKernel v1.0.0
 
 **Release Date**
 

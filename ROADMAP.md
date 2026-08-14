@@ -42,7 +42,7 @@ Future development follows these principles.
 ## Current Release
 
 ```
-v1.0.0-beta1
+v1.0.0
 ```
 
 Status:

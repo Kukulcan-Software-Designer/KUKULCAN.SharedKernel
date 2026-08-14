@@ -2034,7 +2034,7 @@ Stable APIs create stable applications.
 
 The following roadmap describes the expected evolution of the framework.
 
-## Version 1.0.0-beta1
+## Version 1.0.0
 
 - Initial public beta
 - Stable public API
