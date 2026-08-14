@@ -93,6 +93,13 @@ public sealed class SupportedCulture : IEquatable<SupportedCulture>, IComparable
     /// <summary>
     /// Determines whether the specified culture is supported.
     /// </summary>
+    /// <param name="name">Culture name to check.</param>
+    /// <returns>
+    /// <see langword="true"/> if the culture is registered; otherwise, <see langword="false"/>.
+    /// </returns>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="name"/> is null, empty, or whitespace.
+    /// </exception>
     public static bool IsSupported(string name)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(name);
@@ -133,7 +140,25 @@ public sealed class SupportedCulture : IEquatable<SupportedCulture>, IComparable
     /// <inheritdoc/>
     public override string ToString() => Name;
 
+    /// <summary>
+    /// Determines whether two supported cultures are equal.
+    /// </summary>
+    /// <param name="left">The first culture to compare.</param>
+    /// <param name="right">The second culture to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when both cultures represent the same culture;
+    /// otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator ==(SupportedCulture? left, SupportedCulture? right) => Equals(left, right);
 
+    /// <summary>
+    /// Determines whether two supported cultures are different.
+    /// </summary>
+    /// <param name="left">The first culture to compare.</param>
+    /// <param name="right">The second culture to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when the cultures represent different cultures;
+    /// otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator !=(SupportedCulture? left, SupportedCulture? right) => !(left == right);
 }

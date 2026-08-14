@@ -72,6 +72,11 @@ public abstract class Entity<TId> : IEntity<TId>, IEquatable<Entity<TId>> where 
     /// <summary>
     /// Determines whether two entities are equal.
     /// </summary>
+    /// <param name="left">The first entity to compare.</param>
+    /// <param name="right">The second entity to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when both entities are equal; otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator ==(Entity<TId>? left, Entity<TId>? right)
     {
         return Equals(left, right);
@@ -80,6 +85,11 @@ public abstract class Entity<TId> : IEntity<TId>, IEquatable<Entity<TId>> where 
     /// <summary>
     /// Determines whether two entities are different.
     /// </summary>
+    /// <param name="left">The first entity to compare.</param>
+    /// <param name="right">The second entity to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when the entities are different; otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator !=(Entity<TId>? left, Entity<TId>? right)
     {
         return !(left == right);

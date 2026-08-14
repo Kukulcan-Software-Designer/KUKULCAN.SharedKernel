@@ -2,26 +2,16 @@
 
     <PropertyGroup>
         <TargetFramework>net10.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>latestmajor</LangVersion>
         <Nullable>enable</Nullable>
-        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <ImplicitUsings>enable</ImplicitUsings>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-        <EnableNETAnalyzers>true</EnableNETAnalyzers>
-        <AnalysisLevel>latest</AnalysisLevel>
-        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-        <Deterministic>true</Deterministic>
-        <AssemblyName>KUKULCAN.SharedKernel</AssemblyName>
         <RootNamespace>KUKULCAN.SharedKernel</RootNamespace>
-        <PackageId>KUKULCAN.SharedKernel</PackageId>
-        <Authors>Juan Manuel Pardo García</Authors>
-        <Company>KUKULCAN Software Designer</Company>
-        <Product>KUKULCAN Platform</Product>
-        <Description>Shared kernel for the KUKULCAN platform.</Description>
-        <IsPackable>false</IsPackable>
-    </PropertyGroup>
+        <AssemblyName>KUKULCAN.SharedKernel</AssemblyName>
+        <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+        <BaseOutputPath>$(SolutionDir)Bin\$(MSBuildProjectName)</BaseOutputPath>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
-    <ItemGroup>
-      <Folder Include="Globalization\Formating\" />
-    </ItemGroup>
+    </PropertyGroup>
 
 </Project>

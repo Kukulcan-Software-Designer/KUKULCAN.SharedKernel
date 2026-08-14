@@ -42,6 +42,7 @@ public sealed class FakeClock(DateTimeOffset now) : IClock
     /// <summary>
     /// Advances the clock by the specified number of days.
     /// </summary>
+    /// <param name="days">Number of days to advance.</param>
     public void AdvanceDays(int days)
     {
         UtcNow = UtcNow.AddDays(days);
@@ -50,6 +51,7 @@ public sealed class FakeClock(DateTimeOffset now) : IClock
     /// <summary>
     /// Advances the clock by the specified number of hours.
     /// </summary>
+    /// <param name="hours">Number of hours to advance.</param>
     public void AdvanceHours(double hours)
     {
         UtcNow = UtcNow.AddHours(hours);
@@ -58,6 +60,7 @@ public sealed class FakeClock(DateTimeOffset now) : IClock
     /// <summary>
     /// Advances the clock by the specified number of minutes.
     /// </summary>
+    /// <param name="minutes">Number of minutes to advance.</param>
     public void AdvanceMinutes(double minutes)
     {
         UtcNow = UtcNow.AddMinutes(minutes);
@@ -66,6 +69,7 @@ public sealed class FakeClock(DateTimeOffset now) : IClock
     /// <summary>
     /// Advances the clock by the specified number of seconds.
     /// </summary>
+    /// <param name="seconds">Number of seconds to advance.</param>
     public void AdvanceSeconds(double seconds)
     {
         UtcNow = UtcNow.AddSeconds(seconds);
@@ -74,6 +78,7 @@ public sealed class FakeClock(DateTimeOffset now) : IClock
     /// <summary>
     /// Rewinds the clock by the specified time span.
     /// </summary>
+    /// <param name="span">Time span to rewind.</param>
     public void Rewind(TimeSpan span)
     {
         UtcNow = UtcNow.Subtract(span);

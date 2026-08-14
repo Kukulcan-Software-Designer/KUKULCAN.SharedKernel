@@ -45,6 +45,17 @@ public sealed class SemanticVersion : ValueObject, IComparable<SemanticVersion>,
     /// <summary>
     /// Initializes a new semantic version.
     /// </summary>
+    /// <param name="major">Major version component.</param>
+    /// <param name="minor">Minor version component.</param>
+    /// <param name="patch">Patch version component.</param>
+    /// <param name="prerelease">Optional prerelease identifier.</param>
+    /// <param name="buildMetadata">Optional build metadata identifier.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// A version component is negative.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// A prerelease or build metadata identifier contains spaces.
+    /// </exception>
     public SemanticVersion(int major, int minor, int patch, string? prerelease = null, string? buildMetadata = null)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(major);
@@ -63,6 +74,12 @@ public sealed class SemanticVersion : ValueObject, IComparable<SemanticVersion>,
     /// <summary>
     /// Parses a semantic version.
     /// </summary>
+    /// <param name="s">String containing the semantic version to parse.</param>
+    /// <param name="provider">Format provider used during parsing.</param>
+    /// <returns>The parsed semantic version.</returns>
+    /// <exception cref="FormatException">
+    /// <paramref name="s"/> does not contain a valid semantic version.
+    /// </exception>
     public static SemanticVersion Parse(string s, IFormatProvider? provider)
     {
         return !TryParse(s, provider, out SemanticVersion? version) ? throw new FormatException($"'{s}' is not a valid semantic version.") : version;
@@ -71,11 +88,25 @@ public sealed class SemanticVersion : ValueObject, IComparable<SemanticVersion>,
     /// <summary>
     /// Parses a semantic version.
     /// </summary>
+    /// <param name="s">String containing the semantic version to parse.</param>
+    /// <returns>The parsed semantic version.</returns>
+    /// <exception cref="FormatException">
+    /// <paramref name="s"/> does not contain a valid semantic version.
+    /// </exception>
     public static SemanticVersion Parse(string s) => Parse(s, null);
 
     /// <summary>
     /// Attempts to parse a semantic version.
     /// </summary>
+    /// <param name="s">String containing the semantic version to parse.</param>
+    /// <param name="provider">Format provider used during parsing.</param>
+    /// <param name="version">
+    /// When this method returns, contains the parsed semantic version if parsing succeeds;
+    /// otherwise <see langword="null"/>.
+    /// </param>
+    /// <returns>
+    /// <see langword="true"/> if parsing succeeds; otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool TryParse([NotNullWhen(true)] string? s, IFormatProvider? provider, [MaybeNullWhen(false)] out SemanticVersion version)
     {
         version = null;
@@ -130,17 +161,51 @@ public sealed class SemanticVersion : ValueObject, IComparable<SemanticVersion>,
     /// <summary>
     /// Attempts to parse a semantic version.
     /// </summary>
+    /// <param name="s">String containing the semantic version to parse.</param>
+    /// <param name="version">
+    /// When this method returns, contains the parsed semantic version if parsing succeeds;
+    /// otherwise <see langword="null"/>.
+    /// </param>
+    /// <returns>
+    /// <see langword="true"/> if parsing succeeds; otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool TryParse([NotNullWhen(true)] string? s, [MaybeNullWhen(false)] out SemanticVersion version)
         => TryParse(s, null, out version);
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Parses a semantic version from a character span.
+    /// </summary>
+    /// <param name="s">Character span containing the semantic version to parse.</param>
+    /// <param name="provider">Format provider used during parsing.</param>
+    /// <returns>The parsed semantic version.</returns>
+    /// <exception cref="FormatException">
+    /// <paramref name="s"/> does not contain a valid semantic version.
+    /// </exception>
     public static SemanticVersion Parse(ReadOnlySpan<char> s, IFormatProvider? provider) => Parse(s.ToString(), provider);
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Attempts to parse a semantic version from a character span.
+    /// </summary>
+    /// <param name="s">Character span containing the semantic version to parse.</param>
+    /// <param name="provider">Format provider used during parsing.</param>
+    /// <param name="result">
+    /// When this method returns, contains the parsed semantic version if parsing succeeds;
+    /// otherwise <see langword="null"/>.
+    /// </param>
+    /// <returns>
+    /// <see langword="true"/> if parsing succeeds; otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool TryParse(ReadOnlySpan<char> s, IFormatProvider? provider, [MaybeNullWhen(false)] out SemanticVersion result)
         => TryParse(s.ToString(), provider, out result);
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// Compares this semantic version with another version.
+    /// </summary>
+    /// <param name="other">Version to compare with the current version.</param>
+    /// <returns>
+    /// A value less than zero if this version precedes <paramref name="other"/>,
+    /// zero if they are equal, or a value greater than zero if this version follows it.
+    /// </returns>
     public int CompareTo(SemanticVersion? other)
     {
         if (other is null)

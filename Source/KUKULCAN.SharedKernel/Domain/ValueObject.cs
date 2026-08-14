@@ -53,6 +53,11 @@ public abstract class ValueObject : IEquatable<ValueObject>
     /// <summary>
     /// Determines whether two value objects are equal.
     /// </summary>
+    /// <param name="left">The first value object to compare.</param>
+    /// <param name="right">The second value object to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when both objects are equal; otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator ==(ValueObject? left, ValueObject? right)
     {
         return Equals(left, right);
@@ -61,6 +66,11 @@ public abstract class ValueObject : IEquatable<ValueObject>
     /// <summary>
     /// Determines whether two value objects are different.
     /// </summary>
+    /// <param name="left">The first value object to compare.</param>
+    /// <param name="right">The second value object to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when the objects are different; otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator !=(ValueObject? left, ValueObject? right)
     {
         return !(left == right);

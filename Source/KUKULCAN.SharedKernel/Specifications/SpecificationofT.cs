@@ -62,6 +62,11 @@ public abstract class Specification<T> : ISpecification<T>
     /// <summary>
     /// Combines two specifications using a logical AND.
     /// </summary>
+    /// <param name="left">Left specification operand.</param>
+    /// <param name="right">Right specification operand.</param>
+    /// <returns>
+    /// A specification representing the combined condition.
+    /// </returns>
     public static Specification<T> operator &(Specification<T> left, Specification<T> right)
     {
         ArgumentNullException.ThrowIfNull(left);
@@ -73,6 +78,11 @@ public abstract class Specification<T> : ISpecification<T>
     /// <summary>
     /// Combines two specifications using a logical OR.
     /// </summary>
+    /// <param name="left">Left specification operand.</param>
+    /// <param name="right">Right specification operand.</param>
+    /// <returns>
+    /// A specification representing the combined condition.
+    /// </returns>
     public static Specification<T> operator |(Specification<T> left, Specification<T> right)
     {
         ArgumentNullException.ThrowIfNull(left);
@@ -84,6 +94,10 @@ public abstract class Specification<T> : ISpecification<T>
     /// <summary>
     /// Negates a specification.
     /// </summary>
+    /// <param name="specification">Specification specification operand.</param>
+    /// <returns>
+    /// A specification representing the combined condition.
+    /// </returns>
     public static Specification<T> operator !(Specification<T> specification)
     {
         ArgumentNullException.ThrowIfNull(specification);

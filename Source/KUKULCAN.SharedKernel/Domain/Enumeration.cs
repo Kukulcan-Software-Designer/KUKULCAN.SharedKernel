@@ -12,6 +12,14 @@ public abstract class Enumeration : IComparable
     /// <summary>
     /// Initializes a new enumeration.
     /// </summary>
+    /// <param name="id">Numeric identifier of the enumeration value.</param>
+    /// <param name="name">Display name of the enumeration value.</param>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// <paramref name="id"/> is negative.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="name"/> is null, empty, or whitespace.
+    /// </exception>
     protected Enumeration(int id, string name)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(id);
@@ -86,7 +94,25 @@ public abstract class Enumeration : IComparable
     /// <inheritdoc />
     public sealed override int GetHashCode() => HashCode.Combine(GetType(), Id);
 
+    /// <summary>
+    /// Determines whether two enumeration values are equal.
+    /// </summary>
+    /// <param name="left">The first enumeration value to compare.</param>
+    /// <param name="right">The second enumeration value to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when both values represent the same enumeration value;
+    /// otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator ==(Enumeration? left, Enumeration? right) => Equals(left, right);
 
+    /// <summary>
+    /// Determines whether two enumeration values are different.
+    /// </summary>
+    /// <param name="left">The first enumeration value to compare.</param>
+    /// <param name="right">The second enumeration value to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when the values represent different enumeration values;
+    /// otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator !=(Enumeration? left, Enumeration? right) => !Equals(left, right);
 }

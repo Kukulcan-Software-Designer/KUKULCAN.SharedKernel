@@ -122,6 +122,11 @@ public readonly struct Maybe<T> : IEquatable<Maybe<T>>
     /// <summary>
     /// Determines whether two optional values are equal.
     /// </summary>
+    /// <param name="left">The first optional value to compare.</param>
+    /// <param name="right">The second optional value to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when both optional values are equal; otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator ==(Maybe<T> left, Maybe<T> right)
     {
         return left.Equals(right);
@@ -130,6 +135,11 @@ public readonly struct Maybe<T> : IEquatable<Maybe<T>>
     /// <summary>
     /// Determines whether two optional values are different.
     /// </summary>
+    /// <param name="left">The first optional value to compare.</param>
+    /// <param name="right">The second optional value to compare.</param>
+    /// <returns>
+    /// <see langword="true"/> when the optional values are different; otherwise, <see langword="false"/>.
+    /// </returns>
     public static bool operator !=(Maybe<T> left, Maybe<T> right)
     {
         return !left.Equals(right);

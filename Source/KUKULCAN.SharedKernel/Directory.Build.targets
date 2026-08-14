@@ -1,0 +1,32 @@
+<Project>
+    <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+        <GeneratePackageOnBuild Condition="'$(Configuration)'=='Release'">true</GeneratePackageOnBuild>
+        <SolutionDir>$(MSBuildThisFileDirectory)</SolutionDir>
+        <PackageId>$(AssemblyName)</PackageId>
+        <Version>$(VersionPrefix)</Version>
+        <Authors>Kukulcán Software Designer</Authors>
+        <Company>Kukulcán Software Designer</Company>
+        <Copyright>GPL 2026 Kukulcán Software Designer</Copyright>
+        <PackageProjectUrl>https://www.kukulcan.org.mx/Software/SharedKernel</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageOutputPath>$(SolutionDir)NuGet\</PackageOutputPath>
+        <PackageTags>kukulcan;sharedkernel</PackageTags>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+        <PackageReleaseNotes>
+            Initial release of KUKULCAN.SharedKernel. Provides shared domain primitives, abstractions, result handling, standardized errors, validation, time services, value-object utilities, common messages, and cross-cutting components for KUKULCAN applications and services.
+        </PackageReleaseNotes>
+        <RepositoryUrl>https://github.com/Kukulcan-Software-Designer/KUKULCAN.SharedKernel</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <Description>
+            Provides the shared foundational components for the KUKULCAN architecture, including common abstractions, domain primitives, result and error handling, validation, time services, value objects, and cross-cutting utilities.
+            Designed to promote consistency, reuse, and clean separation of concerns across KUKULCAN applications and services.
+        </Description>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(Configuration)' == 'Release'">
+        <None Include="$(SolutionDir)LICENSE" Pack="true" PackagePath="\" />
+        <None Include="$(SolutionDir)README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+</Project>
