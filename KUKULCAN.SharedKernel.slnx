@@ -30,6 +30,9 @@
   <Folder Name="/Solution Items/.github/workflows/">
     <File Path=".github\workflows\delete-merged-branches.yml" />
   </Folder>
+  <Folder Name="/Source Client/">
+    <Project Path="Source Client/KUKULCAN.SharedKernel.Client/KUKULCAN.SharedKernel.Client.csproj" />
+  </Folder>
   <Folder Name="/Source/">
     <Project Path="Source/KUKULCAN.SharedKernel/KUKULCAN.SharedKernel.csproj" />
   </Folder>

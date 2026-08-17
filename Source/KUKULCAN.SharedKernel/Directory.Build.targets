@@ -13,7 +13,6 @@
         <PackageTags>kukulcan;sharedkernel</PackageTags>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-        <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
         <PackageReleaseNotes>
             Initial release of KUKULCAN.SharedKernel. Provides shared domain primitives, abstractions, result handling, standardized errors, validation, time services, value-object utilities, common messages, and cross-cutting components for KUKULCAN applications and services.
         </PackageReleaseNotes>
