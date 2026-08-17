@@ -173,7 +173,7 @@ internal static class Program
         SemanticVersion parsedWithProvider = SemanticVersion.Parse("2.1.0", CultureInfo.InvariantCulture);
         Console.WriteLine($"Parse(string, provider): {parsedWithProvider}");
 
-        SemanticVersion.TryParse("3.0.0", out SemanticVersion tryParsed);
+        SemanticVersion.TryParse("3.0.0", out SemanticVersion? tryParsed);
         Console.WriteLine($"TryParse(string): {tryParsed}");
 
         SemanticVersion.TryParse("not-a-version", CultureInfo.InvariantCulture, out _);
@@ -182,7 +182,7 @@ internal static class Program
         SemanticVersion spanParsed = SemanticVersion.Parse("4.5.6".AsSpan(), null);
         Console.WriteLine($"Parse(span): {spanParsed}");
 
-        SemanticVersion.TryParse("7.8.9".AsSpan(), null, out SemanticVersion spanTry);
+        SemanticVersion.TryParse("7.8.9".AsSpan(), null, out SemanticVersion? spanTry);
         Console.WriteLine($"TryParse(span): {spanTry}");
 
         Console.WriteLine($"CompareTo: {version.CompareTo(parsed)}");
@@ -458,9 +458,8 @@ internal static class Program
     private static void DemoAuditableEntity()
     {
         AuditableCustomer entity = new(new CustomerId(Guid.NewGuid()));
-        Console.WriteLine($"Auditable CreatedOn={entity.CreatedOn:o}, ModifiedOn={entity.ModifiedOn?.ToString("o") ?? "<null>"}");
-        entity.SetAudit(DateTimeOffset.UtcNow.AddMinutes(-5), DateTimeOffset.UtcNow);
-        Console.WriteLine($"Updated CreatedOn={entity.CreatedOn:o}, ModifiedOn={entity.ModifiedOn:o}");
+
+        entity.DisplayAudit();
     }
 
     private static void DemoSpecifications()
@@ -546,7 +545,7 @@ internal static class Program
         Console.WriteLine($"After rewinds/set={clock.UtcNow:o}");
 
         DateTimeOffset date = clock.UtcNow;
-        Console.WriteLine($"DateOnly={date.ToDateOnly()}, TimeOnly={date.ToTimeOnly()}");
+        Console.WriteLine($"DateOnly={date.DateTime.ToDateOnly()}, TimeOnly={date.DateTime.ToTimeOnly()}");
         SystemClock system = new();
         Console.WriteLine($"SystemClock={system.UtcNow:o}");
     }
@@ -680,6 +679,10 @@ internal static class Program
     {
     }
 
+    private sealed class GuidId(Guid value) : GuidEntityId(value)
+    {
+    }
+
     private sealed class StringId(string value) : StringEntityId(value)
     {
     }
@@ -724,10 +727,10 @@ internal static class Program
 
     private sealed class AuditableCustomer(CustomerId id) : AuditableEntity<CustomerId>(id)
     {
-        public void SetAudit(DateTimeOffset created, DateTimeOffset modified)
+        public void DisplayAudit()
         {
-            CreatedOn = created;
-            ModifiedOn = modified;
+            Console.WriteLine($"CreatedOn={CreatedOn:o}");
+            Console.WriteLine($"ModifiedOn={(ModifiedOn.HasValue ? ModifiedOn.Value.ToString("o") : "<null>")}");
         }
     }
 
